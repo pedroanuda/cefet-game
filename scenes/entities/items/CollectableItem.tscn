@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://caba8y3aoimqo"]
+
+[ext_resource type="Script" path="res://scenes/entities/items/CollectableItem.cs" id="1_d6ny2"]
+[ext_resource type="Script" path="res://scenes/entities/items/CollectableItemArea.cs" id="2_anybb"]
+[ext_resource type="Resource" uid="uid://bxwmj6b0w78w" path="res://items/SimpleBackpack.tres" id="3_d6n1w"]
+[ext_resource type="Texture2D" uid="uid://bbr331px6pkyi" path="res://src/items/SimpleBackpackIcon.png" id="4_0qkjc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hi8do"]
+radius = 30.1496
+
+[sub_resource type="Animation" id="Animation_5y0ax"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.5, 0), Vector2(-1.5, -1.705), Vector2(-1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1oqt"]
+_data = {
+"default": SubResource("Animation_5y0ax")
+}
+
+[node name="CollectableItem" type="Node2D"]
+script = ExtResource("1_d6ny2")
+Item = ExtResource("3_d6n1w")
+
+[node name="CollectableItemArea" type="Area2D" parent="."]
+script = ExtResource("2_anybb")
+Item = ExtResource("3_d6n1w")
+SelectorOffset = Vector2(0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableItemArea"]
+shape = SubResource("CircleShape2D_hi8do")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.355, 1.355)
+texture = ExtResource("4_0qkjc")
+offset = Vector2(-1.5, -1.05347)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i1oqt")
+}
+autoplay = "default"

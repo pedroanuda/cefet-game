@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0vpm0jawg3f4"]
+
+[ext_resource type="Script" path="res://scenes/ui/MainGameUI/MainGameUi.cs" id="1_l5vqr"]
+
+[sub_resource type="GDScript" id="GDScript_ac2xl"]
+resource_name = "ChangeLabel"
+script/source = "@tool
+extends ProgressBar
+
+@onready var label: Label = $Label
+func _value_changed(new_value):
+	var format_string = \"%d/%d\"
+	label.text = format_string % [new_value, max_value]
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywneh"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.694118)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainGameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5vqr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PlayerName" type="Label" parent="MarginContainer/Stats"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Paul"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Stats/HBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="MarginContainer" parent="MarginContainer/Stats/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Level" type="Label" parent="MarginContainer/Stats/HBoxContainer/PanelContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "15"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="XpProgress" type="ProgressBar" parent="MarginContainer/Stats/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 39.04)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000.0
+step = 1.0
+show_percentage = false
+script = SubResource("GDScript_ac2xl")
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/HBoxContainer/VBoxContainer/XpProgress"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Stats/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ywneh")
+
+[node name="Patent" type="Label" parent="MarginContainer/Stats/HBoxContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1º ano"
+horizontal_alignment = 1

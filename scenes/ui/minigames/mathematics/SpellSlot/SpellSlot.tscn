@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdkw38huqp264"]
+
+[ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_e4bqr"]
+[ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/SpellSlot/SpellSlot.cs" id="2_g81eh"]
+
+[node name="SpellSlot" type="PanelContainer"]
+theme = ExtResource("1_e4bqr")
+theme_type_variation = &"SlotPanel"
+script = ExtResource("2_g81eh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="IconRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5

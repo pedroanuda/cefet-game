@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5mtkg8ixc42"]
+
+[ext_resource type="Texture2D" uid="uid://8mq8kn6jfwas" path="res://src/buttons/Gamepad_A.png" id="1_qquw7"]
+[ext_resource type="FontFile" uid="uid://cnol5ck8qer0n" path="res://fonts/BRLNSR.TTF" id="2_fqem5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1urge"]
+font = ExtResource("2_fqem5")
+font_size = 26
+
+[node name="MenuButtons" type="MarginContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MenuButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="MenuButtons"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="MenuButtons/BoxContainer"]
+custom_minimum_size = Vector2(26.19, 0)
+layout_mode = 2
+texture = ExtResource("1_qquw7")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MenuButtons/BoxContainer"]
+layout_mode = 2
+text = "Sample"
+label_settings = SubResource("LabelSettings_1urge")

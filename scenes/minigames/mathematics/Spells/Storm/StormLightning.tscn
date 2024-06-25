@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://bd7blhccorvae"]
+
+[ext_resource type="Texture2D" uid="uid://dfe63agjv3grb" path="res://src/tiles/mathematics/storm_lightnings.png" id="1_w67so"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34vi"]
+atlas = ExtResource("1_w67so")
+region = Rect2(0, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fol28"]
+atlas = ExtResource("1_w67so")
+region = Rect2(50, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjti5"]
+atlas = ExtResource("1_w67so")
+region = Rect2(100, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iup4a"]
+atlas = ExtResource("1_w67so")
+region = Rect2(150, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad4pp"]
+atlas = ExtResource("1_w67so")
+region = Rect2(200, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7twe"]
+atlas = ExtResource("1_w67so")
+region = Rect2(250, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u16ui"]
+atlas = ExtResource("1_w67so")
+region = Rect2(300, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hylwa"]
+atlas = ExtResource("1_w67so")
+region = Rect2(400, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0qbs"]
+atlas = ExtResource("1_w67so")
+region = Rect2(450, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mhvg"]
+atlas = ExtResource("1_w67so")
+region = Rect2(500, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pomaa"]
+atlas = ExtResource("1_w67so")
+region = Rect2(550, 0, 50, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y7tu"]
+atlas = ExtResource("1_w67so")
+region = Rect2(600, 0, 50, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqvwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fol28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjti5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iup4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad4pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7twe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u16ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hylwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0qbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mhvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pomaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y7tu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_2mteu"]
+resource_name = "AutoScript"
+script/source = "extends AnimatedSprite2D
+
+func _on_animation_finished():
+	queue_free()
+"
+
+[node name="StormLightning" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bqvwh")
+frame = 11
+frame_progress = 1.0
+script = SubResource("GDScript_2mteu")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

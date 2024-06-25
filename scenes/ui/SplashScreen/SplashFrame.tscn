@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://b71xlkcni85kh"]
+
+[ext_resource type="Script" path="res://scenes/ui/SplashScreen/SplashFrame.cs" id="1_qmvo5"]
+
+[sub_resource type="Animation" id="Animation_4rue2"]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0q7yw"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wak52"]
+resource_name = "slideRightIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.85634, 1),
+"update": 0,
+"values": [Vector2(-1280, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nfjll"]
+resource_name = "slideRightOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 5.27808),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1280, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duplp"]
+_data = {
+"fadeIn": SubResource("Animation_4rue2"),
+"fadeOut": SubResource("Animation_0q7yw"),
+"slideRightIn": SubResource("Animation_wak52"),
+"slideRightOut": SubResource("Animation_nfjll")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjoxa"]
+
+[node name="SplashFrame" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qmvo5")
+
+[node name="SplashSprite" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_duplp")
+}
+
+[node name="ZoomPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jjoxa")
+}

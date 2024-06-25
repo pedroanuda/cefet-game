@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=2 format=3 uid="uid://cwrldcy1oqemm"]
+
+[ext_resource type="Script" path="res://scenes/minigames/MinigameInfo.cs" id="1_pl2f5"]
+
+[resource]
+script = ExtResource("1_pl2f5")
+MinigameName = "Feiticeiros da Matemágica"
+Difficulty = 2
+ScenePath = "res://scenes/minigames/mathematics/MathWizards.tscn"
+GradeSPoints = 1500
+GradeAPoints = 1250
+GradeBPoints = 100
+GradeCPoints = 750

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MathSpell" load_steps=6 format=3 uid="uid://c2fq7ajmeq5ls"]
+
+[ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="1_yodnt"]
+[ext_resource type="Resource" uid="uid://c8weo05xvn56n" path="res://items/mathematics/GreenParchment.tres" id="2_ee10f"]
+[ext_resource type="Texture2D" uid="uid://cwb2ov4stsovh" path="res://src/items/mathematics/storm-icon.png" id="3_8cfcg"]
+[ext_resource type="Script" path="res://items/mathematics/MathSpell.cs" id="4_3lcfv"]
+[ext_resource type="PackedScene" uid="uid://bhscq2pt0etuo" path="res://scenes/minigames/mathematics/Spells/Storm/StormPreview.tscn" id="4_hcrly"]
+
+[resource]
+script = ExtResource("4_3lcfv")
+SpellScenePath = "res://scenes/minigames/mathematics/Spells/Storm/Storm.tscn"
+PreviewScene = ExtResource("4_hcrly")
+CraftRecipe = Array[Object]([ExtResource("1_yodnt"), ExtResource("2_ee10f")])
+Id = 105
+Name = {
+"en_US": "Storm",
+"pt_BR": "Tempestade"
+}
+Description = null
+StackSize = 1
+SlotType = 3
+Icon = ExtResource("3_8cfcg")

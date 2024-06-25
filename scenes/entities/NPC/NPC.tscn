@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://f47qthi4c6ee"]
+
+[ext_resource type="Script" path="res://scenes/entities/NPC/Npc.cs" id="1_n4d3i"]
+[ext_resource type="Script" path="res://scenes/entities/NPC/NpcInteractableArea.cs" id="3_em6n5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lerb"]
+radius = 30.0167
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkyxl"]
+radius = 19.0
+height = 50.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlipu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Npc" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_n4d3i")
+
+[node name="NpcInteractableArea" type="Area2D" parent="."]
+script = ExtResource("3_em6n5")
+SelectorOffset = Vector2(0, -110)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcInteractableArea"]
+shape = SubResource("CircleShape2D_4lerb")
+debug_color = Color(0.372549, 0.611765, 0.145098, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tkyxl")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mlipu")
+animation = &"idle"

@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmwmdspyx7fp5"]
+
+[ext_resource type="Script" path="res://scenes/ui/InventoryUI/InventoryUI.cs" id="1_hm5g2"]
+[ext_resource type="PackedScene" uid="uid://dag5tt3yylkli" path="res://scenes/ui/InventoryUI/ItemSlot.tscn" id="1_p8v6s"]
+[ext_resource type="Texture2D" uid="uid://d1ofqqqwt2to0" path="res://src/buttons/Gamepad_X.png" id="2_apf2g"]
+[ext_resource type="PackedScene" uid="uid://ccsh5iw2c3w07" path="res://scenes/ui/InventoryUI/SpecialItemSlot.tscn" id="3_m4vej"]
+
+[node name="InventoryUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hm5g2")
+_iconSlotScene = ExtResource("1_p8v6s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_right = 65
+theme_override_constants/margin_bottom = 65
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Equipamentos"
+
+[node name="SpecialItemsGrid" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 3
+
+[node name="BackpackSlot" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/VBoxContainer/SpecialItemsGrid" instance=ExtResource("3_m4vej")]
+layout_mode = 2
+SlotType = 1
+
+[node name="IemsContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/IemsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Itens"
+
+[node name="ItemsGrid" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/IemsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 3
+
+[node name="Control" type="Control" parent="MarginContainer/Panel/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(535, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Information" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(506, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DisplayedImage" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer/MarginContainer/Information"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 227.61)
+layout_mode = 2
+texture = ExtResource("2_apf2g")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ItemInfo" type="RichTextLabel" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer/MarginContainer/Information"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=30][center]Sample Text[/center][/font_size]
+
+[font_size=20]Sample Description. Caguei tanto ontem que meu penis nem, aguentou a pressão da merda caindo na água.[/font_size]
+"
+fit_content = true
+scroll_active = false
+
+[node name="BlankInformation" type="CenterContainer" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/BoxContainer/PanelContainer/MarginContainer/BlankInformation"]
+modulate = Color(1, 1, 1, 0.372549)
+layout_mode = 2
+text = "Nenhum item selecionado"

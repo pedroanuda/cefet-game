@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://0hlftjsvuy6r"]
+
+[ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_2xm4m"]
+[ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="3_lwasg"]
+[ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="4_oults"]
+[ext_resource type="Resource" uid="uid://8ihlbd0x032y" path="res://characters/gustavo_black.tres" id="4_stms3"]
+[ext_resource type="Resource" uid="uid://dwcwi1x0kqcmm" path="res://dialogues/Gustavo Black/dialogo_inicial.tres" id="4_usiyq"]
+[ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="5_4nsxa"]
+[ext_resource type="PackedScene" uid="uid://caba8y3aoimqo" path="res://scenes/entities/items/CollectableItem.tscn" id="5_xigj8"]
+[ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="6_bnl54"]
+[ext_resource type="PackedScene" uid="uid://dmwmdspyx7fp5" path="res://scenes/ui/InventoryUI/InventoryUI.tscn" id="6_tsg7w"]
+[ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="7_ki0wo"]
+
+[node name="TesteScenario" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="CollectableItem" parent="." instance=ExtResource("5_xigj8")]
+position = Vector2(525, 226)
+
+[node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("3_lwasg")]
+position = Vector2(419, 217)
+CharacterInfo = ExtResource("4_stms3")
+Dialogues = ExtResource("4_usiyq")
+InteractionUI = NodePath("../UI/DialogueUi")
+
+[node name="Player" parent="." instance=ExtResource("2_2xm4m")]
+position = Vector2(200, 200)
+scale = Vector2(1.64, 1.64)
+
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_4nsxa")
+player = NodePath("../Player")
+
+[node name="MainGameUi" parent="UI" instance=ExtResource("7_ki0wo")]
+
+[node name="DialogueUi" parent="UI" instance=ExtResource("4_oults")]
+visible = false
+
+[node name="InventoryUi" parent="UI" instance=ExtResource("6_tsg7w")]
+visible = false
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("6_bnl54")]
+visible = false

@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DialogueCollection" load_steps=16 format=3 uid="uid://dwcwi1x0kqcmm"]
+
+[ext_resource type="Script" path="res://dialogues/Dialogue.cs" id="1_em5g5"]
+[ext_resource type="Script" path="res://dialogues/DialogueCollection.cs" id="1_nxbny"]
+[ext_resource type="Script" path="res://dialogues/ChooseDialogue.cs" id="2_j32tc"]
+[ext_resource type="Script" path="res://dialogues/DialogueOption.cs" id="3_ulkek"]
+
+[sub_resource type="Resource" id="Resource_gteal"]
+script = ExtResource("1_em5g5")
+Title = "{player}"
+Body = "E aí, tudo bem?"
+
+[sub_resource type="Resource" id="Resource_d5p3n"]
+script = ExtResource("1_em5g5")
+Title = "{character}"
+Body = "Sim, tudo perfeito."
+
+[sub_resource type="Resource" id="Resource_65bij"]
+script = ExtResource("1_em5g5")
+Title = "{player}"
+Body = "Sim."
+
+[sub_resource type="Resource" id="Resource_37mk5"]
+script = ExtResource("1_em5g5")
+Title = "Gustavo Black"
+Body = "Boas vindas à escola!"
+
+[sub_resource type="Resource" id="Resource_adpbc"]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_65bij"), SubResource("Resource_37mk5")])
+
+[sub_resource type="Resource" id="Resource_073f2"]
+script = ExtResource("3_ulkek")
+OptionText = "Sim"
+CourseOfAction = SubResource("Resource_adpbc")
+
+[sub_resource type="Resource" id="Resource_4ehhb"]
+script = ExtResource("1_em5g5")
+Title = "{player}"
+Body = "Não, já estudo aqui há algum tempo."
+
+[sub_resource type="Resource" id="Resource_5k01l"]
+script = ExtResource("1_em5g5")
+Title = "Gustavo Black"
+Body = "Ah, acontece."
+
+[sub_resource type="Resource" id="Resource_66xrs"]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_4ehhb"), SubResource("Resource_5k01l")])
+
+[sub_resource type="Resource" id="Resource_bj8u1"]
+script = ExtResource("3_ulkek")
+OptionText = "Não"
+CourseOfAction = SubResource("Resource_66xrs")
+
+[sub_resource type="Resource" id="Resource_rwcf4"]
+script = ExtResource("2_j32tc")
+Options = Array[Object]([SubResource("Resource_073f2"), SubResource("Resource_bj8u1")])
+Title = "{character}"
+Body = " Você é novo por aqui?"
+
+[resource]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_gteal"), SubResource("Resource_d5p3n"), SubResource("Resource_rwcf4")])

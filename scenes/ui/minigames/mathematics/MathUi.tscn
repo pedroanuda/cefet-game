@@ -1,0 +1,266 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcekdwfv7ruq0"]
+
+[ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_3pqhh"]
+[ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathUi.cs" id="2_qow2w"]
+[ext_resource type="PackedScene" uid="uid://bdkw38huqp264" path="res://scenes/ui/minigames/mathematics/SpellSlot/SpellSlot.tscn" id="3_trnri"]
+[ext_resource type="Texture2D" uid="uid://w20d83vagxey" path="res://src/ui/minigames/mathematics/pause-icon.png" id="4_hk82x"]
+[ext_resource type="Texture2D" uid="uid://b58vkx8cwk5rv" path="res://src/ui/minigames/mathematics/heart-empty.png" id="5_m2h13"]
+[ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://src/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
+
+[sub_resource type="Animation" id="Animation_4bb8m"]
+resource_name = "hide_answers"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_udkyr"]
+resource_name = "show_answers"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [Vector2(365, 550), Vector2(365, 469)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rmf7v"]
+resource_name = "show_answers_fade_only"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3t2y"]
+_data = {
+"hide_answers": SubResource("Animation_4bb8m"),
+"show_answers": SubResource("Animation_udkyr"),
+"show_answers_fade_only": SubResource("Animation_rmf7v")
+}
+
+[node name="MathUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_3pqhh")
+script = ExtResource("2_qow2w")
+_spellSlotScene = ExtResource("3_trnri")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="QuestionsAndAnswers" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Answers" type="PanelContainer" parent="MarginContainer/QuestionsAndAnswers"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -255.0
+offset_top = -130.0
+offset_right = 255.0
+offset_bottom = -58.9993
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/QuestionsAndAnswers/Answers"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AnswersContainer" type="GridContainer" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Button" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"WhiteButton"
+text = "15"
+
+[node name="Button2" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"WhiteButton"
+text = "4
+"
+
+[node name="Button3" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"WhiteButton"
+text = "25"
+
+[node name="Button4" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"WhiteButton"
+text = "25"
+
+[node name="Questions" type="PanelContainer" parent="MarginContainer/QuestionsAndAnswers"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -255.5
+offset_top = -71.0
+offset_right = 255.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/QuestionsAndAnswers/Questions"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuestionsContainer" type="FlowContainer" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(491, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+custom_minimum_size = Vector2(157, 0)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+toggle_mode = true
+text = "10 + 5 = ?"
+
+[node name="Button2" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+custom_minimum_size = Vector2(157, 0)
+layout_mode = 2
+theme_type_variation = &"YellowButton"
+text = "28 ÷ 7 = ?"
+
+[node name="Button3" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+custom_minimum_size = Vector2(157, 0)
+layout_mode = 2
+theme_type_variation = &"RedButton"
+text = "2x + 10 = 30"
+
+[node name="Spells" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Spells"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SpellsContainer" type="VBoxContainer" parent="MarginContainer/Spells/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HealthAndPause" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="MarginContainer/HealthAndPause"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_m2h13")
+texture_progress = ExtResource("6_tmvlg")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HealthAndPause"]
+custom_minimum_size = Vector2(95, 70)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/HealthAndPause/PanelContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("4_hk82x")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m3t2y")
+}

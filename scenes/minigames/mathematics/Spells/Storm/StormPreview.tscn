@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhscq2pt0etuo"]
+
+[ext_resource type="Texture2D" uid="uid://dodncn6nu25ab" path="res://src/entities/preview_shadow.png" id="1_75mw2"]
+
+[node name="ShadowPreview" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.6)
+z_as_relative = false
+scale = Vector2(0.375, 0.165)
+texture = ExtResource("1_75mw2")

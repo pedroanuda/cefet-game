@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://n6oj0bj618d"]
+
+[ext_resource type="Texture2D" uid="uid://rs0cu76yr0x7" path="res://src/Logos Splash.png" id="1_8txlt"]
+[ext_resource type="Script" path="res://scenes/ui/SplashScreen/SplashScreen.cs" id="1_cv34l"]
+[ext_resource type="PackedScene" uid="uid://dqmdj2dwc6tbs" path="res://scenes/ui/Menu/MainMenu.tscn" id="2_ixxgp"]
+[ext_resource type="Texture2D" uid="uid://cmc4txu1bj2r" path="res://src/Brain Logo.png" id="4_mqx1b"]
+[ext_resource type="PackedScene" uid="uid://b71xlkcni85kh" path="res://scenes/ui/SplashScreen/SplashFrame.tscn" id="5_wpeoj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8d8k"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cv34l")
+_sceneToGoTo = ExtResource("2_ixxgp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g8d8k")
+
+[node name="Logos" parent="." instance=ExtResource("5_wpeoj")]
+visible = false
+layout_mode = 1
+SplashImage = ExtResource("1_8txlt")
+SplashScale = Vector2(0.675, 0.675)
+TimeOnScreen = 3.5
+ZoomOn = true
+PixelsPerSecond = 0.025
+
+[node name="BrainLogo" parent="." instance=ExtResource("5_wpeoj")]
+visible = false
+layout_mode = 1
+SplashImage = ExtResource("4_mqx1b")
+SplashScale = Vector2(0.735, 0.735)
+TimeOnScreen = 3.5
+ZoomOn = true
+PixelsPerSecond = 0.025

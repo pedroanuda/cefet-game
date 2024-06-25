@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxwmj6b0w78w"]
+
+[ext_resource type="Texture2D" uid="uid://bbr331px6pkyi" path="res://src/items/SimpleBackpackIcon.png" id="1_hcmja"]
+[ext_resource type="Script" path="res://items/Item.cs" id="1_pj15d"]
+
+[resource]
+script = ExtResource("1_pj15d")
+Id = 2
+Name = {
+"en_US": "Simple Backpack",
+"pt_BR": "Mochila Simples"
+}
+Description = {
+"en_US": "A simple backpack. This is the one I chose to come to school with.",
+"pt_BR": "Uma mochila simples. É a que eu escolhi para vir á escola."
+}
+StackSize = 1
+SlotType = 1
+Icon = ExtResource("1_hcmja")

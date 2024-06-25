@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdyso3q7uudjm"]
+
+[ext_resource type="Texture2D" uid="uid://dpq68qg7a5r3h" path="res://src/entities/mathematics/wizard.png" id="1_cer7f"]
+[ext_resource type="Texture2D" uid="uid://cyamcii2f7xts" path="res://src/entities/mathematics/cajado.png" id="2_uht57"]
+[ext_resource type="Texture2D" uid="uid://bnvmalqrujvmb" path="res://src/entities/mathematics/cajado_faisca.png" id="3_m782f"]
+
+[sub_resource type="GDScript" id="GDScript_atj2g"]
+resource_name = "ThePower"
+script/source = "extends Node2D
+
+@onready var anPlayer = $AnimationPlayer
+func _on_animation_finished(_anim_name):
+	anPlayer.play(\"default\")
+"
+
+[sub_resource type="Animation" id="Animation_3j6h6"]
+resource_name = "glow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.047619, 0.0952381, 0.142857, 0.190476, 0.238095, 0.285714, 0.333333, 0.380952, 0.428571, 0.47619, 0.52381, 0.571429, 0.619048, 0.666667, 0.714286, 0.761905, 0.809524, 0.857143, 0.904762, 0.952381, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlowSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8g45v"]
+resource_name = "drop"
+length = 0.3
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Faiscas:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Faiscas:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1v51a"]
+_data = {
+"drop": SubResource("Animation_8g45v"),
+"glow": SubResource("Animation_3j6h6")
+}
+
+[sub_resource type="Animation" id="Animation_skenc"]
+resource_name = "default"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wizard:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_0pd4s"]
+resource_name = "spell_one"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wizard:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cajado:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1.5, -8), Vector2(-1.5, -11), Vector2(0, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cajado/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("drop"),
+"times": PackedFloat32Array(0.6)
+}
+
+[sub_resource type="Animation" id="Animation_uskdh"]
+resource_name = "spell_two"
+length = 2.40002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wizard:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 2, 2.2, 2.40002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7, 3, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cajado:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1.5, -8), Vector2(-1.5, -11), Vector2(6, -11), Vector2(-1.5, -11), Vector2(-1.5, -8), Vector2(0, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cajado/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("glow"),
+"times": PackedFloat32Array(0.9)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v3pe"]
+_data = {
+"default": SubResource("Animation_skenc"),
+"spell_one": SubResource("Animation_0pd4s"),
+"spell_two": SubResource("Animation_uskdh")
+}
+
+[node name="Wizard" type="Node2D"]
+script = SubResource("GDScript_atj2g")
+
+[node name="Cajado" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Cajado"]
+texture_filter = 1
+position = Vector2(1, 3)
+texture = ExtResource("2_uht57")
+hframes = 22
+
+[node name="GlowSprite" type="Sprite2D" parent="Cajado"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(1, 3)
+texture = ExtResource("2_uht57")
+hframes = 22
+frame = 21
+
+[node name="Faiscas" type="Sprite2D" parent="Cajado"]
+visible = false
+texture_filter = 1
+position = Vector2(13, 19)
+texture = ExtResource("3_m782f")
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cajado"]
+libraries = {
+"": SubResource("AnimationLibrary_1v51a")
+}
+
+[node name="Wizard" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_cer7f")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3v3pe")
+}
+autoplay = "default"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

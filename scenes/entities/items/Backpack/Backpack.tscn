@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://0m8iph5cfbn7"]
+
+[ext_resource type="Texture2D" uid="uid://8mq8kn6jfwas" path="res://src/buttons/Gamepad_A.png" id="1_3wkki"]
+[ext_resource type="Script" path="res://scenes/entities/items/CollectableItemArea.cs" id="2_nyof8"]
+[ext_resource type="Resource" uid="uid://bxwmj6b0w78w" path="res://items/SimpleBackpack.tres" id="3_lrgpe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3857"]
+radius = 38.0
+
+[node name="Backpack" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_3wkki")
+
+[node name="CollectableItemArea" type="Area2D" parent="."]
+script = ExtResource("2_nyof8")
+Item = ExtResource("3_lrgpe")
+SelectorOffset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableItemArea"]
+shape = SubResource("CircleShape2D_y3857")

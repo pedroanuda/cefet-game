@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy5ofnyb1btgp"]
+
+[ext_resource type="Script" path="res://scenes/ui/Menu/MenuBase.cs" id="1_4dhw5"]
+[ext_resource type="PackedScene" uid="uid://cm5mtkg8ixc42" path="res://scenes/ui/Menu/MenuButtons.tscn" id="2_en6ek"]
+
+[node name="MenuBase" type="Node2D"]
+script = ExtResource("1_4dhw5")
+
+[node name="MenuButtons" parent="." instance=ExtResource("2_en6ek")]
+visible = false
+offset_left = 3.0
+offset_top = 644.0
+offset_right = 1280.0
+offset_bottom = 714.0
