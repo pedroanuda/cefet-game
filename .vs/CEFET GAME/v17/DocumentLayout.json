@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\",
+  "WorkspaceRootPath": "E:\\Jogo\\CEFET Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|c:\\users\\pedro\\projetos godot\\cefet game\\scenes\\ui\\minigames\\mathematics\\mathui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\ui\\minigames\\mathematics\\mathui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|c:\\users\\pedro\\projetos godot\\cefet game\\scenes\\minigames\\mathematics\\mathwizards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\minigames\\mathematics\\mathwizards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|c:\\users\\pedro\\projetos godot\\cefet game\\scenes\\minigames\\mathematics\\enemies\\mathenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|e:\\jogo\\cefet game\\scenes\\minigames\\mathematics\\enemies\\mathenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\minigames\\mathematics\\enemies\\mathenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|c:\\users\\pedro\\projetos godot\\cefet game\\scenes\\ui\\minigames\\mathematics\\spellslot\\spellslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|e:\\jogo\\cefet game\\scenes\\ui\\minigames\\mathematics\\mathui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\ui\\minigames\\mathematics\\mathui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|e:\\jogo\\cefet game\\scenes\\minigames\\mathematics\\mathwizards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\minigames\\mathematics\\mathwizards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|e:\\jogo\\cefet game\\scenes\\ui\\minigames\\mathematics\\spellslot\\spellslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\ui\\minigames\\mathematics\\spellslot\\spellslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|c:\\users\\pedro\\projetos godot\\cefet game\\scenes\\drag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|e:\\jogo\\cefet game\\scenes\\drag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3DFEA75-F696-42CB-BE80-B80ABE4E085B}|Cefet Game.csproj|solutionrelative:scenes\\drag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,39 +30,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MathUi.cs",
-              "DocumentMoniker": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\MathUi.cs",
+              "DocumentMoniker": "E:\\Jogo\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\MathUi.cs",
               "RelativeDocumentMoniker": "scenes\\ui\\minigames\\mathematics\\MathUi.cs",
-              "ToolTip": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\MathUi.cs",
+              "ToolTip": "E:\\Jogo\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\MathUi.cs",
               "RelativeToolTip": "scenes\\ui\\minigames\\mathematics\\MathUi.cs",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAQwGMAAAA3AAAA",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAxwGMAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T00:57:14.138Z"
+              "WhenOpened": "2024-06-05T00:57:14.138Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MathEnemy.cs",
-              "DocumentMoniker": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
+              "DocumentMoniker": "E:\\Jogo\\CEFET Game\\scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
               "RelativeDocumentMoniker": "scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
-              "ToolTip": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
+              "ToolTip": "E:\\Jogo\\CEFET Game\\scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
               "RelativeToolTip": "scenes\\minigames\\mathematics\\Enemies\\MathEnemy.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAQwD0AAAAwAAAA",
+              "ViewState": "AQIAAGMAAAAAAAAAAAArwG0AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T00:28:17.329Z"
+              "WhenOpened": "2024-06-05T00:28:17.329Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Drag.cs",
-              "DocumentMoniker": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\Drag.cs",
+              "DocumentMoniker": "E:\\Jogo\\CEFET Game\\scenes\\Drag.cs",
               "RelativeDocumentMoniker": "scenes\\Drag.cs",
-              "ToolTip": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\Drag.cs",
+              "ToolTip": "E:\\Jogo\\CEFET Game\\scenes\\Drag.cs",
               "RelativeToolTip": "scenes\\Drag.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAowD8AAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -72,9 +74,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "SpellSlot.cs",
-              "DocumentMoniker": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
+              "DocumentMoniker": "E:\\Jogo\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
               "RelativeDocumentMoniker": "scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
-              "ToolTip": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
+              "ToolTip": "E:\\Jogo\\CEFET Game\\scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
               "RelativeToolTip": "scenes\\ui\\minigames\\mathematics\\SpellSlot\\SpellSlot.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAYwDMAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -82,11 +84,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MathWizards.cs",
-              "DocumentMoniker": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\minigames\\mathematics\\MathWizards.cs",
+              "DocumentMoniker": "E:\\Jogo\\CEFET Game\\scenes\\minigames\\mathematics\\MathWizards.cs",
               "RelativeDocumentMoniker": "scenes\\minigames\\mathematics\\MathWizards.cs",
-              "ToolTip": "C:\\Users\\pedro\\Projetos Godot\\CEFET Game\\scenes\\minigames\\mathematics\\MathWizards.cs",
+              "ToolTip": "E:\\Jogo\\CEFET Game\\scenes\\minigames\\mathematics\\MathWizards.cs",
               "RelativeToolTip": "scenes\\minigames\\mathematics\\MathWizards.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAIwBsAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

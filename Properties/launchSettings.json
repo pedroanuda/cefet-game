@@ -12,7 +12,7 @@
     },
     "RunSpecificScene": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\Godot Engine\\Godot_v4.2-stable_mono_win64.exe",
+      "executablePath": "E:\\Jogo\\Engine\\Godot_v4.2-stable_mono_win64.exe",
       "commandLineArgs": "--path . --verbose res://scenes/minigames/mathematics/MathWizards.tscn",
       "workingDirectory": ".",
       "environmentVariables": {

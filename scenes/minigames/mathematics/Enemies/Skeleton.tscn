@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1jgtldumndf4"]
+[gd_scene load_steps=8 format=3 uid="uid://d1jgtldumndf4"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Enemies/MathEnemy.cs" id="1_1pes6"]
 [ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://src/entities/Player.png" id="2_ub60h"]
@@ -29,6 +29,8 @@ animations = [{
 radius = 18.0
 height = 52.0
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yf00"]
+
 [node name="Skeleton" type="CharacterBody2D"]
 collision_layer = 7
 script = ExtResource("1_1pes6")
@@ -42,7 +44,7 @@ sprite_frames = SubResource("SpriteFrames_krt2f")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.157898
-speed_scale = 0.25
+speed_scale = 0.125
 offset = Vector2(-2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -51,3 +53,8 @@ shape = SubResource("CapsuleShape2D_0l8sh")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 22.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3yf00")
+}
