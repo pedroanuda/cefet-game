@@ -47,6 +47,7 @@ namespace Game.Minigames
         public virtual void TakeDamage(int amount) 
         { 
             Health -= amount;
+            PlayHitAnimation();
 
             if (Health <= 0)
             {
@@ -97,6 +98,33 @@ namespace Game.Minigames
         {
             await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
             MovementTarget = Destination;
+        }
+
+        private void PlayHitAnimation()
+        {
+            var anPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+            if (!anPlayer.HasAnimation("hit"))
+            {
+                var hitAnim = new Animation();
+                var trackIdx = hitAnim.AddTrack(Animation.TrackType.Value);
+
+                hitAnim.TrackSetPath(trackIdx, ".:modulate");
+                hitAnim.TrackInsertKey(trackIdx, 0, Modulate);
+                hitAnim.TrackInsertKey(trackIdx, .25f, new Color("#ff816b"));
+                hitAnim.TrackInsertKey(trackIdx, .5f, new Color("#ffffff"));
+
+                anPlayer.GetAnimationLibrary("").AddAnimation("hit", hitAnim);
+                anPlayer.Play("hit");
+                return;
+            }
+
+            var anim = anPlayer.GetAnimation("hit");
+            var track = anim.FindTrack(".:modulate", Animation.TrackType.Value);
+            anim.TrackSetKeyValue(track, 0, Modulate);
+            anim.TrackSetKeyValue(track, 1, new Color("#ff816b"));
+            anim.TrackSetKeyValue(track, 2, new Color("#ffffff"));
+
+            anPlayer.Play("hit");
         }
     }
 }

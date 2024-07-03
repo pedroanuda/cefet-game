@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://8ihlbd0x032y"]
+[gd_resource type="Resource" script_class="Character" load_steps=8 format=3 uid="uid://8ihlbd0x032y"]
 
 [ext_resource type="Script" path="res://characters/Character.cs" id="1_o0e8d"]
 [ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://src/entities/Player.png" id="1_r3jwd"]
