@@ -1,4 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 builds/
+
+# Visual Studio ignores
 .vs/
+Properties/

@@ -422,7 +422,6 @@ limit_bottom = 720
 script = SubResource("GDScript_82gye")
 
 [node name="MathUi" parent="UI" instance=ExtResource("2_45eox")]
-metadata/_edit_lock_ = true
 
 [node name="Drag" type="Node" parent="UI"]
 script = ExtResource("8_x4uk5")

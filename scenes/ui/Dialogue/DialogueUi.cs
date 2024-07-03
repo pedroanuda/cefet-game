@@ -2,17 +2,22 @@ using Game.Gameplay;
 using Godot;
 using Godot.Collections;
 using System;
+using System.Runtime.Intrinsics.X86;
 
 namespace Game.UI
 {
     public partial class DialogueUi : Control
     {
+        [Export] public AnimationPlayer TransitionPlayer { get; set; }
+        [Export] public Sprite2D TransitionSprite { get; set; }
+
         private Action finishAction;
         private RichTextLabel textLabel;
         private Array<Dialogue> dialogues;
         private int dialogueIndex = 0;
         private int leftDialogues = 0;
         private bool isAChooseDialogue = false;
+        private Vector2 TransitionOrigin;
 
         private void RemoveOptions()
         {
@@ -46,17 +51,50 @@ namespace Game.UI
             }
         }
 
-        public void Open(DialogueCollection dialogueCollection, Action onFinish = null)
+        public void Open(DialogueCollection dialogueCollection, Action onFinish = null, Node2D origin = null)
         {
+            if (origin is not null) TransitionOrigin = origin.GetTransform().Origin;
+
+            void specialAction()
+            {
+                switch (dialogueCollection.EndingType)
+                {
+                    case (DialogueFinishing.SceneSwitch):
+                        Input.MouseMode = Input.MouseModeEnum.Visible;
+
+                        var handler = GetNode<TransitionHandler>("/root/TransitionHandler");
+                        handler.StartingPosition = TransitionOrigin;
+
+                        handler.TransitionInHalf += () =>
+                        {
+                            GetNode<Global>("/root/Global")
+                            .GoToScene(dialogueCollection.EndingExpression);
+                            handler.Play("change_to_minigame_end");
+                        };
+
+                        handler.Play("change_to_minigame_start");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             if (finishAction is not null)
             {
+                var aux = finishAction;
+                finishAction = () =>
+                {
+                    aux?.Invoke();
+                    specialAction();
+                };
+
                 dialogues.AddRange(dialogueCollection.Dialogues);
                 leftDialogues += dialogueCollection.Dialogues.Count;
                 Open(dialogues[dialogueIndex]);
             }
             else
             {
-                finishAction = onFinish;
+                finishAction = () => { onFinish?.Invoke(); specialAction(); };
 
                 dialogues = dialogueCollection.Dialogues.Duplicate();
                 leftDialogues = dialogues.Count;
@@ -117,6 +155,7 @@ namespace Game.UI
         {
             dialogueIndex = 0;
             finishAction = null;
+            TransitionOrigin = Vector2.Zero;
             Hide();
         }
     }

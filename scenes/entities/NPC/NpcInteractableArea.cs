@@ -26,7 +26,7 @@ namespace Game.Gameplay
                 ui.Open(npc.Dialogues, () => {
                     player.AllowActions = true;
                     interacting = false;
-                });
+                }, npc);
             }
         }
     }
