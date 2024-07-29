@@ -1,0 +1,288 @@
+[gd_scene load_steps=13 format=3 uid="uid://duiuh1rcwnwgp"]
+
+[ext_resource type="Texture2D" uid="uid://d00gr4gu1acbd" path="res://src/ui/minigames/mathematics/long_parchment_body_spreadsheet.png" id="1_lwkf3"]
+[ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/parchment/MathParchment.cs" id="1_yor53"]
+[ext_resource type="Texture2D" uid="uid://dch2opw13aaet" path="res://src/ui/minigames/mathematics/long_parchment_rolls.png" id="2_gptdy"]
+[ext_resource type="PackedScene" uid="uid://cwc5y66ft3338" path="res://scenes/ui/minigames/mathematics/parchment/GuideRow.tscn" id="3_yrsgu"]
+
+[sub_resource type="Animation" id="Animation_4w23i"]
+resource_name = "fold"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("roll1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.15, 0.4),
+"transitions": PackedFloat32Array(0.34151, 0.34151),
+"update": 0,
+"values": [Vector2(252, 0), Vector2(-216, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.29, 0.32, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [37, 37, 33, 25, 22, 21, 20, 17, 16, 14, 11, 8, 7, 3, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_31ypb"]
+resource_name = "unfold"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("roll1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(3.13834, 3.13834),
+"update": 0,
+"values": [Vector2(-216, 0), Vector2(252, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.11, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 17, 21, 24, 27, 31, 37]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.39),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxkuj"]
+_data = {
+"fold": SubResource("Animation_4w23i"),
+"unfold": SubResource("Animation_31ypb")
+}
+
+[sub_resource type="Animation" id="Animation_apgte"]
+resource_name = "close"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parchment:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(190, 360)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parchment/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("fold"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_l5ws4"]
+resource_name = "open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parchment:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(190, 360), Vector2(640, 360)]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parchment/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("unfold"),
+"times": PackedFloat32Array(0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0rfg"]
+_data = {
+"close": SubResource("Animation_apgte"),
+"open": SubResource("Animation_l5ws4")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1exk"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yi06o"]
+
+[node name="Parchment" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yor53")
+SpellsDir = "res://items/mathematics/Spells"
+GuideRowScenePath = "res://scenes/ui/minigames/mathematics/parchment/GuideRow.tscn"
+
+[node name="Parchment" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_right = -450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="body" type="Sprite2D" parent="Parchment"]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(6, 6)
+texture = ExtResource("1_lwkf3")
+hframes = 38
+frame = 37
+
+[node name="Control" type="MarginContainer" parent="Parchment"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -165.0
+offset_right = 234.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RecipesContainer" type="VBoxContainer" parent="Parchment/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="GuideRow" parent="Parchment/Control/RecipesContainer" instance=ExtResource("3_yrsgu")]
+layout_mode = 2
+
+[node name="roll1" type="Sprite2D" parent="Parchment"]
+texture_filter = 1
+position = Vector2(252, 0)
+rotation = 1.5708
+scale = Vector2(6, 6)
+texture = ExtResource("2_gptdy")
+vframes = 2
+
+[node name="roll2" type="Sprite2D" parent="Parchment"]
+texture_filter = 1
+position = Vector2(-252, 0)
+rotation = 1.5708
+scale = Vector2(6, 6)
+texture = ExtResource("2_gptdy")
+vframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Parchment"]
+libraries = {
+"": SubResource("AnimationLibrary_xxkuj")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d0rfg")
+}
+
+[node name="OpenButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_k1exk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k1exk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k1exk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yi06o")
+text = ">"

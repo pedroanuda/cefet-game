@@ -36,7 +36,7 @@ namespace Game
                 }
                 else if (animationName.ToString().EndsWith("end"))
                 {
-                    AnimationSprite.GlobalPosition = new Vector2(1280, 720) / 2;
+                    AnimationSprite.GlobalPosition = TransitionScene.GetNode<Control>("%PositionGuide").GetViewportRect().Size / 2;
                     TransitionPlayer.Play(animationName);
 
                     void onFinish(StringName animName)

@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="1_h4crt"]
 [ext_resource type="Texture2D" uid="uid://c2cgdg1lpe18r" path="res://src/items/FullWalletIcon.png" id="2_mifmf"]
 [ext_resource type="Resource" uid="uid://cwlffi4mkjn0i" path="res://items/mathematics/YellowParchment.tres" id="2_x7s2f"]
-[ext_resource type="Script" path="res://items/mathematics/MathSpell.cs" id="3_nugw7"]
+[ext_resource type="Script" path="res://items/mathematics/Spells/MathSpell.cs" id="3_nugw7"]
 
 [resource]
 script = ExtResource("3_nugw7")

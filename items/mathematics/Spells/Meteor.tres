@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CraftableItem" load_steps=4 format=3 uid="uid://c26603dlw0l2s"]
 
-[ext_resource type="Script" path="res://items/mathematics/MathSpell.cs" id="1_3u3qc"]
+[ext_resource type="Script" path="res://items/mathematics/Spells/MathSpell.cs" id="1_3u3qc"]
 [ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="1_4t371"]
 [ext_resource type="Texture2D" uid="uid://c2cgdg1lpe18r" path="res://src/items/FullWalletIcon.png" id="2_rgikq"]
 

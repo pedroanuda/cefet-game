@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://jttt1gv0x8w5"]
+[gd_scene load_steps=3 format=3 uid="uid://jttt1gv0x8w5"]
 
 [ext_resource type="Script" path="res://scenes/ui/Dialogue/DialogueUi.cs" id="1_x8wei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74ngh"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="DialogueUi" type="Control"]
 layout_mode = 3
@@ -51,6 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_74ngh")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Dialogue"]
 custom_minimum_size = Vector2(0, 220)

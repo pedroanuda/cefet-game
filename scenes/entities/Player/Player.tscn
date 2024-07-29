@@ -354,7 +354,7 @@ texture_filter = 1
 texture = ExtResource("3_1i4ru")
 offset = Vector2(-2, 0)
 hframes = 21
-frame = 5
+frame = 4
 
 [node name="Backpacks" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -366,7 +366,7 @@ texture_filter = 1
 texture = ExtResource("4_gd2qs")
 offset = Vector2(-1, 0)
 hframes = 14
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

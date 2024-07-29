@@ -14,7 +14,7 @@ namespace Game
 		{
 			if (pastFrames >= frames.Count)
 			{
-				GetTree().ChangeSceneToPacked(_sceneToGoTo);
+				GetNode<Global>("/root/Global").GoToScene("res://scenes/ui/Menu/MainMenu.tscn");
 				return;
 			}
 

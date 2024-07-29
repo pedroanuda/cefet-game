@@ -31,6 +31,9 @@ namespace Game.UI
         public Action<Items.Item[]> CheckRecipe;
         public Action<Node2D, MathSpell> DropConclusion;
 
+        // Helpers
+        private MathParchment _parchment;
+
         [Export]
         private PackedScene _spellSlotScene;
 
@@ -42,6 +45,7 @@ namespace Game.UI
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _spellsContainer = GetNode<BoxContainer>("%SpellsContainer");
             _dragInstance = GetNode<Drag>("../Drag");
+            _parchment = GetNode<MathParchment>("Parchment");
 
             GetNode<TextureButton>("%PauseButton").Pressed += () => GetNodeOrNull<PauseScreen>("../PauseScreen")?.HandlePause();
             foreach (var c in _questionsContainer.GetChildren()) c.QueueFree();
@@ -99,6 +103,28 @@ namespace Game.UI
         public void UpdateHealthProgress(int health) =>
             GetNode<TextureProgressBar>("%HealthProgressBar").Value = health;
 
+        public void OpenDialogue(DialogueCollection d, Action finishAction = null)
+        {
+            var panel = GetNode<Panel>("Panel");
+            panel.Visible = true;
+            GetNode<DialogueUi>("DialogueUi").Open(d, () =>
+            {
+                finishAction?.Invoke();
+            });
+        }
+
+        public void AddToParchment(Item item) =>
+            _parchment.AddRecipesWith(item);
+
+        public void OpenParchment() =>
+            _parchment.Toggle();
+
+        public void OpenParchment(Item itemExpected)
+        {
+            _parchment.Visible = true;
+            _parchment.ShowRecipesWith(itemExpected);
+        }
+
         private void ChangeAnswers(QuestionAndAnswers q)
         {
             void hideAnswers(StringName s)
@@ -119,6 +145,7 @@ namespace Game.UI
                     else return false;
                 }) as Button;
 
+                // On correct answer.
                 if (answerText == q.correctAnswer)
                 {
                     OnAnswerCorrect?.Invoke(q.questionDifficulty);

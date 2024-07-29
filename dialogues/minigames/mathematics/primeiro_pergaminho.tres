@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueCollection" load_steps=7 format=3 uid="uid://dbyextga2alwy"]
+
+[ext_resource type="Script" path="res://dialogues/Dialogue.cs" id="1_em5g5"]
+[ext_resource type="Script" path="res://dialogues/DialogueCollection.cs" id="1_nxbny"]
+
+[sub_resource type="Resource" id="Resource_fgpsa"]
+script = ExtResource("1_em5g5")
+Title = "Guia"
+Body = "Meus parabéns! Você coletou o seu primeiro pergaminho!"
+
+[sub_resource type="Resource" id="Resource_yrgip"]
+script = ExtResource("1_em5g5")
+Title = "Guia"
+Body = "Os pergaminhos se dividem em três cores para cada nível de dificuldade: Verde (Fácil), Amarelo (Médio) e Vermelho (Dificil)."
+
+[sub_resource type="Resource" id="Resource_i2rce"]
+script = ExtResource("1_em5g5")
+Title = "Guia"
+Body = "Com outro pergaminho, você pode juntar-los e fazer feitiços."
+
+[sub_resource type="Resource" id="Resource_2jr8u"]
+script = ExtResource("1_em5g5")
+Title = "Guia"
+Body = "Veja só!"
+
+[resource]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_fgpsa"), SubResource("Resource_yrgip"), SubResource("Resource_i2rce"), SubResource("Resource_2jr8u")])
+EndingType = 0
+EndingExpression = ""

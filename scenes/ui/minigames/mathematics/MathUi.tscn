@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcekdwfv7ruq0"]
+[gd_scene load_steps=13 format=3 uid="uid://bcekdwfv7ruq0"]
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_3pqhh"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathUi.cs" id="2_qow2w"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://w20d83vagxey" path="res://src/ui/minigames/mathematics/pause-icon.png" id="4_hk82x"]
 [ext_resource type="Texture2D" uid="uid://b58vkx8cwk5rv" path="res://src/ui/minigames/mathematics/heart-empty.png" id="5_m2h13"]
 [ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://src/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
+[ext_resource type="PackedScene" uid="uid://duiuh1rcwnwgp" path="res://scenes/ui/minigames/mathematics/parchment/Parchment.tscn" id="7_wsvja"]
+[ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="8_ywmgh"]
 
 [sub_resource type="Animation" id="Animation_4bb8m"]
 resource_name = "hide_answers"
@@ -106,7 +108,6 @@ mouse_filter = 2
 [node name="Answers" type="PanelContainer" parent="MarginContainer/QuestionsAndAnswers"]
 unique_name_in_owner = true
 visible = false
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -189,27 +190,27 @@ theme_override_constants/margin_bottom = 10
 
 [node name="QuestionsContainer" type="FlowContainer" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(491, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
-custom_minimum_size = Vector2(157, 0)
+custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
 toggle_mode = true
 text = "10 + 5 = ?"
 
 [node name="Button2" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
-custom_minimum_size = Vector2(157, 0)
+custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"YellowButton"
 text = "28 ÷ 7 = ?"
 
 [node name="Button3" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
-custom_minimum_size = Vector2(157, 0)
+custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"RedButton"
 text = "2x + 10 = 30"
@@ -232,6 +233,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="HealthAndPause" type="BoxContainer" parent="MarginContainer"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -259,6 +261,25 @@ texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_hk82x")
 stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Parchment" parent="." node_paths=PackedStringArray("ModulatePanel") instance=ExtResource("7_wsvja")]
+visible = false
+layout_mode = 1
+ModulatePanel = NodePath("../Panel")
+
+[node name="DialogueUi" parent="." instance=ExtResource("8_ywmgh")]
+visible = false
+layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

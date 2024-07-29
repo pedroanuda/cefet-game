@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using Godot;
 using System.Linq;
-using Game.Items;
+using Game.Gameplay;
 
 namespace Game.Minigames
 {
@@ -51,6 +51,13 @@ namespace Game.Minigames
         [Export] public float SpawnerYOrigin { get; set; }
         [Export] public float SpawnerXStart { get; set; }
         [Export] public float SpawnerXEnd { get; set; }
+
+        // Helpers Logic
+        [ExportCategory("Helpers")]
+        [Export] public DialogueCollection FirstParchmentDialogue { get; set; }
+        [ExportGroup("Helpers Debugging")]
+        [Export] private bool FirstTimePlaying { get; set; } = true;
+        private int answersAnsweredCorrectly;
 
         public override void _Ready()
         {
@@ -119,13 +126,26 @@ namespace Game.Minigames
 
         private void OnAnswerCorrect(string difficulty)
         {
-            _inventory.Add(difficulty switch
+            var earnedItem = difficulty switch
             {
                 "Easy" => EasyAnswerItem,
                 "Medium" => MediumAnswerItem,
                 "Hard" => HardAnswerItem,
                 _ => null
-            });
+            };
+            _inventory.Add(earnedItem);
+            answersAnsweredCorrectly++;
+
+            if (answersAnsweredCorrectly == 1 && FirstTimePlaying)
+            {
+                Engine.TimeScale = 0.25f;
+                Ui.OpenDialogue(FirstParchmentDialogue, () =>
+                {
+                    Engine.TimeScale = 1;
+                    Ui.OpenParchment(earnedItem);
+                    Input.MouseMode = Input.MouseModeEnum.Visible;
+                });
+            } else Ui.AddToParchment(earnedItem);
         }
 
         private void RecipeChecker(Items.Item[] itemsCombination)
@@ -144,15 +164,15 @@ namespace Game.Minigames
 
                 if (itemsFound == 2)
                 {
-                    _inventory.Add(spell);
                     _inventory.Remove(itemsCombination[0]);
                     _inventory.Remove(itemsCombination[1]);
+                    _inventory.Add(spell);
                     return;
                 }
             }
         }
 
-        private void AfterDrop(Node2D spellNode, MathSpell item)
+        private void AfterDrop(Node2D spellNode, Items.MathSpell item)
         {
             var wizPlayer = WizardNode?.GetNode<AnimationPlayer>("AnimationPlayer");
             if (item.Name["en_US"] == "Storm")
@@ -198,6 +218,7 @@ namespace Game.Minigames
             instance.GlobalPosition = new Vector2((float) desiredX, SpawnerYOrigin);
             instance.Destination = GoalDestiny;
             GetNode("Enemies").AddChild(instance);
+            GetNode("Enemies").MoveChild(instance, 0);
         }
     }
 }

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwc5y66ft3338"]
+
+[ext_resource type="Texture2D" uid="uid://cxut02180237u" path="res://src/items/mathematics/green-parchment.png" id="1_6e04a"]
+[ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/parchment/GuideRow.cs" id="1_8ibhl"]
+[ext_resource type="Texture2D" uid="uid://bblcmlmp1kyi0" path="res://src/items/mathematics/red-parchment.png" id="2_thgbk"]
+[ext_resource type="Texture2D" uid="uid://cfo2rycwpmq1i" path="res://src/ui/minigames/mathematics/equal_sign.png" id="3_7oygo"]
+[ext_resource type="Texture2D" uid="uid://bdi3esaogg7nh" path="res://src/ui/minigames/mathematics/plus_sign.png" id="3_48iy4"]
+[ext_resource type="Texture2D" uid="uid://cwb2ov4stsovh" path="res://src/items/mathematics/storm-icon.png" id="4_leo44"]
+
+[node name="GuideRow" type="Control"]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_8ibhl")
+
+[node name="GuideRow" type="HBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -688.01
+offset_right = 171.99
+offset_bottom = 41.0
+grow_horizontal = 2
+scale = Vector2(1.6, 1.6)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Item1" type="TextureRect" parent="GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_6e04a")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="GuideRow"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+texture = ExtResource("3_48iy4")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Item2" type="TextureRect" parent="GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_thgbk")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="EqualSign" type="TextureRect" parent="GuideRow"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_7oygo")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Result" type="TextureRect" parent="GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_leo44")
+expand_mode = 5
+stretch_mode = 5

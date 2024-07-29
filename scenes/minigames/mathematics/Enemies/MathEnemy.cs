@@ -60,7 +60,6 @@ namespace Game.Minigames
         {
             _enemySprite = GetNodeOrNull<AnimatedSprite2D>("Sprite");
             _navigationAgent = GetNodeOrNull<NavigationAgent2D>("NavigationAgent2D");
-            _enemySprite.SpeedScale = Speed / 80;
 
             if (!Engine.IsEditorHint()) Callable.From(ActorSetup).CallDeferred();
         }

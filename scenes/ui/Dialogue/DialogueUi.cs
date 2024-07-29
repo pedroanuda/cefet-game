@@ -2,12 +2,12 @@ using Game.Gameplay;
 using Godot;
 using Godot.Collections;
 using System;
-using System.Runtime.Intrinsics.X86;
 
 namespace Game.UI
 {
     public partial class DialogueUi : Control
     {
+        [ExportGroup("Transition Utils")]
         [Export] public AnimationPlayer TransitionPlayer { get; set; }
         [Export] public Sprite2D TransitionSprite { get; set; }
 

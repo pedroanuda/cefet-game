@@ -16,7 +16,7 @@ namespace Game.UI
 
 		private void OnNewGameButtonPressed()
 		{
-			GetTree().ChangeSceneToPacked(NewGameScene);
+			GetNode<Global>("/root/Global").GoToScene(NewGameScene.ResourcePath);
 		}
 
 		private void OnQuitButtonPressed()

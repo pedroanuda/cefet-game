@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://p3waxi0mdhu4"]
+
+[ext_resource type="Script" path="res://scenes/minigames/mathematics/Enemies/MathEnemy.cs" id="1_8hoew"]
+[ext_resource type="Texture2D" uid="uid://bwhoqanwk1qdv" path="res://src/entities/mathematics/zombie.png" id="2_d1rcb"]
+[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="2_yfmvr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikcta"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkews"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su1qv"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th615"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri14v"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfwwe"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6noc8"]
+atlas = ExtResource("2_d1rcb")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_np227"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikcta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkews")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su1qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th615")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri14v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfwwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6noc8")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m8rl"]
+radius = 8.66665
+height = 17.3333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_um1hw"]
+
+[node name="Zombie" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+collision_layer = 7
+script = ExtResource("1_8hoew")
+Health = 75
+Speed = 6.5
+Damage = 8
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.458824)
+position = Vector2(0, 22.83)
+scale = Vector2(0.05, 0.015)
+texture = ExtResource("2_yfmvr")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_np227")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0755187
+offset = Vector2(4, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16.6667)
+shape = SubResource("CapsuleShape2D_2m8rl")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_um1hw")
+}
