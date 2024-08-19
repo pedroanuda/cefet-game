@@ -58,9 +58,10 @@ namespace Game.UI
             var knownSpells = new List<Items.MathSpell>();
             foreach (var spellFile in SpellsAvailable)
             {
-                if (!spellFile.EndsWith(".tres")) continue;
+                if (!(spellFile.EndsWith(".tres") || spellFile.EndsWith(".tres.remap"))) continue;
+                var sf = spellFile.Replace(".remap", "");
 
-                var spell = ResourceLoader.Load<Items.MathSpell>($"{SpellsDir}/{spellFile}");
+                var spell = ResourceLoader.Load<Items.MathSpell>($"{SpellsDir}/{sf}");
                 foreach (var item in knownParchments)
                     if (spell.CraftRecipe.Contains(item) && !knownSpells.Contains(spell))
                     {

@@ -214,9 +214,10 @@ rotation = 1.5708
 scale = Vector2(6, 6)
 texture = ExtResource("1_lwkf3")
 hframes = 38
-frame = 37
 
 [node name="Control" type="MarginContainer" parent="Parchment"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -246,7 +247,7 @@ layout_mode = 2
 
 [node name="roll1" type="Sprite2D" parent="Parchment"]
 texture_filter = 1
-position = Vector2(252, 0)
+position = Vector2(-216, 0)
 rotation = 1.5708
 scale = Vector2(6, 6)
 texture = ExtResource("2_gptdy")
