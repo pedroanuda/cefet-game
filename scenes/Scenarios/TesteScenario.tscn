@@ -13,25 +13,28 @@
 
 [node name="TesteScenario" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="PlayArea" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="PlayArea"]
 format = 2
 
-[node name="CollectableItem" parent="." instance=ExtResource("5_xigj8")]
+[node name="CollectableItem" parent="PlayArea" instance=ExtResource("5_xigj8")]
 position = Vector2(525, 226)
 
-[node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("3_lwasg")]
+[node name="Npc" parent="PlayArea" node_paths=PackedStringArray("InteractionUI") instance=ExtResource("3_lwasg")]
 position = Vector2(419, 217)
 CharacterInfo = ExtResource("4_stms3")
 Dialogues = ExtResource("4_usiyq")
-InteractionUI = NodePath("../UI/DialogueUi")
+InteractionUI = NodePath("../../UI/DialogueUi")
 
-[node name="Player" parent="." instance=ExtResource("2_2xm4m")]
+[node name="Player" parent="PlayArea" instance=ExtResource("2_2xm4m")]
 position = Vector2(200, 200)
 scale = Vector2(1.64, 1.64)
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_4nsxa")
-player = NodePath("../Player")
+player = NodePath("../PlayArea/Player")
 
 [node name="MainGameUi" parent="UI" instance=ExtResource("7_ki0wo")]
 

@@ -70,7 +70,7 @@ namespace Game.UI
 
             if (AllowDemoPreview && i.PreviewScene != null && !hasComplexPreview)
                 _dragInstance.SetPreview(i.PreviewScene.Instantiate<CanvasItem>(), 
-                    GetNode("/root/MathWizards/Spells"));
+                    GetNode("/root/MathWizards/Battlefield"));
             else if (hasComplexPreview && !AllowDemoPreview)
                 _dragInstance.SetPreview(_default_preview.Duplicate() as CanvasItem,
                     GetNode("/root/MathWizards/UI"));

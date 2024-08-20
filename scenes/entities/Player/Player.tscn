@@ -9,9 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2hbj"]
 radius = 62.0322
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fta8v"]
-radius = 17.0
-height = 52.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lww17"]
 
 [sub_resource type="Animation" id="Animation_1famo"]
 resource_name = "idle_back"
@@ -341,7 +339,9 @@ shape = SubResource("CircleShape2D_t2hbj")
 debug_color = Color(0.0156863, 0.65098, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fta8v")
+position = Vector2(0, 15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lww17")
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.376471)
@@ -354,7 +354,7 @@ texture_filter = 1
 texture = ExtResource("3_1i4ru")
 offset = Vector2(-2, 0)
 hframes = 21
-frame = 4
+frame = 3
 
 [node name="Backpacks" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -366,7 +366,7 @@ texture_filter = 1
 texture = ExtResource("4_gd2qs")
 offset = Vector2(-1, 0)
 hframes = 14
-frame = 1
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -21,7 +21,7 @@ texture_filter = 1
 position = Vector2(0, -14.04)
 scale = Vector2(2.685, 2.685)
 texture = ExtResource("2_asnag")
-offset = Vector2(5.48, -7.155)
+offset = Vector2(5.48, -17.265)
 hframes = 4
 
 [node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
@@ -29,7 +29,7 @@ texture_filter = 1
 position = Vector2(0, -14.04)
 scale = Vector2(2.685, 2.685)
 texture = ExtResource("2_asnag")
-offset = Vector2(5.48, -7.155)
+offset = Vector2(5.48, -17.265)
 hframes = 4
 frame = 1
 
@@ -38,12 +38,11 @@ texture_filter = 1
 position = Vector2(0, -14.04)
 scale = Vector2(2.685, 2.685)
 texture = ExtResource("2_asnag")
-offset = Vector2(5.48, -7.155)
+offset = Vector2(5.48, -17.265)
 hframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_dwyrt")
 
 [connection signal="timeout" from="FallTimer" to="." method="OnTimerTimeout"]

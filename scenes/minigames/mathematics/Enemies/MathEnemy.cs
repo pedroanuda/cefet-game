@@ -94,6 +94,7 @@ namespace Game.Minigames
 
 			Velocity = currentPosition.DirectionTo(nextPosition) * Speed;
 			MoveAndSlide();
+
 		}
 
 		public override string[] _GetConfigurationWarnings()

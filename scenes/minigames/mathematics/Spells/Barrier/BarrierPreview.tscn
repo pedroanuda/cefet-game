@@ -5,15 +5,14 @@
 [node name="BarrierPreview" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.47451)
 texture_filter = 1
-position = Vector2(0, -14.04)
 scale = Vector2(2.685, 2.685)
 texture = ExtResource("1_a445h")
-offset = Vector2(5.48, -7.155)
+offset = Vector2(5.48, -22.295)
 hframes = 4
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_a445h")
-offset = Vector2(5.48, -7.155)
+offset = Vector2(5.48, -22.295)
 hframes = 4
 frame = 1

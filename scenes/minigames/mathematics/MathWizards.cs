@@ -178,7 +178,7 @@ namespace Game.Minigames
             if (item.Name["en_US"] == "Storm")
                 wizPlayer?.Play("spell_two");
             else wizPlayer?.Play("spell_one");
-            GetNode("Spells").AddChild(spellNode);
+            GetNode("Battlefield").AddChild(spellNode);
             spellNode.Position = GetLocalMousePosition();
             if (!UnlimitedSpells) _inventory.Remove(item);
         }
@@ -217,8 +217,8 @@ namespace Game.Minigames
             var instance = EnemiesScenes[enemyIndex].Instantiate<MathEnemy>();
             instance.GlobalPosition = new Vector2((float) desiredX, SpawnerYOrigin);
             instance.Destination = GoalDestiny;
-            GetNode("Enemies").AddChild(instance);
-            GetNode("Enemies").MoveChild(instance, 0);
+            GetNode("Battlefield").AddChild(instance);
+            GetNode("Battlefield").MoveChild(instance, 0);
         }
     }
 }

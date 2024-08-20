@@ -53,15 +53,20 @@ polygon = PackedVector2Array(-12.286, 31.4663, -12.286, 29.1682, -10.1647, 28.63
 texture = ExtResource("9_rgtvu")
 0:0/size_in_atlas = Vector2i(4, 4)
 0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0)
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_02tdk")
 4:0/size_in_atlas = Vector2i(4, 4)
 4:0/0 = 0
+4:0/0/modulate = Color(1, 1, 1, 0)
 8:0/size_in_atlas = Vector2i(4, 4)
 8:0/0 = 0
+8:0/0/modulate = Color(1, 1, 1, 0)
 12:0/size_in_atlas = Vector2i(4, 4)
 12:0/0 = 0
+12:0/0/modulate = Color(1, 1, 1, 0)
 16:0/size_in_atlas = Vector2i(4, 4)
 16:0/0 = 0
+16:0/0/modulate = Color(1, 1, 1, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rift4"]
 texture = ExtResource("10_cy30x")
@@ -162,12 +167,14 @@ func _unhandled_input(event):
 "
 
 [node name="MathWizards" type="Node2D" node_paths=PackedStringArray("WizardNode")]
+texture_filter = 1
 script = ExtResource("1_2ifkc")
 EasyAnswerItem = ExtResource("2_u72t3")
 MediumAnswerItem = ExtResource("3_1d2uf")
 HardAnswerItem = ExtResource("4_oxuf7")
 WizardNode = NodePath("Wall/Middle/Wizard")
 PossibleSpells = Array[Object]([ExtResource("5_phvly"), ExtResource("6_40xy0"), ExtResource("7_uak70"), ExtResource("8_dcs4d")])
+UnlimitedSpells = true
 EnemiesScenes = Array[PackedScene]([ExtResource("10_5liqv")])
 GoalDestiny = Vector2(645, 537)
 SpawnerYOrigin = -68.0
@@ -254,11 +261,52 @@ position = Vector2(644.5, 533)
 shape = SubResource("RectangleShape2D_jt2t3")
 debug_color = Color(0.901961, 0.266667, 0.411765, 0.419608)
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Battlefield" type="Node2D" parent="."]
 z_index = 1
+y_sort_enabled = true
 
-[node name="Spells" type="Node2D" parent="."]
-z_index = 1
+[node name="Tree" type="Sprite2D" parent="Battlefield"]
+position = Vector2(1118, 344)
+scale = Vector2(4.42187, 4.42187)
+texture = ExtResource("9_rgtvu")
+offset = Vector2(0, -28)
+hframes = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Tree"]
+texture = ExtResource("9_rgtvu")
+offset = Vector2(0, -28)
+hframes = 5
+frame = 2
+
+[node name="Tree2" type="Sprite2D" parent="Battlefield"]
+position = Vector2(246, 206)
+scale = Vector2(4.42187, 4.42187)
+texture = ExtResource("9_rgtvu")
+offset = Vector2(0.5, -29.4)
+flip_h = true
+hframes = 5
+
+[node name="Tree3" type="Sprite2D" parent="Battlefield"]
+position = Vector2(32, 364)
+scale = Vector2(4.42187, 4.42187)
+texture = ExtResource("9_rgtvu")
+flip_h = true
+hframes = 5
+frame = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Tree3"]
+texture = ExtResource("9_rgtvu")
+flip_h = true
+hframes = 5
+frame = 4
+
+[node name="Tree4" type="Sprite2D" parent="Battlefield"]
+position = Vector2(980, 173)
+scale = Vector2(4.42187, 4.42187)
+texture = ExtResource("9_rgtvu")
+offset = Vector2(-2.25, -22.5)
+hframes = 5
+frame = 1
 
 [node name="Wall" type="Node2D" parent="."]
 z_index = 2
@@ -424,6 +472,7 @@ limit_bottom = 720
 script = SubResource("GDScript_82gye")
 
 [node name="MathUi" parent="UI" instance=ExtResource("2_45eox")]
+metadata/_edit_lock_ = true
 
 [node name="Drag" type="Node" parent="UI"]
 script = ExtResource("8_x4uk5")
