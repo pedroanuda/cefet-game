@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d1ialrklk0g5m"]
+[gd_scene load_steps=39 format=4 uid="uid://d1ialrklk0g5m"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/MathWizards.cs" id="1_2ifkc"]
 [ext_resource type="Texture2D" uid="uid://eq4k784b7ko5" path="res://src/tiles/mathematics/castle.png" id="1_u3cub"]
@@ -157,6 +157,31 @@ _data = {
 "transparency_on": SubResource("Animation_jihyo")
 }
 
+[sub_resource type="GDScript" id="GDScript_tj8t5"]
+resource_name = "CameraScript"
+script/source = "extends Camera2D
+
+@export_category(\"Shake Effect\")
+@export var strength: float = 30.0
+@export var fade: float = 5.0
+
+var rng = RandomNumberGenerator.new()
+var shake_strength = 0
+func apply_random_offset() -> void:
+	offset = Vector2(
+		rng.randf_range(-shake_strength, shake_strength),
+		rng.randf_range(-shake_strength, shake_strength)
+	)
+
+func shake() -> void:
+	shake_strength = strength
+
+func _process(delta: float) -> void:
+	if shake_strength > 0:
+		shake_strength = lerpf(shake_strength, 0, fade * delta)
+		apply_random_offset()
+"
+
 [sub_resource type="GDScript" id="GDScript_82gye"]
 resource_name = "UIHandling"
 script/source = "extends CanvasLayer
@@ -166,9 +191,10 @@ func _unhandled_input(event):
 		$PauseScreen.call(\"HandlePause\")
 "
 
-[node name="MathWizards" type="Node2D" node_paths=PackedStringArray("WizardNode")]
+[node name="MathWizards" type="Node2D" node_paths=PackedStringArray("Camera", "WizardNode")]
 texture_filter = 1
 script = ExtResource("1_2ifkc")
+Camera = NodePath("Camera2D")
 EasyAnswerItem = ExtResource("2_u72t3")
 MediumAnswerItem = ExtResource("3_1d2uf")
 HardAnswerItem = ExtResource("4_oxuf7")
@@ -193,30 +219,44 @@ position = Vector2(663.5, 268.75)
 scale = Vector2(23.8111, 14.0278)
 texture = ExtResource("8_b11rl")
 
-[node name="TileMap" type="TileMap" parent="Enviroment"]
-texture_filter = 1
-position = Vector2(646, 183)
-scale = Vector2(4.505, 4.505)
-tile_set = SubResource("TileSet_10b2f")
-format = 2
-layer_0/name = "Grass"
-layer_0/modulate = Color(1, 1, 1, 0.533333)
-layer_0/tile_data = PackedInt32Array(-262143, 3, 0, 131067, 3, 0, -262148, 3, 268435456, -65536, 3, 268435456, 131074, 3, 0, 196613, 3, 268435456, 262137, 3, 268435456, -8, 3, 0, -65539, 3, 0, -131080, 3, 0, 131065, 3, 0, 131063, 3, 0, 262139, 3, 0, 131071, 3, 0, 1, 3, 0, 131072, 3, 0, -131071, 3, 0, -65533, 3, 0, 65540, 3, 0, 131079, 3, 0, 196611, 3, 0, -4, 3, 0, -131077, 3, 0, -196605, 3, 0, 65526, 3, 0, -65545, 3, 0)
-layer_1/name = "Flowers"
-layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-8, 1, 0, -262144, 1, 268435456, 196604, 131073, 0, -393221, 131073, 0, -262141, 196609, 0, 131065, 262145, 0, 65537, 393217, 0, 65539, 131073, 0, 196602, 655361, 0, 131079, 655361, 268435456, 131066, 1179649, 0, -196602, 720897, 0, -131070, 851969, 0, 4, 1179649, 0, 65528, 1245185, 0)
-layer_2/name = "Trees"
-layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array(196599, 262146, 268435456, 6, 2, 0, -196600, 262146, 268435456, -65542, 2, 268435456, -131068, 262146, 0)
-layer_3/name = "Trees Effect"
-layer_3/z_index = 2
-layer_3/tile_data = PackedInt32Array(196599, 1048578, 268435456, 6, 524290, 0)
-
 [node name="Path" type="Sprite2D" parent="Enviroment"]
 texture_filter = 1
 position = Vector2(555, 227.898)
 scale = Vector2(7.575, 6.99772)
 texture = ExtResource("9_iinsf")
+
+[node name="Grass2" type="TileMapLayer" parent="Enviroment"]
+modulate = Color(1, 1, 1, 0.533333)
+texture_filter = 1
+use_parent_material = true
+position = Vector2(646, 183)
+scale = Vector2(4.505, 4.505)
+tile_map_data = PackedByteArray("AAABAPz/AwAAAAAAAAD7/wEAAwAAAAAAAAD8//v/AwAAAAAAABAAAP//AwAAAAAAABACAAIAAwAAAAAAAAAFAAMAAwAAAAAAABD5/wMAAwAAAAAAABD4////AwAAAAAAAAD9//7/AwAAAAAAAAD4//3/AwAAAAAAAAD5/wEAAwAAAAAAAAD3/wEAAwAAAAAAAAD7/wMAAwAAAAAAAAD//wEAAwAAAAAAAAABAAAAAwAAAAAAAAAAAAIAAwAAAAAAAAABAP7/AwAAAAAAAAADAP//AwAAAAAAAAAEAAEAAwAAAAAAAAAHAAIAAwAAAAAAAAADAAMAAwAAAAAAAAD8////AwAAAAAAAAD7//3/AwAAAAAAAAADAP3/AwAAAAAAAAD2/wAAAwAAAAAAAAD3//7/AwAAAAAAAAA=")
+tile_set = SubResource("TileSet_10b2f")
+
+[node name="Flowers" type="TileMapLayer" parent="Enviroment"]
+z_index = 1
+use_parent_material = true
+position = Vector2(646, 183)
+scale = Vector2(4.505, 4.505)
+tile_map_data = PackedByteArray("AAD4////AQAAAAAAAAAAAPz/AQAAAAAAABD8/wIAAQACAAAAAAD7//n/AQACAAAAAAADAPz/AQADAAAAAAD5/wEAAQAEAAAAAAABAAEAAQAGAAAAAAADAAEAAQACAAAAAAD6/wIAAQAKAAAAAAAHAAIAAQAKAAAAABD6/wEAAQASAAAAAAAGAP3/AQALAAAAAAACAP7/AQANAAAAAAAEAAAAAQASAAAAAAD4/wAAAQATAAAAAAA=")
+tile_set = SubResource("TileSet_10b2f")
+
+[node name="Trees" type="TileMapLayer" parent="Enviroment"]
+z_index = 1
+use_parent_material = true
+position = Vector2(646, 183)
+scale = Vector2(4.505, 4.505)
+tile_map_data = PackedByteArray("AAD3/wIAAgAEAAAAABAGAAAAAgAAAAAAAAAIAP3/AgAEAAAAABD6//7/AgAAAAAAABAEAP7/AgAEAAAAAAA=")
+tile_set = SubResource("TileSet_10b2f")
+
+[node name="Trees Effect" type="TileMapLayer" parent="Enviroment"]
+z_index = 2
+use_parent_material = true
+position = Vector2(646, 183)
+scale = Vector2(4.505, 4.505)
+tile_map_data = PackedByteArray("AAD3/wIAAgAQAAAAABAGAAAAAgAIAAAAAAA=")
+tile_set = SubResource("TileSet_10b2f")
 
 [node name="Regions" type="Node2D" parent="."]
 
@@ -467,8 +507,10 @@ position = Vector2(643, 457)
 limit_left = -300
 limit_right = 1580
 limit_bottom = 720
+script = SubResource("GDScript_tj8t5")
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 2
 script = SubResource("GDScript_82gye")
 
 [node name="MathUi" parent="UI" instance=ExtResource("2_45eox")]
@@ -479,6 +521,7 @@ script = ExtResource("8_x4uk5")
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("18_dkkvc")]
 visible = false
+MinigameLocation = true
 
 [node name="Control" type="Control" parent="UI"]
 custom_minimum_size = Vector2(0, 63.225)

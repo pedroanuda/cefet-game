@@ -82,7 +82,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 7
 script = ExtResource("1_8hoew")
 Health = 75
-Speed = 6.5
+Speed = 10.0
 Damage = 8
 
 [node name="Shadow" type="Sprite2D" parent="."]

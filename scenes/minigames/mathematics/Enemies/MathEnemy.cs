@@ -7,12 +7,10 @@ namespace Game.Minigames
 	[GlobalClass, Tool]
 	public partial class MathEnemy : CharacterBody2D
 	{
+		static readonly Color HitColor = new("#ff816b");
+
 		[Signal]
 		public delegate void DiedEventHandler();
-
-		private int _health = 20;
-		protected AnimatedSprite2D _enemySprite;
-		protected NavigationAgent2D _navigationAgent;
 
 		[Export]
 		public int Health 
@@ -34,6 +32,10 @@ namespace Game.Minigames
 
 		[Export]
 		public Vector2 Destination { get; set; }
+
+		protected AnimatedSprite2D _enemySprite;
+		protected NavigationAgent2D _navigationAgent;
+		private int _health = 20;
 
 		private Vector2 MovementTarget 
 		{
@@ -58,7 +60,7 @@ namespace Game.Minigames
             EmitSignal(SignalName.Died);
 			_navigationAgent.Velocity = Vector2.Zero;
 
-			PlayHitAnimation(() => QueueFree());
+			PlayDeathAnimation(() => QueueFree());
 			var smoke = GetNodeOrNull<CpuParticles2D>("DeathSmoke");
 			if (smoke is not null)
 			{
@@ -128,7 +130,7 @@ namespace Game.Minigames
 
 				hitAnim.TrackSetPath(trackIdx, ".:modulate");
 				hitAnim.TrackInsertKey(trackIdx, 0, Modulate);
-				hitAnim.TrackInsertKey(trackIdx, .25f, new Color("#ff816b"));
+				hitAnim.TrackInsertKey(trackIdx, .25f, HitColor);
 				hitAnim.TrackInsertKey(trackIdx, .5f, new Color("#ffffff"));
 
 				anPlayer.GetAnimationLibrary("").AddAnimation("hit", hitAnim);
@@ -139,11 +141,32 @@ namespace Game.Minigames
 			var anim = anPlayer.GetAnimation("hit");
 			var track = anim.FindTrack(".:modulate", Animation.TrackType.Value);
 			anim.TrackSetKeyValue(track, 0, Modulate);
-			anim.TrackSetKeyValue(track, 1, new Color("#ff816b"));
+			anim.TrackSetKeyValue(track, 1, HitColor);
 			anim.TrackSetKeyValue(track, 2, new Color("#ffffff"));
 
 			if (afterAnimation is not null) anPlayer.AnimationFinished += onEnd;
 			anPlayer.Play("hit");
+		}
+
+		private void PlayDeathAnimation(Action onEnd)
+		{
+			var anPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+			anPlayer.AnimationFinished += (StringName animName) => onEnd();
+			if (anPlayer.HasAnimation("death"))
+			{
+				anPlayer.Play("death");
+				return;
+			}
+
+			var animation = new Animation();
+			var track = animation.AddTrack(Animation.TrackType.Value);
+
+			animation.TrackSetPath(track, ".:modulate");
+			animation.TrackInsertKey(track, 0, Modulate);
+			animation.TrackInsertKey(track, .10f, HitColor);
+
+			anPlayer.GetAnimationLibrary("").AddAnimation("death", animation);
+			anPlayer.Play("death");
 		}
 	}
 }

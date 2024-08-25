@@ -33,30 +33,31 @@ theme_override_constants/margin_bottom = 30
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
+[node name="OptionRows" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
 layout_mode = 2
 text = "Jogo Pausado"
 label_settings = SubResource("LabelSettings_l2ryu")
 horizontal_alignment = 1
 
-[node name="Space" type="Control" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Space" type="Control" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
 custom_minimum_size = Vector2(0, 32.03)
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Retomar"
 
-[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Sair"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="OnResumeButtonPressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="OnQuitButtonPressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/OptionRows/ResumeButton" to="." method="OnResumeButtonPressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/OptionRows/QuitButton" to="." method="OnQuitButtonPressed"]

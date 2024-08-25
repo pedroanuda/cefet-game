@@ -21,6 +21,7 @@ namespace Game.Minigames
         private int _health = 100;
 
         // Base Items
+        [Export] Camera2D Camera;
         [Export] public int WizardHealth 
         { 
             get => _health;
@@ -172,14 +173,23 @@ namespace Game.Minigames
             }
         }
 
-        private void AfterDrop(Node2D spellNode, Items.MathSpell item)
+        private void AfterDrop(Node spellNode, Items.MathSpell item)
         {
+            // Wizard Animation
             var wizPlayer = WizardNode?.GetNode<AnimationPlayer>("AnimationPlayer");
             if (item.Name["en_US"] == "Storm")
                 wizPlayer?.Play("spell_two");
             else wizPlayer?.Play("spell_one");
+
+            // Spell Handling
             GetNode("Battlefield").AddChild(spellNode);
-            spellNode.Position = GetLocalMousePosition();
+            if (spellNode is Node2D)
+                (spellNode as Node2D).Position = GetLocalMousePosition();
+            else if (spellNode is MathMeteor meteor)
+            {
+                meteor.MeteorDestiny = GetGlobalMousePosition();
+                meteor.Camera = Camera;
+            }
             if (!UnlimitedSpells) _inventory.Remove(item);
         }
 

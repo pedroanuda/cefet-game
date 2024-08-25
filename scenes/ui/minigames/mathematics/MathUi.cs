@@ -29,7 +29,7 @@ namespace Game.UI
         // Virtual Actions
         public Action<string> OnAnswerCorrect;
         public Action<Items.Item[]> CheckRecipe;
-        public Action<Node2D, MathSpell> DropConclusion;
+        public Action<Node, MathSpell> DropConclusion;
 
         // Helpers
         private MathParchment _parchment;
@@ -300,8 +300,9 @@ namespace Game.UI
         private void OnSucessfulDrop(InputEventMouseButton e)
         {
             if (_draggedItem is not MathSpell ms || ms.SpellScenePath is null) return;
-            var spell = GD.Load<PackedScene>((_draggedItem as MathSpell).SpellScenePath).Instantiate<Node2D>();
-            spell.Position = e.Position;
+            var spell = GD.Load<PackedScene>(ms.SpellScenePath).Instantiate<Node>();
+            if (spell is Node2D spell_2d)
+                spell_2d.Position = e.Position;
             DropConclusion?.Invoke(spell, _draggedItem as MathSpell);
         }
 

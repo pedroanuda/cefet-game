@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftableItem" load_steps=5 format=3 uid="uid://b5hpvxq4hes62"]
+[gd_resource type="Resource" script_class="MathSpell" load_steps=5 format=3 uid="uid://b5hpvxq4hes62"]
 
 [ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="1_h4crt"]
 [ext_resource type="Texture2D" uid="uid://c2cgdg1lpe18r" path="res://src/items/FullWalletIcon.png" id="2_mifmf"]
@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("3_nugw7")
+SpellScenePath = ""
 CraftRecipe = Array[Object]([ExtResource("1_h4crt"), ExtResource("2_x7s2f")])
 Id = 104
 Name = {

@@ -16,9 +16,6 @@
 [node name="PlayArea" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="TileMap" type="TileMap" parent="PlayArea"]
-format = 2
-
 [node name="CollectableItem" parent="PlayArea" instance=ExtResource("5_xigj8")]
 position = Vector2(525, 226)
 

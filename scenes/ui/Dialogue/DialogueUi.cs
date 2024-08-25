@@ -7,10 +7,6 @@ namespace Game.UI
 {
     public partial class DialogueUi : Control
     {
-        [ExportGroup("Transition Utils")]
-        [Export] public AnimationPlayer TransitionPlayer { get; set; }
-        [Export] public Sprite2D TransitionSprite { get; set; }
-
         private Action finishAction;
         private RichTextLabel textLabel;
         private Array<Dialogue> dialogues;
@@ -64,15 +60,23 @@ namespace Game.UI
 
                         var handler = GetNode<TransitionHandler>("/root/TransitionHandler");
                         handler.StartingPosition = TransitionOrigin;
-
-                        handler.TransitionInHalf += () =>
-                        {
-                            GetNode<Global>("/root/Global")
-                            .GoToScene(dialogueCollection.EndingExpression);
-                            handler.Play("change_to_minigame_end");
-                        };
-
-                        handler.Play("change_to_minigame_start");
+                        //
+                        //void onHalf()
+                        //{
+                        //    GetNode<Global>("/root/Global")
+                        //    .GoToScene(dialogueCollection.EndingExpression, () =>
+                        //    handler.Play("change_to_minigame_end"));
+                        //
+                        //    handler.TransitionInHalf -= onHalf;
+                        //}
+                        //
+                        //handler.TransitionInHalf += onHalf;
+                        //handler.Play("change_to_minigame_start");
+                        GetNode<Global>("/root/Global")
+                        .TransitionToScene(
+                            dialogueCollection.EndingExpression,
+                            style: TransitionStyleEnum.Circle
+                        );
                         break;
                     default:
                         break;
