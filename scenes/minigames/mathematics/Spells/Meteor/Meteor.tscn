@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://clptfrm0vundr"]
+[gd_scene load_steps=15 format=3 uid="uid://clptfrm0vundr"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ln00h5ig04" path="res://src/tiles/mathematics/meteor.png" id="1_0ftuu"]
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Meteor/MathMeteor.cs" id="1_m31wa"]
+[ext_resource type="AudioStream" uid="uid://beo4ijusucvcn" path="res://src/sounds/mathematics/meteor_explosion.mp3" id="3_d4hs1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5piti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ryg7"]
 atlas = ExtResource("1_0ftuu")
@@ -190,6 +193,9 @@ _data = {
 [node name="Meteor" type="CanvasLayer"]
 script = ExtResource("1_m31wa")
 
+[node name="BugFixer" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_5piti")
+
 [node name="Core" type="Node2D" parent="."]
 visible = false
 position = Vector2(123, -139)
@@ -201,13 +207,15 @@ scale = Vector2(6.825, 6.825)
 texture = ExtResource("1_0ftuu")
 hframes = 4
 
-[node name="FireAnimatedSprite" type="AnimatedSprite2D" parent="Core"]
+[node name="FireAnimatedSprite" type="AnimatedSprite2D" parent="Core/Meteor Sprite"]
 texture_filter = 1
-position = Vector2(0, 35.4)
-scale = Vector2(6.825, 6.825)
 sprite_frames = SubResource("SpriteFrames_cjvd2")
 autoplay = "default"
-frame_progress = 0.294842
+frame_progress = 0.866301
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="Core"]
+stream = ExtResource("3_d4hs1")
+volume_db = -10.0
 
 [node name="FlashSprite" type="Sprite2D" parent="."]
 position = Vector2(651, 364)

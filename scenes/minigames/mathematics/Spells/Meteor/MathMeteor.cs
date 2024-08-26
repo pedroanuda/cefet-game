@@ -37,6 +37,12 @@ namespace Game.Minigames {
                 case "default":
                     _animPlayer.Play("end_default");
                     HarmEnemies();
+
+                    var audioPlayer = GetNode<AudioStreamPlayer2D>("Core/AudioPlayer");
+                    audioPlayer.Finished += audioPlayer.QueueFree;
+                    audioPlayer.Reparent(GetParent());
+                    audioPlayer.Play();
+
                     if (Camera is not null && Camera.HasMethod("shake"))
                     {
                         Camera.Call("shake");
