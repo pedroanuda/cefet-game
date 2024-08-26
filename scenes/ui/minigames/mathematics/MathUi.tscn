@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcekdwfv7ruq0"]
+[gd_scene load_steps=14 format=3 uid="uid://bcekdwfv7ruq0"]
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_3pqhh"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathUi.cs" id="2_qow2w"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://src/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
 [ext_resource type="PackedScene" uid="uid://duiuh1rcwnwgp" path="res://scenes/ui/minigames/mathematics/parchment/Parchment.tscn" id="7_wsvja"]
 [ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="8_ywmgh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1rbct"]
 
 [sub_resource type="Animation" id="Animation_4bb8m"]
 resource_name = "hide_answers"
@@ -87,6 +89,9 @@ mouse_filter = 2
 theme = ExtResource("1_3pqhh")
 script = ExtResource("2_qow2w")
 _spellSlotScene = ExtResource("3_trnri")
+
+[node name="BugFixer" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_1rbct")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -173,9 +178,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -255.5
-offset_top = -71.0
-offset_right = 255.5
+offset_left = -270.0
+offset_top = -77.0
+offset_right = 270.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4

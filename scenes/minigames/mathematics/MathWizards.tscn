@@ -21,6 +21,15 @@
 [ext_resource type="PackedScene" uid="uid://bdyso3q7uudjm" path="res://scenes/minigames/mathematics/Wizard/Wizard.tscn" id="15_kkokm"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="18_dkkvc"]
 
+[sub_resource type="GDScript" id="GDScript_82gye"]
+resource_name = "UIHandling"
+script/source = "extends CanvasLayer
+
+func _unhandled_input(event):
+	if event.is_action_released(\"go_back\"):
+		$PauseScreen.call(\"HandlePause\")
+"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wvk7e"]
 texture = ExtResource("8_4upfk")
 texture_region_size = Vector2i(15, 15)
@@ -182,15 +191,6 @@ func _process(delta: float) -> void:
 		apply_random_offset()
 "
 
-[sub_resource type="GDScript" id="GDScript_82gye"]
-resource_name = "UIHandling"
-script/source = "extends CanvasLayer
-
-func _unhandled_input(event):
-	if event.is_action_released(\"go_back\"):
-		$PauseScreen.call(\"HandlePause\")
-"
-
 [node name="MathWizards" type="Node2D" node_paths=PackedStringArray("Camera", "WizardNode")]
 texture_filter = 1
 script = ExtResource("1_2ifkc")
@@ -207,6 +207,45 @@ SpawnerYOrigin = -68.0
 SpawnerXStart = 316.0
 SpawnerXEnd = 919.0
 FirstParchmentDialogue = ExtResource("10_s33cm")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+script = SubResource("GDScript_82gye")
+
+[node name="MathUi" parent="UI" instance=ExtResource("2_45eox")]
+metadata/_edit_lock_ = true
+
+[node name="Drag" type="Node" parent="UI"]
+script = ExtResource("8_x4uk5")
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("18_dkkvc")]
+visible = false
+MinigameLocation = true
+
+[node name="Control" type="Control" parent="UI"]
+custom_minimum_size = Vector2(0, 63.225)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="DevMessage" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -11.5
+offset_right = 81.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Em desenvolvimento"
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -508,44 +547,5 @@ limit_left = -300
 limit_right = 1580
 limit_bottom = 720
 script = SubResource("GDScript_tj8t5")
-
-[node name="UI" type="CanvasLayer" parent="."]
-layer = 2
-script = SubResource("GDScript_82gye")
-
-[node name="MathUi" parent="UI" instance=ExtResource("2_45eox")]
-metadata/_edit_lock_ = true
-
-[node name="Drag" type="Node" parent="UI"]
-script = ExtResource("8_x4uk5")
-
-[node name="PauseScreen" parent="UI" instance=ExtResource("18_dkkvc")]
-visible = false
-MinigameLocation = true
-
-[node name="Control" type="Control" parent="UI"]
-custom_minimum_size = Vector2(0, 63.225)
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-mouse_filter = 2
-
-[node name="DevMessage" type="Label" parent="UI/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -11.5
-offset_right = 81.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Em desenvolvimento"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTime"]
