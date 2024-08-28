@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd7blhccorvae"]
+[gd_scene load_steps=19 format=3 uid="uid://bd7blhccorvae"]
 
 [ext_resource type="Texture2D" uid="uid://dfe63agjv3grb" path="res://src/tiles/mathematics/storm_lightnings.png" id="1_w67so"]
+[ext_resource type="AudioStream" uid="uid://gelef2mpepkw" path="res://src/sounds/mathematics/storm_thunder_1.mp3" id="2_5p0xb"]
+[ext_resource type="AudioStream" uid="uid://ivbaijbsj2d4" path="res://src/sounds/mathematics/storm_thunder_2.mp3" id="3_w1rbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p34vi"]
 atlas = ExtResource("1_w67so")
@@ -98,9 +100,20 @@ animations = [{
 resource_name = "AutoScript"
 script/source = "extends AnimatedSprite2D
 
-func _on_animation_finished():
+func _on_animation_finished() -> void:
 	queue_free()
+
+func _on_tree_entered() -> void:
+	var instance = $AudioStreamPlayer2D
+	instance.reparent(get_parent())
+	instance.play()
 "
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v1gt0"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("2_5p0xb")
+stream_1/stream = ExtResource("3_w1rbd")
 
 [node name="StormLightning" type="AnimatedSprite2D"]
 texture_filter = 1
@@ -110,4 +123,10 @@ frame = 11
 frame_progress = 1.0
 script = SubResource("GDScript_2mteu")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_v1gt0")
+volume_db = -8.0
+pitch_scale = 2.5
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://rm22epgv02fb"]
+[gd_scene load_steps=13 format=3 uid="uid://rm22epgv02fb"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Storm/MathStorm.cs" id="1_xe2uy"]
 [ext_resource type="Texture2D" uid="uid://ddhcxoxefstyf" path="res://src/tiles/mathematics/storm_clouds.png" id="2_1aufn"]
 [ext_resource type="PackedScene" uid="uid://bd7blhccorvae" path="res://scenes/minigames/mathematics/Spells/Storm/StormLightning.tscn" id="3_bjmw7"]
 [ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="3_xdeea"]
 [ext_resource type="Texture2D" uid="uid://bvvxnt52q6qqw" path="res://src/tiles/mathematics/storm_drop.png" id="5_qsk65"]
+[ext_resource type="AudioStream" uid="uid://dwf0rws37oc58" path="res://src/sounds/mathematics/storm_rain.mp3" id="6_sxbxa"]
 
 [sub_resource type="Animation" id="Animation_l2qmt"]
 resource_name = "disappearance"
@@ -19,6 +20,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:attenuation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 18.3]
 }
 
 [sub_resource type="Animation" id="Animation_50i54"]
@@ -35,9 +48,37 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:attenuation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.3792, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_n0qw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:attenuation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dtqgu"]
 _data = {
+"RESET": SubResource("Animation_n0qw6"),
 "disappearance": SubResource("Animation_l2qmt"),
 "surgement": SubResource("Animation_50i54")
 }
@@ -99,7 +140,7 @@ polygon = PackedVector2Array(96, -243.1, 96, -241.4, 155, -210.4, 155, -208.8, 1
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.239216)
 z_index = -1
-scale = Vector2(0.374166, 0.1645)
+scale = Vector2(0.375, 0.165)
 texture = ExtResource("3_xdeea")
 
 [node name="Lightnings" type="Node2D" parent="."]
@@ -110,7 +151,6 @@ texture_filter = 1
 position = Vector2(0, -75.225)
 scale = Vector2(1.835, 1.835)
 texture = ExtResource("2_1aufn")
-offset = Vector2(0, 0.33341)
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -137,6 +177,11 @@ emission_shape = 3
 emission_rect_extents = Vector2(95, 1)
 scale_amount_min = 0.1
 scale_amount_max = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_sxbxa")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="timeout" from="LightningTimer" to="." method="OnLightningTiming"]
 [connection signal="body_entered" from="AttackArea" to="." method="OnBodyEnteredArea"]
