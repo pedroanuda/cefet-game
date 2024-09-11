@@ -28,7 +28,11 @@ namespace Game.Minigames
             set {
                 if (value > 0)
                     _health = value;
-                else _health = 0;
+                else
+                {
+                    _health = 0;
+                    Ui.TriggerGameOver();
+                }
                 Ui?.UpdateHealthProgress(_health);
             }
         }

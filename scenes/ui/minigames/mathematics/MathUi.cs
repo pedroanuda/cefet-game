@@ -125,6 +125,12 @@ namespace Game.UI
             _parchment.ShowRecipesWith(itemExpected);
         }
 
+        public void TriggerGameOver()
+        {
+            GetNode<Control>("MainElements").Visible = false;
+            GetNode<MathGameOverScreen>("GameOverScreen").TriggerUi();
+        }
+
         private void ChangeAnswers(QuestionAndAnswers q)
         {
             void hideAnswers(StringName s)

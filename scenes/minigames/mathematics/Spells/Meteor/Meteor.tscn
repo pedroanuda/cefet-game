@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://clptfrm0vundr"]
+[gd_scene load_steps=26 format=3 uid="uid://clptfrm0vundr"]
 
 [ext_resource type="Texture2D" uid="uid://bt3ln00h5ig04" path="res://src/tiles/mathematics/meteor.png" id="1_0ftuu"]
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Meteor/MathMeteor.cs" id="1_m31wa"]
 [ext_resource type="AudioStream" uid="uid://beo4ijusucvcn" path="res://src/sounds/mathematics/meteor_explosion.mp3" id="3_d4hs1"]
+[ext_resource type="Texture2D" uid="uid://co7wofe4d28md" path="res://src/Particles/meteor_explosion.png" id="4_kvkjm"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5piti"]
 
@@ -33,6 +34,77 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0onjv"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih0jw"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(108, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jylk6"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(216, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wch51"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(324, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljh4t"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(432, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r00xy"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(540, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tmus"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(648, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj8nu"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(756, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl8f6"]
+atlas = ExtResource("4_kvkjm")
+region = Rect2(864, 0, 108, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2foal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0onjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih0jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jylk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wch51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljh4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tmus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj8nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl8f6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_orbwb"]
@@ -203,12 +275,14 @@ position = Vector2(123, -139)
 [node name="Meteor Sprite" type="Sprite2D" parent="Core"]
 texture_filter = 1
 position = Vector2(0, 35.4)
-scale = Vector2(6.825, 6.825)
+scale = Vector2(4, 4)
 texture = ExtResource("1_0ftuu")
 hframes = 4
 
-[node name="FireAnimatedSprite" type="AnimatedSprite2D" parent="Core/Meteor Sprite"]
+[node name="FireAnimatedSprite" type="AnimatedSprite2D" parent="Core"]
 texture_filter = 1
+position = Vector2(0, 35.4)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cjvd2")
 autoplay = "default"
 frame_progress = 0.866301
@@ -216,6 +290,18 @@ frame_progress = 0.866301
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="Core"]
 stream = ExtResource("3_d4hs1")
 volume_db = -10.0
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="Core"]
+visible = false
+modulate = Color(1, 1, 1, 0.54902)
+texture_filter = 1
+position = Vector2(-27, 85)
+rotation = 0.497419
+scale = Vector2(8, 8)
+skew = 0.614356
+sprite_frames = SubResource("SpriteFrames_2foal")
+frame = 8
+frame_progress = 1.0
 
 [node name="FlashSprite" type="Sprite2D" parent="."]
 position = Vector2(651, 364)

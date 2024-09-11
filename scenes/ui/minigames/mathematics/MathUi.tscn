@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcekdwfv7ruq0"]
+[gd_scene load_steps=15 format=3 uid="uid://bcekdwfv7ruq0"]
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_3pqhh"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathUi.cs" id="2_qow2w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://src/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
 [ext_resource type="PackedScene" uid="uid://duiuh1rcwnwgp" path="res://scenes/ui/minigames/mathematics/parchment/Parchment.tscn" id="7_wsvja"]
 [ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="8_ywmgh"]
+[ext_resource type="PackedScene" uid="uid://ce0we1vumtf6j" path="res://scenes/ui/minigames/mathematics/GameOverScreen.tscn" id="9_178yp"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1rbct"]
 
@@ -17,7 +18,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/0/path = NodePath("MainElements/QuestionsAndAnswers/Answers:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +34,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:position")
+tracks/0/path = NodePath("MainElements/QuestionsAndAnswers/Answers:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +46,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/1/path = NodePath("MainElements/QuestionsAndAnswers/Answers:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -61,7 +62,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/QuestionsAndAnswers/Answers:modulate")
+tracks/0/path = NodePath("MainElements/QuestionsAndAnswers/Answers:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +94,7 @@ _spellSlotScene = ExtResource("3_trnri")
 [node name="BugFixer" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_1rbct")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MainElements" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,11 +107,11 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="QuestionsAndAnswers" type="Control" parent="MarginContainer"]
+[node name="QuestionsAndAnswers" type="Control" parent="MainElements"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Answers" type="PanelContainer" parent="MarginContainer/QuestionsAndAnswers"]
+[node name="Answers" type="PanelContainer" parent="MainElements/QuestionsAndAnswers"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(200, 0)
@@ -127,28 +128,28 @@ offset_bottom = -58.9993
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/QuestionsAndAnswers/Answers"]
+[node name="MarginContainer" type="MarginContainer" parent="MainElements/QuestionsAndAnswers/Answers"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="AnswersContainer" type="GridContainer" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer"]
+[node name="AnswersContainer" type="GridContainer" parent="MainElements/QuestionsAndAnswers/Answers/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Button" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+[node name="Button" type="Button" parent="MainElements/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"WhiteButton"
 text = "15"
 
-[node name="Button2" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+[node name="Button2" type="Button" parent="MainElements/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -156,21 +157,21 @@ theme_type_variation = &"WhiteButton"
 text = "4
 "
 
-[node name="Button3" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+[node name="Button3" type="Button" parent="MainElements/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"WhiteButton"
 text = "25"
 
-[node name="Button4" type="Button" parent="MarginContainer/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
+[node name="Button4" type="Button" parent="MainElements/QuestionsAndAnswers/Answers/MarginContainer/AnswersContainer"]
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"WhiteButton"
 text = "25"
 
-[node name="Questions" type="PanelContainer" parent="MarginContainer/QuestionsAndAnswers"]
+[node name="Questions" type="PanelContainer" parent="MainElements/QuestionsAndAnswers"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -186,14 +187,14 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/QuestionsAndAnswers/Questions"]
+[node name="MarginContainer" type="MarginContainer" parent="MainElements/QuestionsAndAnswers/Questions"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="QuestionsContainer" type="FlowContainer" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer"]
+[node name="QuestionsContainer" type="FlowContainer" parent="MainElements/QuestionsAndAnswers/Questions/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
@@ -201,71 +202,90 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+[node name="Button" type="Button" parent="MainElements/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
 custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
 toggle_mode = true
 text = "10 + 5 = ?"
 
-[node name="Button2" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+[node name="Button2" type="Button" parent="MainElements/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
 custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"YellowButton"
 text = "28 ÷ 7 = ?"
 
-[node name="Button3" type="Button" parent="MarginContainer/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
+[node name="Button3" type="Button" parent="MainElements/QuestionsAndAnswers/Questions/MarginContainer/QuestionsContainer"]
 custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 theme_type_variation = &"RedButton"
 text = "2x + 10 = 30"
 
-[node name="Spells" type="PanelContainer" parent="MarginContainer"]
+[node name="Spells" type="PanelContainer" parent="MainElements"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Spells"]
+[node name="MarginContainer" type="MarginContainer" parent="MainElements/Spells"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="SpellsContainer" type="VBoxContainer" parent="MarginContainer/Spells/MarginContainer"]
+[node name="SpellsContainer" type="VBoxContainer" parent="MainElements/Spells/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HealthAndPause" type="BoxContainer" parent="MarginContainer"]
+[node name="HealthAndPause" type="BoxContainer" parent="MainElements"]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="HealthProgressBar" type="TextureProgressBar" parent="MarginContainer/HealthAndPause"]
-unique_name_in_owner = true
-texture_filter = 1
+[node name="Control" type="Control" parent="MainElements/HealthAndPause"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="MainElements/HealthAndPause/Control"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -31.0
+offset_right = 36.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
 value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_under = ExtResource("5_m2h13")
 texture_progress = ExtResource("6_tmvlg")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HealthAndPause"]
+[node name="PanelContainer" type="PanelContainer" parent="MainElements/HealthAndPause"]
 custom_minimum_size = Vector2(95, 70)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="PauseButton" type="TextureButton" parent="MarginContainer/HealthAndPause/PanelContainer"]
+[node name="PauseButton" type="TextureButton" parent="MainElements/HealthAndPause/PanelContainer"]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_hk82x")
 stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m3t2y")
+}
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -286,7 +306,6 @@ ModulatePanel = NodePath("../Panel")
 visible = false
 layout_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_m3t2y")
-}
+[node name="GameOverScreen" parent="." instance=ExtResource("9_178yp")]
+visible = false
+layout_mode = 1
