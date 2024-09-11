@@ -2,10 +2,16 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 namespace Game.Minigames
 {
+	public interface ISlowable {
+		public float SlowPercentage {get; set;}
+		void Slow(double percentage, double duration, bool fromOriginalSpeed);
+	}
+
 	[GlobalClass, Tool]
-	public partial class MathEnemy : CharacterBody2D
+	public partial class MathEnemy : CharacterBody2D, ISlowable
 	{
 		static readonly Color HitColor = new("#ff816b");
 
@@ -36,6 +42,12 @@ namespace Game.Minigames
 		protected AnimatedSprite2D _enemySprite;
 		protected NavigationAgent2D _navigationAgent;
 		private int _health = 20;
+		private bool dead;
+
+		// Slowing variables.
+		public float SlowPercentage { get; set; } = 0;
+		private float _original_speed;
+		private Timer _slow_timer;
 
 		private Vector2 MovementTarget 
 		{
@@ -58,7 +70,8 @@ namespace Game.Minigames
 		public void Die()
 		{
             EmitSignal(SignalName.Died);
-			_navigationAgent.Velocity = Vector2.Zero;
+			GetNode<AnimatedSprite2D>("Sprite").Stop();
+			dead = true;
 
 			PlayDeathAnimation(() => QueueFree());
 			var smoke = GetNodeOrNull<CpuParticles2D>("DeathSmoke");
@@ -70,10 +83,25 @@ namespace Game.Minigames
 			}
         }
 
+		public void Slow(double percentage, double duration, bool fromOriginalSpeed = true) {
+			Speed = fromOriginalSpeed 
+			? _original_speed - (_original_speed * (float) percentage)
+			: Speed - (Speed * (float) percentage);
+
+			SlowPercentage = (float) percentage;
+
+			if (duration > _slow_timer.TimeLeft)
+				_slow_timer.Start(duration);
+		}
+
 		public override void _Ready()
 		{
 			_enemySprite = GetNodeOrNull<AnimatedSprite2D>("Sprite");
 			_navigationAgent = GetNodeOrNull<NavigationAgent2D>("NavigationAgent2D");
+			_slow_timer = GetNodeOrNull<Timer>("SlowTimer");
+			_original_speed = Speed;
+
+			_slow_timer.Timeout += OnSlowTimerOut;
 
 			if (!Engine.IsEditorHint()) Callable.From(ActorSetup).CallDeferred();
 		}
@@ -88,15 +116,13 @@ namespace Game.Minigames
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (_navigationAgent.IsNavigationFinished() || Engine.IsEditorHint()) return;
-
+			if (_navigationAgent.IsNavigationFinished() || Engine.IsEditorHint() || dead) return;
 
 			var currentPosition = GlobalTransform.Origin;
 			var nextPosition = _navigationAgent.GetNextPathPosition();
 
 			Velocity = currentPosition.DirectionTo(nextPosition) * Speed;
 			MoveAndSlide();
-
 		}
 
 		public override string[] _GetConfigurationWarnings()
@@ -112,6 +138,11 @@ namespace Game.Minigames
 		{
 			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 			MovementTarget = Destination;
+		}
+
+		private void OnSlowTimerOut() {
+			Speed = _original_speed;
+			SlowPercentage = 0;
 		}
 
 		private void PlayHitAnimation(Action afterAnimation = null)

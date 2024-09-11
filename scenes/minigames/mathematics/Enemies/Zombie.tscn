@@ -82,7 +82,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 7
 script = ExtResource("1_8hoew")
 Health = 75
-Speed = 10.0
+Speed = 6.5
 Damage = 8
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -129,3 +129,6 @@ color_ramp = SubResource("Gradient_no1j0")
 libraries = {
 "": SubResource("AnimationLibrary_um1hw")
 }
+
+[node name="SlowTimer" type="Timer" parent="."]
+one_shot = true

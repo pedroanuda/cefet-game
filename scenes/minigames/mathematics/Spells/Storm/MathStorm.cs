@@ -12,6 +12,9 @@ namespace Game.Minigames
         [Export(PropertyHint.Range, "0,200")]
         public float LightningHeightLimit { get; set; } = 200;
 
+        [Export]
+        public int DamageAmount { get; set; } = 35;
+
         private Timer _deletionTimer;
         private Timer _lightningTimer;
         private Node2D _lightningsNode;
@@ -25,6 +28,17 @@ namespace Game.Minigames
             _lightningsNode = GetNode<Node2D>("Lightnings");
             _anPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _deletionTimer.Timeout += () => _anPlayer.Play("disappearance");
+        }
+
+        public override void _PhysicsProcess(double delta)
+        {
+            foreach (var e in enemiesInArea) {
+                if (e is not ISlowable || e.SlowPercentage >= 0.5) return;
+                e.Slow(
+                    e.SlowPercentage < 0.1 ? 0.1d : (50 / 3) * delta,
+                    _lightningTimer.TimeLeft
+                );
+            }
         }
 
         private void OnAnimationFinished(StringName animationName)
@@ -82,7 +96,7 @@ namespace Game.Minigames
 
                 _lightningsNode.AddChild(instance);
                 instance.Play("default");
-                enemy.TakeDamage(35);
+                enemy.TakeDamage(DamageAmount + (int) (enemy.SlowPercentage * DamageAmount));
             }
         }
     }
