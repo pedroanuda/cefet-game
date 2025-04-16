@@ -17,7 +17,7 @@ texture_margin_right = 15.0
 texture_margin_bottom = 21.0
 region_rect = Rect2(3, 3, 144, 69)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0yoc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioeng"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_capny"]
 content_margin_left = 15.0
@@ -190,7 +190,7 @@ Button/constants/outline_size = 7
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_ydjj5")
 Button/styles/disabled = SubResource("StyleBoxTexture_4lwmu")
-Button/styles/focus = SubResource("StyleBoxEmpty_v0yoc")
+Button/styles/focus = SubResource("StyleBoxEmpty_ioeng")
 Button/styles/hover = SubResource("StyleBoxFlat_capny")
 Button/styles/normal = SubResource("StyleBoxFlat_p0hlx")
 Button/styles/pressed = SubResource("StyleBoxFlat_tccvi")

@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdkw38huqp264"]
+[gd_scene load_steps=8 format=3 uid="uid://bdkw38huqp264"]
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_e4bqr"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/SpellSlot/SpellSlot.cs" id="2_g81eh"]
+[ext_resource type="Texture2D" uid="uid://badyj0l63mbrh" path="res://src/tiles/mathematics/light.png.png" id="3_ps48p"]
+[ext_resource type="Texture2D" uid="uid://c1qtln45av3nf" path="res://src/items/mathematics/freez-breath-icon.png" id="4_3yhmi"]
+[ext_resource type="Texture2D" uid="uid://d3bagbsufw5d6" path="res://src/ui/minigames/mathematics/selection_arrow.png" id="5_4qo0d"]
+[ext_resource type="Texture2D" uid="uid://ciu2tf3hrfgjc" path="res://src/ui/buttons/button_3.png" id="5_no137"]
+[ext_resource type="Texture2D" uid="uid://rxacrjbosv2r" path="res://src/ui/buttons/button_0.png" id="6_d6drk"]
 
 [node name="SpellSlot" type="PanelContainer"]
 theme = ExtResource("1_e4bqr")
 theme_type_variation = &"SlotPanel"
 script = ExtResource("2_g81eh")
+
+[node name="highlight_sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(37.5, 37.5)
+scale = Vector2(0.585938, 0.585938)
+texture = ExtResource("3_ps48p")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(65, 65)
@@ -17,6 +28,82 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="IconRect" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
 layout_mode = 2
+texture = ExtResource("4_3yhmi")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Helpers" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="Helpers"]
+layout_mode = 2
+offset_left = -121.0
+offset_top = -3.0
+offset_right = -25.0
+offset_bottom = 15.0
+scale = Vector2(1.475, 1.475)
+pivot_offset = Vector2(96, 0)
+alignment = 2
+
+[node name="SelectionHelper" type="HBoxContainer" parent="Helpers/Labels"]
+layout_mode = 2
+alignment = 2
+
+[node name="SelectLabel" type="Label" parent="Helpers/Labels/SelectionHelper"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
+text = "Selecionar"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Helpers/Labels/SelectionHelper"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("5_no137")
+expand_mode = 2
+
+[node name="SelectionHelper2" type="HBoxContainer" parent="Helpers/Labels"]
+layout_mode = 2
+alignment = 2
+
+[node name="ThrowLabel" type="Label" parent="Helpers/Labels/SelectionHelper2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
+text = "Lançar"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Helpers/Labels/SelectionHelper2"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_d6drk")
+expand_mode = 2
+
+[node name="Arrows" type="Node2D" parent="."]
+visible = false
+
+[node name="up" type="Sprite2D" parent="Arrows"]
+texture_filter = 1
+position = Vector2(37.6, 0)
+rotation = -1.5708
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_4qo0d")
+offset = Vector2(0, 0.5)
+
+[node name="down" type="Sprite2D" parent="Arrows"]
+texture_filter = 1
+position = Vector2(37.6, 74.5)
+rotation = -1.5708
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_4qo0d")
+offset = Vector2(0, 0.5)
+flip_h = true

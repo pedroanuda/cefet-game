@@ -37,19 +37,16 @@ theme_override_constants/separation = 19
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 20
-alignment = 1
 
-[node name="Dialogue" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Dialogue" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 221)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 8
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Dialogue"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 1
 anchors_preset = 15
@@ -60,7 +57,7 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_74ngh")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Dialogue"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 1
 anchors_preset = 15
@@ -74,7 +71,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TextBody" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Dialogue/MarginContainer"]
+[node name="TextBody" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -83,3 +80,11 @@ bbcode_enabled = true
 text = "[b]Hey[/b]
 
 sdflkdjsflksdjfsdlfkjaçlkjf"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1

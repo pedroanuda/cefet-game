@@ -12,6 +12,8 @@ namespace Game.UI
         [Export(PropertyHint.File, "*.tscn,*.scn")] public string GuideRowScenePath { get; set; }
         [Export] public Panel ModulatePanel { get; set; }
 
+        public bool Opened { get => opened; }
+
         private Button openButton;
         private bool opened = false;
         private bool mouseInside = false;

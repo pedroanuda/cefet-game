@@ -5,17 +5,20 @@ using Game.Minigames;
 using System.Linq;
 using Game.Items;
 using Game.Gameplay;
+using Extensions;
 
 namespace Game.UI
 {
     public partial class MathUi : Control
     {
         // Questions and Answers
+        private List<QuestionAndAnswers> _questions;
         private PanelContainer _answersBox;
         private GridContainer _answersContainer;
         private FlowContainer _questionsContainer;
         private AnimationPlayer _animationPlayer;
         private string _focusedQuestion;
+        private int _questionsIndex = 0;
 
         // Spells
         private BoxContainer _spellsContainer;
@@ -25,10 +28,11 @@ namespace Game.UI
         private Area2D _playableArea;
         private Items.Item _draggedItem;
         private Drag _dragInstance;
+        private SpellSlot _dragSlot;
 
         // Virtual Actions
         public Action<string> OnAnswerCorrect;
-        public Action<Items.Item[]> CheckRecipe;
+        public Func<Items.Item[], bool> CheckRecipe;
         public Action<Node, MathSpell> DropConclusion;
 
         // Helpers
@@ -36,6 +40,73 @@ namespace Game.UI
 
         [Export]
         private PackedScene _spellSlotScene;
+
+        // Ui Focus
+        private Label _switchingLabel;
+        private SpellSlot lastSelectedSpell = null;
+        private Control lastSelectedAnswer = null;
+        private Control lastSelectedQuestion = null;
+        private bool _questionsFocusMode = true;
+        private bool _spellsFocusMode = false;
+        private bool _answersFocusMode = false;
+        private bool _dialogueOnScreen = false;
+        private bool _spellCastingMode = false;
+
+        public bool QuestionsFocusMode
+        {
+            get => _questionsFocusMode;
+            set
+            {
+                if (_questionsFocusMode == value) return;
+
+                _questionsFocusMode = value;
+                foreach (var q in _questionsContainer.GetChildren())
+                {
+                    if (q is not Control cq) return;
+                    cq.FocusMode = value 
+                        ? FocusModeEnum.All 
+                        : FocusModeEnum.None;
+                }
+            }
+        }
+
+        public bool SpellsFocusMode
+        {
+            get => _spellsFocusMode;
+            set
+            {
+                if (_spellsFocusMode == value) return;
+                _spellsFocusMode = value;
+
+                foreach (var spellC in _spellsContainer.GetChildren())
+                {
+                    if (spellC is not SpellSlot c) break;
+                    c.FocusMode = value && c.Item is not null
+                        ? FocusModeEnum.All
+                        : FocusModeEnum.None;
+                }
+            }
+        }
+        
+        public bool AnswersFocusMode
+        {
+            get => _answersFocusMode;
+            set
+            {
+                if (_answersFocusMode == value) return;
+                _answersFocusMode = value;
+
+                foreach (var ans in _answersContainer.GetChildren())
+                {
+                    if (ans is not Control c) break;
+                    c.FocusMode = value
+                        ? FocusModeEnum.All
+                        : FocusModeEnum.None;
+                }
+            }
+        }
+
+        public Vector2 PreviewPosition { get => _dragInstance.PreviewPosition; }
 
         public override void _Ready()
         {
@@ -46,16 +117,107 @@ namespace Game.UI
             _spellsContainer = GetNode<BoxContainer>("%SpellsContainer");
             _dragInstance = GetNode<Drag>("../Drag");
             _parchment = GetNode<MathParchment>("Parchment");
+            _switchingLabel = GetNode<Label>("%SwitchingLabel");
 
             GetNode<TextureButton>("%PauseButton").Pressed += () => GetNodeOrNull<PauseScreen>("../PauseScreen")?.HandlePause();
             foreach (var c in _questionsContainer.GetChildren()) c.QueueFree();
         }
 
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            if (@event.IsActionReleased("backy_back"))
+            {
+                if (!QuestionsFocusMode && !_parchment.Opened)
+                {
+                    AnswersFocusMode = false;
+                    QuestionsFocusMode = true;
+                    SpellsFocusMode = false;
+                    _switchingLabel.Text = SpellsFocusMode ? "Quest\u00F5es" : "Feiti\u00e7os";
+
+                    if (!_spellCastingMode)
+                        HideAnswers();
+                    else
+                    {
+                        _dragInstance.Stop();
+                        _dragSlot?.StopDragging();
+
+                        _spellCastingMode = false;
+                    }
+
+                    lastSelectedQuestion?.GrabFocus();
+                    return;
+                }
+                OpenParchment();
+            }
+            else if (@event.IsActionReleased("switch_selection"))
+            {
+                if (AnswersFocusMode)
+                    HideAnswers();
+
+                AnswersFocusMode = false;
+                QuestionsFocusMode = _spellCastingMode ? false : SpellsFocusMode;
+                SpellsFocusMode = _spellCastingMode ? true : !SpellsFocusMode;
+                _switchingLabel.Text = SpellsFocusMode ? "Quest\u00F5es" : "Feiti\u00e7os";
+
+                if (_spellCastingMode) {
+                    _dragInstance.Stop();
+                    _dragSlot.StopDragging();
+
+                    _spellCastingMode = false;
+                }
+
+                if (QuestionsFocusMode) {
+                    lastSelectedQuestion?.GrabFocus();
+                    DesselectSlots();
+                }
+                else if (SpellsFocusMode)
+                    _spellsContainer.GetChild<Control>(0).GrabFocus();
+            }
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+            var isGamepad = GetNode<Global>("/root/Global").GamepadOn;
+            _switchingLabel.GetParent<Control>().Visible = isGamepad;
+
+            if (!isGamepad)
+                return;
+
+            if (@event.IsActionReleased("specialPress") && lastSelectedSpell.IsSpell)
+            {
+                DesselectSlots();
+                _switchingLabel.Text = "Feiti\u00e7os";
+                if (!_spellCastingMode) return;
+
+                _dragInstance.OnDropAction?.Invoke(@event);
+                _dragInstance.Stop();
+                _dragSlot.StopDragging();
+
+                _spellCastingMode = false;
+                SpellsFocusMode = false;
+                QuestionsFocusMode = true;
+                AnswersFocusMode = false;
+
+                lastSelectedQuestion.GrabFocus();
+                _switchingLabel.Text = "Feiti\u00e7os";
+            }
+        }
+
         public void AddQuestions(List<QuestionAndAnswers> qAndAns)
         {
-            foreach (var q in qAndAns)
+            _questions = qAndAns;
+
+            for (int i = 0; i < qAndAns.Count; i++)
             {
-                _questionsContainer.AddChild(GetQuestionButton(q));
+                if (i == 6)
+                    break;
+
+                var button = GetQuestionButton(qAndAns[i]);
+                _questionsContainer.AddChild(button);
+                _questionsIndex++;
+
+                if (i == 0) 
+                    button.GrabFocus();
             }
             AdjustAnimations();
         }
@@ -69,8 +231,19 @@ namespace Game.UI
             {
                 var slot = _spellSlotScene.Instantiate<SpellSlot>();
                 slot.Pressed += OnSlotPressed;
-                slot.StartDrag += () => _draggedItem = slot.Item;
-                slot.StopDrag += () => _draggedItem = null;
+                slot.StartDrag += () => {
+                    _draggedItem = slot.Item;
+                    _dragSlot = slot;
+                };
+                slot.StopDrag += () => {
+                    _draggedItem = null;
+                    _dragSlot = null;
+                };
+                slot.FocusEntered += () => lastSelectedSpell = slot;
+                slot.SpecialPressed += (e, slot) => {
+                    _spellCastingMode = true;
+                    SpellsFocusMode = false;
+                };
                 _spellsContainer.AddChild(slot);
             }
         }
@@ -85,6 +258,23 @@ namespace Game.UI
             };
             area.MouseExited += () =>
             {
+                foreach (var slot in _spellsContainer.GetChildren())
+                    (slot as SpellSlot).AllowDemoPreview = false;
+                _dragInstance.OnDropAction = null;
+            };
+
+            area.AreaEntered += Area =>
+            {
+                //GD.Print($"{Area.GetParent().Name}: {Area.GetParent().IsInGroup("preview")}");
+                if (!Area.GetParent().IsInGroup("preview")) return;
+                foreach (var slot in _spellsContainer.GetChildren())
+                    (slot as SpellSlot).AllowDemoPreview = true;
+                _dragInstance.OnDropAction = OnSucessfulDrop;
+            };
+
+            area.AreaExited += Area =>
+            {
+                if (!Area.GetParent().IsInGroup("preview")) return;
                 foreach (var slot in _spellsContainer.GetChildren())
                     (slot as SpellSlot).AllowDemoPreview = false;
                 _dragInstance.OnDropAction = null;
@@ -105,22 +295,32 @@ namespace Game.UI
 
         public void OpenDialogue(DialogueCollection d, Action finishAction = null)
         {
+            _dialogueOnScreen = true;
             var panel = GetNode<Panel>("Panel");
             panel.Visible = true;
+            lastSelectedQuestion.ReleaseFocus();
             GetNode<DialogueUi>("DialogueUi").Open(d, () =>
             {
                 finishAction?.Invoke();
+                _dialogueOnScreen = false;
             });
         }
 
         public void AddToParchment(Item item) =>
             _parchment.AddRecipesWith(item);
 
-        public void OpenParchment() =>
+        public void OpenParchment()
+        {
+            if (_parchment.Opened)
+                lastSelectedQuestion.GrabFocus();
+            else
+                lastSelectedQuestion?.ReleaseFocus();
             _parchment.Toggle();
+        }
 
         public void OpenParchment(Item itemExpected)
         {
+            lastSelectedQuestion?.ReleaseFocus();
             _parchment.Visible = true;
             _parchment.ShowRecipesWith(itemExpected);
         }
@@ -131,18 +331,58 @@ namespace Game.UI
             GetNode<MathGameOverScreen>("GameOverScreen").TriggerUi();
         }
 
-        private void ChangeAnswers(QuestionAndAnswers q)
+        public void SetRoundLabelText(string text)
         {
-            void hideAnswers(StringName s)
+            GetNode<Label>("%RoundLabel").Text = text;
+        }
+
+        public void TriggerMainRoundLabel(string text)
+        {
+            GetNode<Label>("%MainRoundLabel").Text = text;
+
+            GetNode<AnimationPlayer>("MainElements/RoundContainer/AnimationPlayer")
+            .Play("default");
+        }
+
+        public void TriggerVictoryScreen(int score, int defeatedEnemies, int time, int totalScore)
+        {
+            GetNode<Control>("MainElements").Hide();
+            var scr = GetNode<MathVictoryScreen>("VictoryScreen");
+            scr.Score = score;
+            scr.DefeatedEnemies = defeatedEnemies;
+            scr.Time = time;
+            scr.TotalScore = totalScore;
+
+            scr.Show();
+            scr.TriggerThing();
+        }
+
+        private void HideAnswers(Action callback = null)
+        {
+            void onAnimFinished(StringName animName)
             {
                 _answersBox.Visible = false;
-                _animationPlayer.AnimationFinished -= hideAnswers;
-            }
+                _focusedQuestion = null;
+                callback?.Invoke();
 
+                _animationPlayer.AnimationFinished -= onAnimFinished;
+            }
+            _animationPlayer.AnimationFinished += onAnimFinished;
+            _animationPlayer.Play("hide_answers");
+        }
+
+        private void ChangeAnswers(QuestionAndAnswers q)
+        {
             async void onAnswerPressed(string answerText)
             {
-                _animationPlayer.AnimationFinished += hideAnswers;
-                _animationPlayer.Play("hide_answers");
+                if (_animationPlayer.IsPlaying()) return;
+                HideAnswers(() =>
+                {
+                    AnswersFocusMode = false;
+                    QuestionsFocusMode = true;
+                    if (!_dialogueOnScreen)
+                        lastSelectedQuestion?.GrabFocus();
+                });
 
                 var question = _questionsContainer.GetChildren().ToList().Find(qP =>
                 {
@@ -156,6 +396,21 @@ namespace Game.UI
                 {
                     OnAnswerCorrect?.Invoke(q.questionDifficulty);
                     question?.QueueFree();
+
+                    var qIndex = question.GetIndex();
+                    Callable.From(() => {
+                        lastSelectedQuestion = _questionsContainer.GetChildOrNull<Control>(qIndex + 1);
+                    }).CallDeferred();
+
+                    if (_questionsIndex < _questions.Count - 1)
+                        _questionsIndex++;
+                    else
+                    {
+                        _questions.Shuffle();
+                        _questionsIndex = 0;
+                    }
+
+                    _questionsContainer.AddChild(GetQuestionButton(_questions[_questionsIndex]));
                     return;
                 }
 
@@ -165,6 +420,7 @@ namespace Game.UI
             }
 
             // Adding the buttons and giving them their functionalities.
+            var first = true;
             foreach (var c in _answersContainer.GetChildren()) c.QueueFree();
             foreach (var a in q.answers)
             {
@@ -175,8 +431,20 @@ namespace Game.UI
                     CustomMinimumSize = new Vector2(115, 0)
                 };
                 btn.Pressed += () => onAnswerPressed(btn.Text);
+                btn.FocusEntered += () =>
+                {
+                    lastSelectedAnswer = btn;
+                    btn.Modulate = new Color("#bababa");
+                };
+                btn.FocusExited += () => btn.Modulate = new Color("#FFFFFF");
 
                 _answersContainer.AddChild(btn);
+
+                if (first)
+                {
+                    btn.GrabFocus();
+                    first = false;
+                }
             }
             AdjustAnimations();
         }
@@ -187,7 +455,7 @@ namespace Game.UI
             {
                 if (animName == "hide_answers")
                 {
-                    if (_focusedQuestion == qAndAns.question)
+                    if (_focusedQuestion == qAndAns.question || GetNode<Global>("/root/Global").GamepadOn)
                     {
                         _answersBox.Visible = false;
                         _focusedQuestion = null;
@@ -197,8 +465,8 @@ namespace Game.UI
                         _animationPlayer.Play("show_answers_fade_only");
                     }
 
-                    _animationPlayer.AnimationFinished -= onFinishTransition;
                 }
+                _animationPlayer.AnimationFinished -= onFinishTransition;
             }
 
             void onQuestionButtonPressed()
@@ -207,10 +475,12 @@ namespace Game.UI
 
                 if (!_answersBox.Visible)
                 {
+                    ChangeAnswers(qAndAns);
                     _answersBox.Visible = true;
                     _animationPlayer.Play("show_answers");
-                    // _focusedQuestion = qAndAns.question;
-                    ChangeAnswers(qAndAns);
+                    _focusedQuestion = qAndAns.question;
+                    QuestionsFocusMode = false;
+                    AnswersFocusMode = true;
                     return;
                 }
 
@@ -223,12 +493,18 @@ namespace Game.UI
                 CustomMinimumSize = new Vector2(157, 0),
                 ThemeTypeVariation = qAndAns.questionDifficulty switch
                 {
-                    "Easy" => "GreenButton",
-                    "Medium" => "YellowButton",
-                    "Hard" => "RedButton",
+                    "easy" => "GreenButton",
+                    "medium" => "YellowButton",
+                    "hard" => "RedButton",
                     _ => null
                 }
             };
+            btn.FocusEntered += () =>
+            {
+                lastSelectedQuestion = btn;
+                btn.Modulate = new Color("#bababa");
+            };
+            btn.FocusExited += () => btn.Modulate = new Color("#FFFFFF");
             btn.Pressed += onQuestionButtonPressed;
 
             return btn;
@@ -262,8 +538,22 @@ namespace Game.UI
                 if (inventoryItems.Length > i) 
                 {
                     slot.Item = inventoryItems[i];
+                    slot.FocusMode = SpellsFocusMode ? FocusModeEnum.All : FocusModeEnum.None;
                 } 
-                else slot.Item = null;
+                else {
+                    slot.Item = null;
+                    slot.FocusMode = FocusModeEnum.None;
+                }
+            }
+        }
+
+        private void DesselectSlots() {
+            if (_selectedSpellIndex >= 0) {
+                for (int i = 0; i <= _selectedSpellIndex; i++) {
+                    _selectedSpells[i].Selected = false;
+                    _selectedSpells[i] = null;
+                }
+                _selectedSpellIndex = -1;
             }
         }
 
@@ -273,7 +563,7 @@ namespace Game.UI
                 if (slot is SpellSlot spSlot) spSlot.Freezed = state;
         }
 
-        private async void OnSlotPressed(InputEventMouseButton @event, SpellSlot slot)
+        private async void OnSlotPressed(InputEvent @event, SpellSlot slot)
         {
             if (slot.Selected)
             {
@@ -284,31 +574,56 @@ namespace Game.UI
                 _selectedSpellIndex--;
             }
 
-            if (_selectedSpellIndex >= 1)
+            if (_selectedSpellIndex < 1) 
+                return;
+            SetSlotsFreezed(true);
+            await ToSignal(GetTree().CreateTimer(0.25f), SceneTreeTimer.SignalName.Timeout);
+
+            Items.Item[] items = new Items.Item[2];
+            for (int i = 0; i <= _selectedSpellIndex; i++)
             {
-                SetSlotsFreezed(true);
-                await ToSignal(GetTree().CreateTimer(0.25f), SceneTreeTimer.SignalName.Timeout);
-
-                Items.Item[] items = new Items.Item[2];
-                for (int i = 0; i <= _selectedSpellIndex; i++)
-                {
-                    items[i] = _selectedSpells[i].Item;
-                    _selectedSpells[i].Selected = false;
-                    _selectedSpells[i] = null;
-                }
-                _selectedSpellIndex = -1;
-                CheckRecipe?.Invoke(items);
-
-                SetSlotsFreezed(false);
+                items[i] = _selectedSpells[i].Item;
+                _selectedSpells[i].Selected = false;
+                _selectedSpells[i] = null;
             }
+            _selectedSpellIndex = -1;
+            SetSlotsFreezed(false);
+
+            // Checking if recipe was right. If so,
+            // the code continues.
+            var result = CheckRecipe?.Invoke(items);
+            if (result != true) 
+                return;
+
+            // Gets the spells containers and give the correct one a focus;
+            var containers = _spellsContainer.GetChildren();
+            var lSPIdx = lastSelectedSpell.GetIndex();
+
+            if (lastSelectedSpell.Item is null) {
+                var previous = containers[lSPIdx != 0 ? lSPIdx - 1 : 0] as SpellSlot;
+                var next = containers[lSPIdx != containers.Count - 1 ? lSPIdx + 1 : containers.Count - 1] as SpellSlot;
+
+                if (previous.Item is not null)
+                    previous.CallDeferred(Control.MethodName.GrabFocus);
+                else if (next.Item is not null)
+                    next.CallDeferred(Control.MethodName.GrabFocus);
+            }
+            else if (lastSelectedSpell.Item is not null)
+                lastSelectedSpell.CallDeferred(Control.MethodName.GrabFocus);
         }
 
-        private void OnSucessfulDrop(InputEventMouseButton e)
+        private void OnSucessfulDrop(InputEvent e)
         {
             if (_draggedItem is not MathSpell ms || ms.SpellScenePath is null) return;
+
             var spell = GD.Load<PackedScene>(ms.SpellScenePath).Instantiate<Node>();
             if (spell is Node2D spell_2d)
-                spell_2d.Position = e.Position;
+            {
+                if (e is InputEventMouseButton mb)
+                    spell_2d.Position = mb.Position;
+                else if (e is InputEventJoypadButton)
+                    spell_2d.Position = _dragInstance.PreviewPosition;
+            }
             DropConclusion?.Invoke(spell, _draggedItem as MathSpell);
         }
 

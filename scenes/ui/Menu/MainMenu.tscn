@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqmdj2dwc6tbs"]
+[gd_scene load_steps=7 format=3 uid="uid://dqmdj2dwc6tbs"]
 
-[ext_resource type="Theme" uid="uid://0yaj4jmqmnuh" path="res://themes/the_theme.tres" id="1_2d8dj"]
+[ext_resource type="Theme" uid="uid://y4ylw6bm3qts" path="res://themes/main_theme.tres" id="1_gni1a"]
 [ext_resource type="Script" path="res://scenes/ui/Menu/MainMenu.cs" id="2_cytdk"]
-[ext_resource type="PackedScene" uid="uid://0hlftjsvuy6r" path="res://scenes/Scenarios/TesteScenario.tscn" id="3_tu2hm"]
+[ext_resource type="PackedScene" uid="uid://c8su53kxl3s01" path="res://scenes/Scenarios/ClassroomScenario.tscn" id="3_3n8e2"]
+[ext_resource type="Texture2D" uid="uid://m1cg6m0dr7ft" path="res://src/ui/title-picture-pixelated.png" id="4_qtkf1"]
+[ext_resource type="PackedScene" uid="uid://bfbt6mpp82rgs" path="res://scenes/ui/Menu/menu_button.tscn" id="5_0370p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0tma"]
+bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,9 +16,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_2d8dj")
+theme = ExtResource("1_gni1a")
 script = ExtResource("2_cytdk")
-NewGameScene = ExtResource("3_tu2hm")
+NewGameScene = ExtResource("3_3n8e2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a0tma")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -22,28 +36,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_qtkf1")
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+[node name="NewGameButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_0370p")]
 layout_mode = 2
-theme_override_constants/separation = 8
+text = "Novo Jogo
+"
 
-[node name="NewGameButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_0370p")]
+visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-keep_pressed_outside = true
-text = "Novo Jogo"
+text = "Opções
+"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="AboutButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_0370p")]
+visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-keep_pressed_outside = true
-text = "Sair do Jogo"
+text = "Créditos e Atribuições
+"
 
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/NewGameButton" to="." method="OnNewGameButtonPressed"]
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="OnQuitButtonPressed"]
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_0370p")]
+layout_mode = 2
+text = "Sair do Jogo
+"
+
+[node name="VersionLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "v0.0.0a"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="OnNewGameButtonPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="OnQuitButtonPressed"]

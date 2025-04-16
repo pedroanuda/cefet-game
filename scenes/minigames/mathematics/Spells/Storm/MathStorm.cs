@@ -75,7 +75,7 @@ namespace Game.Minigames
 
                 instance.Position = new Vector2(
                     ToLocal(enemy.GlobalPosition).X,
-                    ToLocal(enemy.GlobalPosition).Y - (texture.GetHeight() / 2)
+                    ToLocal(enemy.GlobalPosition).Y - texture.GetHeight()
                 );
 
                 var lightningTop = instance.Position.Y - (texture.GetHeight() / 2);

@@ -2,6 +2,7 @@ using Game.Gameplay;
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace Game.UI
 {
@@ -17,12 +18,14 @@ namespace Game.UI
 
         private void RemoveOptions()
         {
-            var container = GetNode<HBoxContainer>("%OptionsContainer");
+            var container = GetNode<VBoxContainer>("%OptionsContainer");
 
             foreach (var item in container.GetChildren())
             {
                 item.QueueFree();
             }
+
+            container.Hide();
         }
 
         public override void _Ready()
@@ -31,11 +34,26 @@ namespace Game.UI
             Visible = false;
         }
 
-        public override void _UnhandledKeyInput(InputEvent @event)
+        public override void _UnhandledInput(InputEvent @event)
         {
             if (!Visible || isAChooseDialogue) return;
 
-            if (@event is InputEventKey e && e.IsReleased() && e.Keycode == Key.Space)
+            //var buttonsContainer = GetNode("%OptionsContainer").GetChildren();
+            //if (@event.IsActionReleased("confirm") && isAChooseDialogue)
+            //{
+            //    //var chDialogue = (ChooseDialogue)(dialogues[dialogueIndex - 1]);
+            //    if (buttonsContainer[0] is Button btn)
+            //        btn.EmitSignal(Button.SignalName.Pressed);
+            //    return;
+            //}
+            //else if (@event.IsActionReleased("backy_back") && isAChooseDialogue)
+            //{
+            //    if (buttonsContainer[1] is Button btn)
+            //        btn.EmitSignal(Button.SignalName.Pressed);
+            //}
+
+            if ((@event is InputEventKey e && e.IsReleased()) || (@event is InputEventMouseButton e1 && e1.IsReleased())
+                || @event.IsActionReleased("confirm"))
             {
                 if (leftDialogues > 0)
                     Open(dialogues[dialogueIndex]);
@@ -45,6 +63,7 @@ namespace Game.UI
                     Close();
                 }
             }
+            GetViewport().SetInputAsHandled();
         }
 
         public void Open(DialogueCollection dialogueCollection, Action onFinish = null, Node2D origin = null)
@@ -60,18 +79,6 @@ namespace Game.UI
 
                         var handler = GetNode<TransitionHandler>("/root/TransitionHandler");
                         handler.StartingPosition = TransitionOrigin;
-                        //
-                        //void onHalf()
-                        //{
-                        //    GetNode<Global>("/root/Global")
-                        //    .GoToScene(dialogueCollection.EndingExpression, () =>
-                        //    handler.Play("change_to_minigame_end"));
-                        //
-                        //    handler.TransitionInHalf -= onHalf;
-                        //}
-                        //
-                        //handler.TransitionInHalf += onHalf;
-                        //handler.Play("change_to_minigame_start");
                         GetNode<Global>("/root/Global")
                         .TransitionToScene(
                             dialogueCollection.EndingExpression,
@@ -116,7 +123,7 @@ namespace Game.UI
 
             string title = dialogue.Title switch
             {
-                "{character}" => "Gustavo Black",
+                "{character}" => "Vit\u00f3ria",
                 _ => dialogue.Title,
             };
 
@@ -127,19 +134,19 @@ namespace Game.UI
                 isAChooseDialogue = true;
                 Input.MouseMode = Input.MouseModeEnum.Visible;
 
+                var container = GetNode<VBoxContainer>("%OptionsContainer");
                 foreach (var item in dialogueChoosing.Options)
                 {
-                    var option = new Button();
-                    option.AddThemeStyleboxOverride(
-                        "normal",
-                        GD.Load<StyleBoxFlat>("res://scenes/ui/Dialogue/OptionStyleBox.tres")
-                    );
+                    var option = ResourceLoader.Load<PackedScene>("res://scenes/ui/Menu/menu_button.tscn").Instantiate<Button>();
 
                     option.Text = item.OptionText;
                     option.Pressed += () => ChooseOption(item);
 
-                    GetNode<HBoxContainer>("%OptionsContainer").AddChild(option);
+                    container.AddChild(option);
+                    option.SizeFlagsVertical = SizeFlags.ExpandFill;
                 }
+                container.Show();
+                (container.GetChildren()[0] as Button).GrabFocus();
             }
             else
             {

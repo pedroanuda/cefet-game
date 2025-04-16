@@ -175,12 +175,12 @@ _data = {
 "open": SubResource("Animation_l5ws4")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yi06o"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1exk"]
 content_margin_left = 5.0
 content_margin_right = 5.0
 bg_color = Color(0.215686, 0.215686, 0.215686, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yi06o"]
 
 [node name="Parchment" type="Control"]
 layout_mode = 3
@@ -231,18 +231,23 @@ offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="RecipesContainer" type="VBoxContainer" parent="Parchment/Control"]
-unique_name_in_owner = true
+[node name="VScrollBar" type="ScrollContainer" parent="Parchment/Control"]
 layout_mode = 2
+
+[node name="RecipesContainer" type="VBoxContainer" parent="Parchment/Control/VScrollBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 285)
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 alignment = 1
 
-[node name="GuideRow" parent="Parchment/Control/RecipesContainer" instance=ExtResource("3_yrsgu")]
+[node name="GuideRow" parent="Parchment/Control/VScrollBar/RecipesContainer" instance=ExtResource("3_yrsgu")]
 layout_mode = 2
 
 [node name="roll1" type="Sprite2D" parent="Parchment"]
@@ -281,9 +286,10 @@ offset_top = -15.5
 offset_right = 18.0
 offset_bottom = 15.5
 grow_vertical = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 51
-theme_override_styles/normal = SubResource("StyleBoxFlat_k1exk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yi06o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k1exk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k1exk")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yi06o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k1exk")
 text = ">"

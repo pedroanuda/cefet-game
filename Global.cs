@@ -9,11 +9,14 @@ namespace Game
     {
         private Node currentScene;
         private Action changeSceneAction;
+        private Godot.Collections.Array<Godot.Collections.Dictionary> _leaderBoard;
+        private bool _fullscreened = false;
+        public bool GamepadOn { get; set; } = false;
 
-        public override void _Ready()
+        public void GoToScene(string scenePath, Action onChangedScene = null)
         {
-            var root = GetTree().Root;
-            currentScene = root.GetChild(root.GetChildCount() - 1);
+            CallDeferred(MethodName.DefferedGoToScene, scenePath);
+            changeSceneAction = onChangedScene;
         }
 
         public void TransitionToScene(string scenePath, string message = null, 
@@ -47,13 +50,45 @@ namespace Game
                 message,
                 timeOnScreen
             );
+        }
+
+        public override void _Ready()
+        {
+            var root = GetTree().Root;
+            currentScene = root.GetChild(root.GetChildCount() - 1);
+
             
         }
 
-        public void GoToScene(string scenePath, Action onChangedScene = null)
+        public override void _Input(InputEvent @event)
         {
-            CallDeferred(MethodName.DefferedGoToScene, scenePath);
-            changeSceneAction = onChangedScene;
+            if (@event.IsActionReleased("toggle_fullscreen"))
+            {
+                DisplayServer.WindowSetMode(_fullscreened
+                    ? DisplayServer.WindowMode.Windowed
+                    : DisplayServer.WindowMode.Fullscreen);
+
+                _fullscreened = !_fullscreened;
+                GetViewport().SetInputAsHandled();
+            }
+        }
+
+        private void LoadLeaderboard() 
+        {
+            var fileLocation = "user://leaderboard.json";
+            if (FileAccess.FileExists(fileLocation))
+            {
+                var f = FileAccess.GetFileAsString(fileLocation);
+                _leaderBoard = Json.ParseString(f).As<Godot.Collections.Array<Godot.Collections.Dictionary>>();
+            }
+            else _leaderBoard = new();
+        }
+
+        private void SaveLeaderboard()
+        {
+            var fileLocation = "user://leaderboard.json";
+            var f = FileAccess.Open(fileLocation, FileAccess.ModeFlags.Write);
+            
         }
 
         private void DefferedGoToScene(string scenePath)

@@ -13,7 +13,8 @@ namespace Game.Minigames
 	[GlobalClass, Tool]
 	public partial class MathEnemy : CharacterBody2D, ISlowable
 	{
-		static readonly Color HitColor = new("#ff816b");
+		public static readonly Color HitColor = new("#ff816b");
+		static readonly Color FrozenColor = new("#1297ff");
 
 		[Signal]
 		public delegate void DiedEventHandler();
@@ -41,13 +42,17 @@ namespace Game.Minigames
 
 		protected AnimatedSprite2D _enemySprite;
 		protected NavigationAgent2D _navigationAgent;
+		private AnimationPlayer _animPlayer;
 		private int _health = 20;
 		private bool dead;
 
 		// Slowing variables.
+		public bool Frozen { get; set; } = false;
 		public float SlowPercentage { get; set; } = 0;
 		private float _original_speed;
 		private Timer _slow_timer;
+
+		public bool Dead { get => dead; }
 
 		private Vector2 MovementTarget 
 		{
@@ -58,10 +63,11 @@ namespace Game.Minigames
 			}
 		}
 
-		public virtual void TakeDamage(int amount) 
-		{ 
+		public virtual void TakeDamage(int amount, bool animationOn = true) 
+		{
+			if (Health <= 0) return;
 			Health -= amount;
-			PlayHitAnimation();
+			if (animationOn) PlayHitAnimation();
 
 			if (Health <= 0)
 				Die();
@@ -84,6 +90,7 @@ namespace Game.Minigames
         }
 
 		public void Slow(double percentage, double duration, bool fromOriginalSpeed = true) {
+			if (Frozen || Dead) return;
 			Speed = fromOriginalSpeed 
 			? _original_speed - (_original_speed * (float) percentage)
 			: Speed - (Speed * (float) percentage);
@@ -92,6 +99,28 @@ namespace Game.Minigames
 
 			if (duration > _slow_timer.TimeLeft)
 				_slow_timer.Start(duration);
+			else
+				_slow_timer.Start();
+		}
+
+		public void Freeze(double duration)
+		{
+			var timer = GetNode<Timer>("FreezeTimer");
+			var sprite = GetNode<AnimatedSprite2D>("Sprite");
+			Speed = 0;
+			sprite.Stop();
+			Frozen = true;
+
+			if (duration > timer.WaitTime)
+				timer.WaitTime = duration;
+
+			Modulate = FrozenColor;
+			timer.Start();
+		}
+
+		public void Unfreeze()
+		{
+
 		}
 
 		public override void _Ready()
@@ -100,6 +129,7 @@ namespace Game.Minigames
 			_navigationAgent = GetNodeOrNull<NavigationAgent2D>("NavigationAgent2D");
 			_slow_timer = GetNodeOrNull<Timer>("SlowTimer");
 			_original_speed = Speed;
+			_animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 			_slow_timer.Timeout += OnSlowTimerOut;
 
@@ -145,16 +175,32 @@ namespace Game.Minigames
 			SlowPercentage = 0;
 		}
 
+		private void OnFreezeTimerOut()
+		{
+			GetNode<AnimatedSprite2D>("Sprite").Play();
+			Frozen = false;
+			Slow(0.5, 5);
+
+			// Animation Handling
+			if (_animPlayer.HasAnimation("unfreeze"))
+			{
+				var anim = _animPlayer.GetAnimation("unfreeze");
+				var trIdx = anim.FindTrack(".:modulate", Animation.TrackType.Value);
+
+				anim.TrackSetKeyValue(trIdx, 0, FrozenColor);
+				_animPlayer.Play("unfreeze");
+			}
+		}
+
 		private void PlayHitAnimation(Action afterAnimation = null)
 		{
-			var anPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 			void onEnd(StringName animName)
 			{
 				afterAnimation?.Invoke();
-				anPlayer.AnimationFinished -= onEnd;
+				_animPlayer.AnimationFinished -= onEnd;
 			}
 
-			if (!anPlayer.HasAnimation("hit"))
+			if (!_animPlayer.HasAnimation("hit"))
 			{
 				var hitAnim = new Animation();
 				var trackIdx = hitAnim.AddTrack(Animation.TrackType.Value);
@@ -164,28 +210,27 @@ namespace Game.Minigames
 				hitAnim.TrackInsertKey(trackIdx, .25f, HitColor);
 				hitAnim.TrackInsertKey(trackIdx, .5f, new Color("#ffffff"));
 
-				anPlayer.GetAnimationLibrary("").AddAnimation("hit", hitAnim);
-				anPlayer.Play("hit");
+				_animPlayer.GetAnimationLibrary("").AddAnimation("hit", hitAnim);
+				_animPlayer.Play("hit");
 				return;
 			}
 
-			var anim = anPlayer.GetAnimation("hit");
+			var anim = _animPlayer.GetAnimation("hit");
 			var track = anim.FindTrack(".:modulate", Animation.TrackType.Value);
 			anim.TrackSetKeyValue(track, 0, Modulate);
 			anim.TrackSetKeyValue(track, 1, HitColor);
 			anim.TrackSetKeyValue(track, 2, new Color("#ffffff"));
 
-			if (afterAnimation is not null) anPlayer.AnimationFinished += onEnd;
-			anPlayer.Play("hit");
+			if (afterAnimation is not null) _animPlayer.AnimationFinished += onEnd;
+			_animPlayer.Play("hit");
 		}
 
 		private void PlayDeathAnimation(Action onEnd)
 		{
-			var anPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-			anPlayer.AnimationFinished += (StringName animName) => onEnd();
-			if (anPlayer.HasAnimation("death"))
+			_animPlayer.AnimationFinished += (StringName animName) => onEnd();
+			if (_animPlayer.HasAnimation("death"))
 			{
-				anPlayer.Play("death");
+				_animPlayer.Play("death");
 				return;
 			}
 
@@ -196,8 +241,8 @@ namespace Game.Minigames
 			animation.TrackInsertKey(track, 0, Modulate);
 			animation.TrackInsertKey(track, .10f, HitColor);
 
-			anPlayer.GetAnimationLibrary("").AddAnimation("death", animation);
-			anPlayer.Play("death");
+			_animPlayer.GetAnimationLibrary("").AddAnimation("death", animation);
+			_animPlayer.Play("death");
 		}
 	}
 }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmwmdspyx7fp5"]
+[gd_scene load_steps=4 format=3 uid="uid://dmwmdspyx7fp5"]
 
 [ext_resource type="Script" path="res://scenes/ui/InventoryUI/InventoryUI.cs" id="1_hm5g2"]
 [ext_resource type="PackedScene" uid="uid://dag5tt3yylkli" path="res://scenes/ui/InventoryUI/ItemSlot.tscn" id="1_p8v6s"]
-[ext_resource type="Texture2D" uid="uid://d1ofqqqwt2to0" path="res://src/buttons/Gamepad_X.png" id="2_apf2g"]
 [ext_resource type="PackedScene" uid="uid://ccsh5iw2c3w07" path="res://scenes/ui/InventoryUI/SpecialItemSlot.tscn" id="3_m4vej"]
 
 [node name="InventoryUi" type="Control"]
@@ -114,7 +113,6 @@ unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(0, 227.61)
 layout_mode = 2
-texture = ExtResource("2_apf2g")
 expand_mode = 2
 stretch_mode = 5
 

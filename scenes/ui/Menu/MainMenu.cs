@@ -10,13 +10,13 @@ namespace Game.UI
 
 		public override void _Ready()
 		{
-			var button = GetNode<Button>("MarginContainer/CenterContainer/VBoxContainer/NewGameButton");
+			var button = GetNode<Button>("MarginContainer/VBoxContainer/NewGameButton");
 			button.GrabFocus();
 		}
 
 		private void OnNewGameButtonPressed()
 		{
-			GetNode<Global>("/root/Global").GoToScene(NewGameScene.ResourcePath);
+			GetNode<Global>("/root/Global").TransitionToScene(NewGameScene.ResourcePath);
 		}
 
 		private void OnQuitButtonPressed()

@@ -67,6 +67,8 @@ namespace Game.Gameplay
                     SelectedInteractable = nearest;
                 return;
             }
+            if (SelectedInteractable is NpcInteractableArea npcArea)
+                npcArea.GetParent<Entities.Npc>().PlayAnimation("idle");
             SelectedInteractable = null;
         }
 
@@ -76,6 +78,14 @@ namespace Game.Gameplay
             {
                 interactionCursor?.QueueFree();
                 interactionCursor = null;
+                return;
+            }
+
+            if (SelectedInteractable is NpcInteractableArea npcArea)
+            {
+                var npc = npcArea.GetParent<Entities.Npc>();
+                if (npcArea.GetParent<Entities.Npc>().HasSelectState)
+                    npc.PlayAnimation("idle_selected");
                 return;
             }
 
@@ -112,7 +122,7 @@ namespace Game.Gameplay
 
             GetNearestInteractable();
             if (Input.IsActionJustReleased(InteractionAction) &&
-                SelectedInteractable is not null)
+                SelectedInteractable is not null && ((Player)Interactor).AllowActions)
             {
                 SelectedInteractable.StartInteraction(Interactor);
             }

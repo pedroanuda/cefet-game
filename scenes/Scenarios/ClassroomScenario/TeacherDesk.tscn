@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwnqaaalxpvb"]
+
+[ext_resource type="Texture2D" uid="uid://b62l1tmha5tui" path="res://src/misc/World/teacher_desk.png" id="1_nveys"]
+
+[node name="TeacherDesk" type="StaticBody2D"]
+texture_filter = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-19.5, -5, -5.5, -5, -5.5, -8, 5.5, -8, 5.5, -5, 19.5, -5, 19.5, 17, -19.5, 17)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.278431)
+polygon = PackedVector2Array(19, 18, -19, 18, -19, 1, 19, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nveys")
+offset = Vector2(1.5, 0)

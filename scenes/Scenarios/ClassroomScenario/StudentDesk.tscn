@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7etykk20vn6n"]
+
+[ext_resource type="Texture2D" uid="uid://ci2uaciqqjsdl" path="res://src/misc/World/student_desk.png" id="1_driny"]
+
+[node name="StudentDesk" type="StaticBody2D"]
+scale = Vector2(1.35, 1.35)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-12, 18, 12, 18, 12, 12, 22, 12, 22, -15.3333, -22, -15.3333, -22, 12, -12, 12)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.278431)
+antialiased = true
+polygon = PackedVector2Array(-22.2222, 11.8519, -22.2222, 0, 22.2222, 0, 22.2222, 11.8519, 11.8519, 11.8519, 11.8519, 17.7778, -12.5926, 17.7778, -11.8519, 11.8519)
+
+[node name="StudentDesk" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_driny")
+offset = Vector2(-1, 0)

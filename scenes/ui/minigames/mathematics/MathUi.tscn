@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcekdwfv7ruq0"]
+[gd_scene load_steps=20 format=3 uid="uid://bcekdwfv7ruq0"]
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_3pqhh"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathUi.cs" id="2_qow2w"]
@@ -6,11 +6,98 @@
 [ext_resource type="Texture2D" uid="uid://w20d83vagxey" path="res://src/ui/minigames/mathematics/pause-icon.png" id="4_hk82x"]
 [ext_resource type="Texture2D" uid="uid://b58vkx8cwk5rv" path="res://src/ui/minigames/mathematics/heart-empty.png" id="5_m2h13"]
 [ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://src/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
+[ext_resource type="Texture2D" uid="uid://dfkxnaxtwic6t" path="res://src/ui/buttons/button_1.png" id="7_hrypn"]
 [ext_resource type="PackedScene" uid="uid://duiuh1rcwnwgp" path="res://scenes/ui/minigames/mathematics/parchment/Parchment.tscn" id="7_wsvja"]
 [ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="8_ywmgh"]
 [ext_resource type="PackedScene" uid="uid://ce0we1vumtf6j" path="res://scenes/ui/minigames/mathematics/GameOverScreen.tscn" id="9_178yp"]
+[ext_resource type="PackedScene" uid="uid://dioc06yx6xhsn" path="res://scenes/ui/minigames/mathematics/VictoryScreen.tscn" id="10_bofda"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1rbct"]
+
+[sub_resource type="Animation" id="Animation_e6x1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MainRoundLabel:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [61]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MainRoundLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MainRoundLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dkv7b"]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MainRoundLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MainRoundLabel:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45, 3),
+"transitions": PackedFloat32Array(0.203063, 0.203063, 1),
+"update": 0,
+"values": [200, 61, 50]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MainRoundLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f37xx"]
+_data = {
+"RESET": SubResource("Animation_e6x1h"),
+"default": SubResource("Animation_dkv7b")
+}
 
 [sub_resource type="Animation" id="Animation_4bb8m"]
 resource_name = "hide_answers"
@@ -279,8 +366,78 @@ mouse_filter = 2
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("4_hk82x")
 stretch_mode = 5
+
+[node name="AdditionalInfo" type="PanelContainer" parent="MainElements"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainElements/AdditionalInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RoundLabel" type="Label" parent="MainElements/AdditionalInfo/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Rodada 1/3"
+
+[node name="RoundContainer" type="CenterContainer" parent="MainElements"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MainRoundLabel" type="Label" parent="MainElements/RoundContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 61
+text = "Rodada 1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainElements/RoundContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_f37xx")
+}
+
+[node name="Control" type="Control" parent="MainElements"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="SwitchingHelper" type="HBoxContainer" parent="MainElements/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -302.0
+offset_top = -58.0
+offset_right = -11.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="SwitchingLabel" type="Label" parent="MainElements/Control/SwitchingHelper"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Feitiços"
+
+[node name="TextureRect" type="TextureRect" parent="MainElements/Control/SwitchingHelper"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("7_hrypn")
+expand_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -307,5 +464,9 @@ visible = false
 layout_mode = 1
 
 [node name="GameOverScreen" parent="." instance=ExtResource("9_178yp")]
+visible = false
+layout_mode = 1
+
+[node name="VictoryScreen" parent="." instance=ExtResource("10_bofda")]
 visible = false
 layout_mode = 1

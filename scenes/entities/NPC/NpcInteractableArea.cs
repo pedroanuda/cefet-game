@@ -11,7 +11,11 @@ namespace Game.Gameplay
     {
         [Export(PropertyHint.Enum, "Talk")]
         public int Interaction { get; set; } = 0;
+
+        public bool HasSelectedState { get => _hasSelectedState; }
+
         protected bool interacting = false;
+        protected bool _hasSelectedState = false;
 
         public override void StartInteraction(Node2D interactor)
         {
@@ -23,11 +27,17 @@ namespace Game.Gameplay
                 && interactor is Player player)
             {
                 player.AllowActions = false;
-                ui.Open(npc.Dialogues, () => {
+                ui.Open(npc.Dialogues, async () => {
                     player.AllowActions = true;
+                    await ToSignal(GetTree().CreateTimer(1), SceneTreeTimer.SignalName.Timeout);
                     interacting = false;
                 }, npc);
             }
+        }
+        public override void StopInteraction(Node2D interactor)
+        {
+            base.StopInteraction(interactor);
+            _hasSelectedState = false;
         }
     }
 }

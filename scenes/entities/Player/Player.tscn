@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddbfg41c3up4s" path="res://src/equipments/backpack_1.png" id="4_gd2qs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2hbj"]
-radius = 62.0322
+radius = 50.2494
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lww17"]
 
@@ -328,7 +328,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w6u6y")
 _initialItems = Array[Object]([])
-metadata/_edit_lock_ = true
 
 [node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("Interactor")]
 script = ExtResource("2_ceny5")
@@ -354,7 +353,7 @@ texture_filter = 1
 texture = ExtResource("3_1i4ru")
 offset = Vector2(-2, 0)
 hframes = 21
-frame = 3
+frame = 5
 
 [node name="Backpacks" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -374,9 +373,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_gcwd6")
-}
 tree_root = SubResource("AnimationNodeStateMachine_ks6g0")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/IsIdle = false

@@ -20,6 +20,7 @@ namespace Game.UI
                 Input.MouseMode = Input.MouseModeEnum.Visible;
                 GetTree().Paused = true;
                 Show();
+                GetNode<Button>("%ResumeButton").GrabFocus();
             }
         }
 
@@ -36,7 +37,7 @@ namespace Game.UI
             OnResumeButtonPressed();
             GetNode<Global>("/root/Global")
                 .TransitionToScene(
-                "res://scenes/Scenarios/TesteScenario.tscn",
+                "res://scenes/Scenarios/ClassroomScenario.tscn",
                 "Explore o CEFET!",
                 1.5f
                 );
@@ -51,10 +52,8 @@ namespace Game.UI
             if (MinigameLocation)
             {
                 var rows = GetNode("%OptionRows");
-                var button = new Button()
-                {
-                    Text = "Voltar a escola",
-                };
+                var button = ResourceLoader.Load<PackedScene>("res://scenes/ui/Menu/menu_button.tscn").Instantiate<Button>(); ;
+                button.Text = "Voltar \u00e0 escola";
                 button.Pressed += GoToSchool;
                 rows.AddChild(button);
                 rows.MoveChild(button, -2);

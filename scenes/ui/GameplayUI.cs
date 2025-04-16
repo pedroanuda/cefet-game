@@ -14,7 +14,6 @@ namespace Game.UI
 
         public override void _Ready()
         {
-            inventoryUI = GetNode<InventoryUI>("InventoryUi");
             pauseScreen = GetNode<PauseScreen>("PauseScreen");
             mainGameUi = GetNode<MainGameUi>("MainGameUi");
 
@@ -24,7 +23,8 @@ namespace Game.UI
 
         public override void _UnhandledInput(InputEvent @event)
         {
-            if (Input.IsActionJustReleased("inventory"))
+            /* Comentado por enquanto
+             * if (Input.IsActionJustReleased("inventory"))
                 if (!inventoryOpened)
                 {
                     inventoryUI.Open(player.Inventory);
@@ -37,7 +37,14 @@ namespace Game.UI
                     player.AllowActions = true;
                     inventoryOpened = false;
                 }
-            else if (@event.IsActionReleased("go_back"))
+            */
+            // if (@event is InputEventJoypadButton || @event is InputEventJoypadMotion)
+            // {
+            //     GD.Print("joypadButton");
+            // }
+            // else GD.Print("anotherButton");
+
+            if (@event.IsActionReleased("go_back"))
                 pauseScreen.HandlePause();
 
         }

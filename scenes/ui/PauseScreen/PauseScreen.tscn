@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgrp3bxwruiee"]
+[gd_scene load_steps=4 format=3 uid="uid://cgrp3bxwruiee"]
 
 [ext_resource type="Script" path="res://scenes/ui/PauseScreen/PauseScreen.cs" id="1_nfiol"]
+[ext_resource type="PackedScene" uid="uid://bfbt6mpp82rgs" path="res://scenes/ui/Menu/menu_button.tscn" id="2_gj5cr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2ryu"]
 font_size = 42
@@ -47,16 +48,14 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 32.03)
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
+[node name="ResumeButton" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows" instance=ExtResource("2_gj5cr")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
 text = "Retomar"
 
-[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows"]
+[node name="QuitButton" parent="PanelContainer/MarginContainer/CenterContainer/OptionRows" instance=ExtResource("2_gj5cr")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
 text = "Sair"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/OptionRows/ResumeButton" to="." method="OnResumeButtonPressed"]

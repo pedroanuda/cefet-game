@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1ofqqqwt2to0"
-path="res://.godot/imported/Gamepad_X.png-6229a116fa4f7ee2c18e23f5b7f1c0b9.ctex"
+uid="uid://nvilra70ch2y"
+path="res://.godot/imported/fireball.png-d3d9e9465b0a4abdadeb02ac4cbe4273.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/buttons/Gamepad_X.png"
-dest_files=["res://.godot/imported/Gamepad_X.png-6229a116fa4f7ee2c18e23f5b7f1c0b9.ctex"]
+source_file="res://src/tiles/mathematics/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-d3d9e9465b0a4abdadeb02ac4cbe4273.ctex"]
 
 [params]
 

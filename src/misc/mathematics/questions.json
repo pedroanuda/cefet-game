@@ -1,0 +1,195 @@
+{
+	"1_ano": {
+		"easy": [
+			{
+				"question": "10 + 5 = ?",
+				"answers": ["15", "35", "20", "10"],
+				"correctAnswer": "15",
+			},
+			{
+				"question": "30 - 15 = ?",
+				"answers": ["25", "20", "10", "15"],
+				"correctAnswer": "15"
+			},
+			{
+				"question": "60 \u00F7 3 = ?",
+				"answers": ["14", "22", "20", "18"],
+				"correctAnswer": "20"
+			},
+			{
+				"question": "8 + 7 = ?",
+				"answers": ["15", "14", "16", "13"],
+				"correctAnswer": "15"
+			},
+			{
+				"question": "20 - 5 = ?",
+				"answers": ["15", "10", "5", "20"],
+				"correctAnswer": "15"
+			},
+			{
+				"question": "45 ÷ 5 = ?",
+				"answers": ["9", "7", "8", "6"],
+				"correctAnswer": "9"
+			},
+			{
+				"question": "5 + 3 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			},
+			{
+				"question": "12 - 4 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			},
+			{
+				"question": "9 ÷ 3 = ?",
+				"answers": ["3", "2", "4", "5"],
+				"correctAnswer": "3"
+			},
+			{
+				"question": "7 + 6 = ?",
+				"answers": ["13", "12", "14", "15"],
+				"correctAnswer": "13"
+			},
+			{
+				"question": "15 - 7 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			},
+			{
+				"question": "18 ÷ 2 = ?",
+				"answers": ["9", "8", "7", "6"],
+				"correctAnswer": "9"
+			},
+			{
+				"question": "4 + 4 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			},
+			{
+				"question": "10 - 2 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			}
+		],
+		"medium": [
+			{
+				"question": "28 \u00F7 7 = ?",
+				"answers": ["7", "9", "1", "4"],
+				"correctAnswer": "4"
+			},
+			{
+				"question": "36 ÷ 6 = ?",
+				"answers": ["6", "5", "7", "4"],
+				"correctAnswer": "6"
+			},
+			{
+				"question": "12 × 3 = ?",
+				"answers": ["36", "24", "30", "33"],
+				"correctAnswer": "36"
+			},
+			{
+				"question": "24 ÷ 6 = ?",
+				"answers": ["4", "5", "6", "3"],
+				"correctAnswer": "4"
+			},
+			{
+				"question": "14 × 2 = ?",
+				"answers": ["28", "26", "24", "22"],
+				"correctAnswer": "28"
+			},
+			{
+				"question": "45 ÷ 9 = ?",
+				"answers": ["5", "4", "6", "3"],
+				"correctAnswer": "5"
+			},
+			{
+				"question": "16 × 2 = ?",
+				"answers": ["32", "30", "28", "34"],
+				"correctAnswer": "32"
+			},
+			{
+				"question": "56 ÷ 8 = ?",
+				"answers": ["7", "6", "8", "5"],
+				"correctAnswer": "7"
+			},
+			{
+				"question": "21 ÷ 3 = ?",
+				"answers": ["7", "6", "8", "5"],
+				"correctAnswer": "7"
+			},
+			{
+				"question": "18 × 2 = ?",
+				"answers": ["36", "34", "32", "38"],
+				"correctAnswer": "36"
+			},
+			{
+				"question": "32 ÷ 4 = ?",
+				"answers": ["8", "7", "6", "9"],
+				"correctAnswer": "8"
+			}
+		],
+		"hard": [
+			{
+				"question": "2x + 10 = 30",
+				"answers": ["x = 15", "x = 8", "x = 10", "x = 6"],
+				"correctAnswer": "x = 10"
+			},
+			{
+				"question": "3x - 5 = 10",
+				"answers": ["x = 10", "x = 2", "x = 7", "x = 5"],
+				"correctAnswer": "x = 5"
+			},
+			{
+				"question": "5x - 10 = 15",
+				"answers": ["x = 5", "x = 6", "x = 7", "x = 8"],
+				"correctAnswer": "x = 5"
+			},
+			{
+				"question": "4x + 8 = 24",
+				"answers": ["x = 4", "x = 5", "x = 6", "x = 7"],
+				"correctAnswer": "x = 4"
+			},
+			{
+				"question": "3x + 9 = 18",
+				"answers": ["x = 3", "x = 4", "x = 5", "x = 6"],
+				"correctAnswer": "x = 3"
+			},
+			{
+				"question": "7x - 14 = 21",
+				"answers": ["x = 5", "x = 6", "x = 7", "x = 8"],
+				"correctAnswer": "x = 5"
+			},
+			{
+				"question": "2x + 5 = 15",
+				"answers": ["x = 5", "x = 4", "x = 6", "x = 7"],
+				"correctAnswer": "x = 5"
+			},
+			{
+				"question": "4x - 8 = 16",
+				"answers": ["x = 6", "x = 7", "x = 8", "x = 9"],
+				"correctAnswer": "x = 6"
+			},
+			{
+				"question": "5x + 10 = 35",
+				"answers": ["x = 5", "x = 6", "x = 7", "x = 8"],
+				"correctAnswer": "x = 5"
+			},
+			{
+				"question": "6x - 12 = 24",
+				"answers": ["x = 6", "x = 7", "x = 8", "x = 9"],
+				"correctAnswer": "x = 6"
+			},
+			{
+				"question": "8x + 16 = 48",
+				"answers": ["x = 4", "x = 5", "x = 6", "x = 7"],
+				"correctAnswer": "x = 4"
+			},
+			{
+				"question": "9x - 18 = 27",
+				"answers": ["x = 5", "x = 6", "x = 7", "x = 8"],
+				"correctAnswer": "x = 5"
+			}
+		]
+	}
+}

@@ -57,12 +57,14 @@ layout_mode = 2
 
 [node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 66
 text = "Fim de Jogo!"
 
 [node name="GameOverSubtitle" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
@@ -72,6 +74,7 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="SchoolButton" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 text = "Voltar à escola"

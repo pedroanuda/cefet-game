@@ -10,6 +10,9 @@ namespace Game.Entities
     {
         private Character _characterInfo;
         private AnimatedSprite2D _animatedSprite;
+        private bool _hasSelect = false;
+
+        public bool HasSelectState { get => _hasSelect; }
 
         [Export]
         public Character CharacterInfo {
@@ -23,6 +26,7 @@ namespace Game.Entities
                     _animatedSprite.SpriteFrames = character.SpriteAnimations;
                     _animatedSprite.Offset = character.SpritesOffset;
                     _animatedSprite.Play();
+                    _hasSelect = _animatedSprite.SpriteFrames.HasAnimation("idle_selected");
                 }
                 else
                 {
@@ -30,6 +34,7 @@ namespace Game.Entities
                     if (_animatedSprite is null) return;
                     _animatedSprite.SpriteFrames = null;
                     _animatedSprite.Offset = Vector2.Zero;
+                    _hasSelect = false;
                 }
             }
         }
@@ -39,6 +44,11 @@ namespace Game.Entities
 
         [Export]
         public Control InteractionUI { get; set; }
+
+        public void PlayAnimation(StringName animName)
+        {
+            _animatedSprite.Play(animName);
+        }
 
         public override void _Ready()
         {

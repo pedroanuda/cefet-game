@@ -1,0 +1,301 @@
+[gd_scene load_steps=25 format=4 uid="uid://c8su53kxl3s01"]
+
+[ext_resource type="Texture2D" uid="uid://73q83y4ukkhb" path="res://scenes/Floor.png" id="1_os648"]
+[ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
+[ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://src/misc/World/Floor.png" id="2_v5vt2"]
+[ext_resource type="PackedScene" uid="uid://b7etykk20vn6n" path="res://scenes/Scenarios/ClassroomScenario/StudentDesk.tscn" id="3_r5yv7"]
+[ext_resource type="Texture2D" uid="uid://dn1wsnce5vjgj" path="res://src/misc/World/door.png" id="4_mv4wr"]
+[ext_resource type="PackedScene" uid="uid://bwnqaaalxpvb" path="res://scenes/Scenarios/ClassroomScenario/TeacherDesk.tscn" id="6_5c1lh"]
+[ext_resource type="Shader" path="res://scenes/Scenarios/ClassroomScenario/new_shader.gdshader" id="7_mn6n8"]
+[ext_resource type="Texture2D" uid="uid://ebu0l4dg44s0" path="res://src/misc/World/generic_board.png" id="8_rn6hk"]
+[ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://src/misc/World/leaderboard.png" id="9_7cvk2"]
+[ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
+[ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://characters/vitoria.tres" id="11_yq3et"]
+[ext_resource type="Resource" uid="uid://dauliupv2yild" path="res://dialogues/Vitoria/dialogo_demo.tres" id="12_njuc7"]
+[ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
+[ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
+[ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="14_iyklr"]
+[ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="16_trkn7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rctbj"]
+texture = ExtResource("1_os648")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/probability = 0.333
+1:0/0 = 0
+1:0/0/probability = 0.333
+2:0/0 = 0
+2:0/0/probability = 0.333
+
+[sub_resource type="TileSet" id="TileSet_0r5cr"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_rctbj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qmbgt"]
+texture = ExtResource("2_v5vt2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_b55fy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qmbgt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u274"]
+shader = ExtResource("7_mn6n8")
+shader_parameter/up_left = Vector2(-0.285, 0)
+shader_parameter/up_right = Vector2(1.265, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = null
+shader_parameter/region = null
+shader_parameter/size = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddjv1"]
+shader = ExtResource("7_mn6n8")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1.125, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = null
+shader_parameter/region = null
+shader_parameter/size = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmtr5"]
+shader = ExtResource("7_mn6n8")
+shader_parameter/up_left = Vector2(-0.125, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = null
+shader_parameter/region = null
+shader_parameter/size = null
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vwgv1"]
+
+[node name="ClassroomScenario" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Map" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(79.94, 0)
+
+[node name="Floor" type="TileMapLayer" parent="Map"]
+texture_filter = 1
+scale = Vector2(1.8, 1.8)
+tile_map_data = PackedByteArray("AAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAABAAAAAAAMAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAAAAAAAAAALAAQAAAABAAAAAAAKAAQAAAABAAAAAAAJAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAALAAMAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAAABAAAAAAAKAAoAAAABAAAAAAALAAoAAAACAAAAAAAJAAoAAAABAAAAAAAJAAkAAAACAAAAAAAKAAkAAAACAAAAAAAJAAgAAAACAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAACAAAAAAAIAAYAAAABAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAABAAAAAAAGAAoAAAABAAAAAAAFAAoAAAACAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAkAAAACAAAAAAAFAAcAAAABAAAAAAAFAAYAAAABAAAAAAAFAAUAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAABAAAAAAAFAAQAAAABAAAAAAAFAAMAAAABAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAACAAAAAAALAAIAAAACAAAAAAAFAAkAAAABAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAABAAAAAAAEAAgAAAABAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAACAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAAAAAAEAAIAAAAAAAAAAAADAAIAAAACAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAACAAAAAAADAAYAAAACAAAAAAADAAcAAAACAAAAAAADAAgAAAACAAAAAAADAAkAAAACAAAAAAADAAoAAAAAAAAAAAAMAAIAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAANAAIAAAACAAAAAAANAAMAAAAAAAAAAAANAAQAAAABAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAACAAAAAAANAAgAAAABAAAAAAANAAkAAAACAAAAAAANAAoAAAAAAAAAAAAOAAIAAAACAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAOAAYAAAABAAAAAAAOAAcAAAABAAAAAAAOAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0r5cr")
+
+[node name="Walls" type="TileMapLayer" parent="Map"]
+scale = Vector2(1.8, 1.8)
+tile_map_data = PackedByteArray("AAACAAEAAAACAAEAAAADAAEAAAAAAAEAAAAEAAEAAAABAAEAAAAFAAEAAAAAAAEAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAIAAEAAAABAAEAAAAJAAEAAAABAAEAAAAKAAEAAAAAAAEAAAALAAEAAAAAAAEAAAAMAAEAAAABAAEAAAANAAEAAAABAAEAAAAOAAEAAAABAAEAAAAPAAEAAAACAAEAABABAAAAAAACAAIAAAAQAAAAAAACAAIAABACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAAAAAIAAAAKAAAAAAAAAAIAAAALAAAAAAABAAIAAAAMAAAAAAAAAAIAAAANAAAAAAAAAAIAAAAOAAAAAAAAAAIAAAAPAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAMAAAAAAAMAAAACAAQAAAAAAAMAAAACAAUAAAAAAAMAAAACAAYAAAABAAMAAAACAAcAAAABAAMAAAACAAgAAAAAAAMAAAACAAkAAAAAAAMAAAACAAoAAAABAAMAAAAPAAkAAAAAAAMAABAPAAgAAAABAAMAABAPAAcAAAABAAMAABAPAAYAAAABAAMAABAPAAUAAAABAAMAABAPAAQAAAABAAMAABAPAAMAAAABAAMAABAPAAIAAAABAAMAABAPAAoAAAABAAMAABACAAsAAAACAAMAAAAPAAsAAAACAAMAABABAAwAAAACAAQAAAAQAAwAAAACAAQAABABAAEAAAABAAQAAAABAAIAAAABAAQAAAABAAMAAAAAAAQAAAABAAQAAAAAAAQAAAABAAUAAAABAAQAAAABAAYAAAABAAQAAAABAAcAAAABAAQAAAABAAgAAAAAAAQAAAABAAkAAAABAAQAAAABAAoAAAAAAAQAAAABAAsAAAAAAAQAAAAQAAEAAAABAAQAABAQAAIAAAAAAAQAABAQAAMAAAAAAAQAABAQAAQAAAAAAAQAABAQAAUAAAABAAQAABAQAAYAAAABAAQAABAQAAcAAAAAAAQAABAQAAgAAAABAAQAABAQAAkAAAABAAQAABAQAAoAAAABAAQAABAQAAsAAAAAAAQAABADAAsAAAAAAAUAAAAFAAsAAAAAAAUAAAAHAAsAAAAAAAUAAAAJAAsAAAAAAAUAAAALAAsAAAAAAAUAAAANAAsAAAAAAAUAAAAOAAsAAAABAAUAAAAMAAsAAAABAAUAAAAKAAsAAAABAAUAAAAIAAsAAAABAAUAAAAGAAsAAAABAAUAAAAEAAsAAAABAAUAAAACAAwAAAACAAUAAAAEAAwAAAACAAUAAAAGAAwAAAACAAUAAAAIAAwAAAACAAUAAAAKAAwAAAACAAUAAAAMAAwAAAACAAUAAAAOAAwAAAACAAUAAAAPAAwAAAAAAAYAAAANAAwAAAAAAAYAAAALAAwAAAAAAAYAAAAJAAwAAAAAAAYAAAAHAAwAAAAAAAYAAAAFAAwAAAAAAAYAAAADAAwAAAAAAAYAAAA=")
+tile_set = SubResource("TileSet_b55fy")
+
+[node name="Player" parent="." instance=ExtResource("2_78hkg")]
+position = Vector2(368, 192)
+Speed = 150.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_left = 138
+limit_top = 0
+limit_right = 1058
+limit_bottom = 748
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7u274")
+position = Vector2(342, 68)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_mv4wr")
+
+[node name="Desks" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TeacherDesk" parent="Desks" instance=ExtResource("6_5c1lh")]
+position = Vector2(603, 187)
+scale = Vector2(3, 3)
+
+[node name="Row1" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(1, 35)
+
+[node name="StudentDesk" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Row2" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(125, 35)
+
+[node name="StudentDesk" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Row3" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(250, 35)
+
+[node name="StudentDesk" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Row4" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(375, 35)
+
+[node name="StudentDesk" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Row5" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(500, 35)
+
+[node name="StudentDesk" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Row6" type="Node2D" parent="Desks"]
+y_sort_enabled = true
+position = Vector2(625, 35)
+
+[node name="StudentDesk" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 266)
+
+[node name="StudentDesk2" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 332)
+
+[node name="StudentDesk3" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 398)
+
+[node name="StudentDesk4" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 464)
+
+[node name="StudentDesk5" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
+position = Vector2(286, 529)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ddjv1")
+position = Vector2(719.505, 59)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_rn6hk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xmtr5")
+position = Vector2(545, 59)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("9_7cvk2")
+
+[node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
+position = Vector2(808, 191)
+CharacterInfo = ExtResource("11_yq3et")
+Dialogues = ExtResource("12_njuc7")
+InteractionUI = NodePath("../UI/DialogueUi")
+
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("12_v1dhh")
+player = NodePath("../Player")
+
+[node name="BugFixer" type="Sprite2D" parent="UI"]
+texture = SubResource("CanvasTexture_vwgv1")
+
+[node name="MainGameUi" parent="UI" instance=ExtResource("13_p8w5o")]
+visible = false
+
+[node name="DialogueUi" parent="UI" instance=ExtResource("14_iyklr")]
+visible = false
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("16_trkn7")]
+visible = false

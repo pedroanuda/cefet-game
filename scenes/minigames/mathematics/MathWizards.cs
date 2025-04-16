@@ -3,6 +3,7 @@ using System;
 using Godot;
 using System.Linq;
 using Game.Gameplay;
+using Extensions;
 
 namespace Game.Minigames
 {
@@ -19,6 +20,8 @@ namespace Game.Minigames
         private UI.MathUi Ui;
         private Inventory _inventory = new(6);
         private int _health = 100;
+        private int _defeatedEnemies = 0;
+        private double _startTime = 0;
 
         // Base Items
         [Export] Camera2D Camera;
@@ -39,6 +42,18 @@ namespace Game.Minigames
         [Export] public Items.Item EasyAnswerItem { get; set; }
         [Export] public Items.Item MediumAnswerItem { get; set; }
         [Export] public Items.Item HardAnswerItem { get; set; }
+        [Export(PropertyHint.File, "*.json")]
+        public string QuestionsFile { get; set; }
+        private int _score = 0;
+        private int _totalScore = 0;
+        private int Score { get => _score; set {_score = value >= 0 ? value : 0;}}
+
+        // Rounds Handling
+        [Export] public Godot.Collections.Array<MathRound> Rounds { get; set; }
+        private Timer _nextRoundTimer;
+        private int _enemiesAlive = 0;
+        private int _enemiesInRoundCount = 0;
+        private int _currentRound = 0;
 
         // Spells
         [ExportCategory("Spells")]
@@ -67,49 +82,11 @@ namespace Game.Minigames
         public override void _Ready()
         {
             Ui = GetNode<UI.MathUi>("UI/MathUi");
+            _startTime = Time.GetUnixTimeFromSystem();
 
-            var questions = new List<QuestionAndAnswers>
-            {
-                new() {
-                    question = "10 + 5 = ?",
-                    answers = new string[] {"15", "35", "20", "10"},
-                    correctAnswer = "15",
-                    questionDifficulty = "Easy"
-                },
-                new() {
-                    question = "28 \u00F7 7 = ?",
-                    answers = new string[] {"7", "9", "1", "4"},
-                    correctAnswer = "4",
-                    questionDifficulty = "Medium"
-                },
-                new() {
-                    question = "2x + 10 = 30",
-                    answers = new string[] {"x = 15", "x = 8", "x = 10", "x = 6"},
-                    correctAnswer = "x = 10",
-                    questionDifficulty = "Hard"
-                },
-                new()
-                {
-                    question = "3x - 5 = 10",
-                    answers = new string[] {"x = 10", "x = 2", "x = 7", "x = 5"},
-                    correctAnswer = "x = 5",
-                    questionDifficulty = "Hard"
-                },
-                new()
-                {
-                    question = "30 - 15 = ?",
-                    answers = new string[] {"25", "20", "10", "15"},
-                    correctAnswer = "15",
-                    questionDifficulty = "Easy"
-                },
-                new()
-                {
-                    question = "60 \u00F7 3 = ?",
-                    answers = new string[] {"14", "22", "20", "18"},
-                    correctAnswer = "20",
-                    questionDifficulty = "Easy"
-                }
-            };
+            var file_string = FileAccess.GetFileAsString(QuestionsFile);
+            var parsedQuestions = Json.ParseString(file_string).AsGodotDictionary()["1_ano"];
+            var questions = ConvertQuestions(parsedQuestions);
 
             // Areas configuration
             var underWallArea = GetNode<Area2D>("Regions/UnderBarrierArea");
@@ -119,6 +96,9 @@ namespace Game.Minigames
             underWallArea.BodyExited += (Node2D b) => OnUnderWallArea(b, false);
             endpointArea.BodyEntered += OnEndpointArea;
 
+            _nextRoundTimer = GetNode<Timer>("NextRoundTimer");
+            _nextRoundTimer.Timeout += NextRound;
+
             // MathUI configuration
             Ui.AddQuestions(questions);
             Ui.SyncInventory(_inventory);
@@ -127,19 +107,21 @@ namespace Game.Minigames
             Ui.SetPlayableArea(GetNode<Area2D>("Regions/PlayableArea"));
             Ui.DropConclusion = AfterDrop;
             Ui.SyncHealthProgress(WizardHealth);
+            Ui.SetRoundLabelText($"Rodada 1/{Rounds.Count}");
         }
 
         private void OnAnswerCorrect(string difficulty)
         {
             var earnedItem = difficulty switch
             {
-                "Easy" => EasyAnswerItem,
-                "Medium" => MediumAnswerItem,
-                "Hard" => HardAnswerItem,
+                "easy" => EasyAnswerItem,
+                "medium" => MediumAnswerItem,
+                "hard" => HardAnswerItem,
                 _ => null
             };
             _inventory.Add(earnedItem);
             answersAnsweredCorrectly++;
+
 
             if (answersAnsweredCorrectly == 1 && FirstTimePlaying)
             {
@@ -153,7 +135,7 @@ namespace Game.Minigames
             } else Ui.AddToParchment(earnedItem);
         }
 
-        private void RecipeChecker(Items.Item[] itemsCombination)
+        private bool RecipeChecker(Items.Item[] itemsCombination)
         {
             foreach (var spell in PossibleSpells)
             {
@@ -172,13 +154,15 @@ namespace Game.Minigames
                     _inventory.Remove(itemsCombination[0]);
                     _inventory.Remove(itemsCombination[1]);
                     _inventory.Add(spell);
-                    return;
+                    return true;
                 }
             }
+            return false;
         }
 
         private void AfterDrop(Node spellNode, Items.MathSpell item)
         {
+            var isGamepad = GetNode<Global>("/root/Global").GamepadOn;
             // Wizard Animation
             var wizPlayer = WizardNode?.GetNode<AnimationPlayer>("AnimationPlayer");
             if (item.Name["en_US"] == "Storm")
@@ -187,11 +171,29 @@ namespace Game.Minigames
 
             // Spell Handling
             GetNode("Battlefield").AddChild(spellNode);
-            if (spellNode is Node2D)
-                (spellNode as Node2D).Position = GetLocalMousePosition();
+            if (spellNode is MathFreezingBreath breath)
+            {
+                breath.Start = new Vector2(
+                    isGamepad ? Ui.PreviewPosition.X : GetGlobalMousePosition().X,
+                    520
+                );
+                breath.Limit = -20;
+            }
+            else if (spellNode is MathLaserBeam laser)
+                laser.SpellStartingLocation = new Vector2(641, 448);
+            else if (spellNode is MathFireball fireball)
+            {
+                fireball.Destiny = isGamepad ? Ui.PreviewPosition : GetGlobalMousePosition();
+                fireball.SurgementPoint = new Vector2(
+                    isGamepad ? Ui.PreviewPosition.X : GetGlobalMousePosition().X,
+                    520
+                );
+            }
+            else if (spellNode is Node2D)
+                (spellNode as Node2D).Position = isGamepad ? Ui.PreviewPosition : GetLocalMousePosition();
             else if (spellNode is MathMeteor meteor)
             {
-                meteor.MeteorDestiny = GetGlobalMousePosition();
+                meteor.MeteorDestiny = isGamepad ? Ui.PreviewPosition : GetGlobalMousePosition();
                 meteor.Camera = Camera;
             }
             if (!UnlimitedSpells) _inventory.Remove(item);
@@ -222,10 +224,16 @@ namespace Game.Minigames
 
             WizardHealth -= enemy.Damage;
             enemy.QueueFree();
+            _enemiesAlive--;
+            Score -= 5;
+            if (_enemiesAlive <= 0)
+                _nextRoundTimer.Start();
         }
 
         private void OnSpawnTime()
         {
+            if (_enemiesInRoundCount >= Rounds[_currentRound].EnemiesAmount) return;
+
             var enemyIndex = (int) Math.Round((EnemiesScenes.Count - 1) * GD.Randf());
             var desiredX = GD.RandRange(SpawnerXStart, SpawnerXEnd);
             var instance = EnemiesScenes[enemyIndex].Instantiate<MathEnemy>();
@@ -233,6 +241,60 @@ namespace Game.Minigames
             instance.Destination = GoalDestiny;
             GetNode("Battlefield").AddChild(instance);
             GetNode("Battlefield").MoveChild(instance, 0);
+            _enemiesInRoundCount++;
+            _enemiesAlive++;
+
+            instance.Died += () => CallDeferred(MethodName.CheckEnemies);
+        }
+
+        private void CheckEnemies()
+        {
+            _enemiesAlive--;
+            _defeatedEnemies++;
+            Score += 10;
+            if (_enemiesInRoundCount == Rounds[_currentRound].EnemiesAmount && _enemiesAlive < 1)
+                _nextRoundTimer.Start();
+        }
+
+        private void NextRound()
+        {
+            if (_currentRound + 1 >= Rounds.Count)
+            {
+                Win();
+                return;
+            }
+            _currentRound++;
+            _enemiesInRoundCount = 0;
+            Ui.SetRoundLabelText($"Rodada {_currentRound + 1}/{Rounds.Count}");
+            Ui.TriggerMainRoundLabel($"Rodada {_currentRound + 1}");
+        }
+
+        private void Win()
+        {
+            var timeDifference = (int) (Time.GetUnixTimeFromSystem() - _startTime);
+            var timeScore = 1000 / (timeDifference % 60);
+            _totalScore = Score + _defeatedEnemies;
+            _totalScore += timeScore > 0 ? timeScore : 0;
+            Ui.TriggerVictoryScreen(_score, _defeatedEnemies, timeDifference, _totalScore);
+            
+        }
+
+        private List<QuestionAndAnswers> ConvertQuestions(Variant rawQuestions)
+        {
+            List<QuestionAndAnswers> convertedQuestions = new();
+            var qs = rawQuestions.AsGodotDictionary<string, Godot.Collections.Array<Godot.Collections.Dictionary>>();
+            var difficulties = new string[] { "easy", "medium", "hard" };
+
+            foreach (var difficulty in difficulties)
+                foreach (var q in qs[difficulty])
+                    convertedQuestions.Add(new QuestionAndAnswers
+                    {
+                        question = q["question"].AsString(),
+                        questionDifficulty = difficulty,
+                        answers = q["answers"].AsStringArray(),
+                        correctAnswer = q["correctAnswer"].AsString()
+                    });
+            return convertedQuestions.Shuffle() as List<QuestionAndAnswers>;
         }
     }
 }

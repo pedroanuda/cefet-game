@@ -20,7 +20,7 @@ namespace Game.UI
         {
             GetTree().Paused = false;
             GetNode<Global>("/root/Global").TransitionToScene(
-                "res://scenes/Scenarios/TesteScenario.tscn", 
+                "res://scenes/Scenarios/ClassroomScenario.tscn", 
                 "Boa sorte na proxima vez!",
                 1.5f
             );

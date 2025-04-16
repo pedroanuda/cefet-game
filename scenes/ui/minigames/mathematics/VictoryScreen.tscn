@@ -1,0 +1,401 @@
+[gd_scene load_steps=15 format=3 uid="uid://dioc06yx6xhsn"]
+
+[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://fonts/RetroSans.ttf" id="1_jt2fx"]
+[ext_resource type="Theme" uid="uid://y4ylw6bm3qts" path="res://themes/main_theme.tres" id="1_u43wv"]
+[ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/MathVictoryScreen.cs" id="2_4syu7"]
+[ext_resource type="Texture2D" uid="uid://badyj0l63mbrh" path="res://src/tiles/mathematics/light.png.png" id="3_ih3gt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s46da"]
+bg_color = Color(0, 0, 0, 0.823529)
+
+[sub_resource type="Animation" id="Animation_4gdbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VictoryLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Divider/TextureRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SchoolButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SchoolButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VictoryLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Divider:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_51gt2"]
+resource_name = "enemies_label"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%EnemiesLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 20]
+}
+
+[sub_resource type="Animation" id="Animation_v7nfx"]
+resource_name = "panel_appearing"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qykme"]
+resource_name = "score_label"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ScoreLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 12]
+}
+
+[sub_resource type="Animation" id="Animation_uxtxx"]
+resource_name = "show_button"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SchoolButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SchoolButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1m7gk"]
+resource_name = "time_label"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%TimeLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+
+[sub_resource type="Animation" id="Animation_62cnb"]
+resource_name = "total_score_label"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%TotalScoreLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+
+[sub_resource type="Animation" id="Animation_wbnan"]
+resource_name = "win_label"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VictoryLabel:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Divider/TextureRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.46667),
+"transitions": PackedFloat32Array(2.73208, 2.73208),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(200, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VictoryLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Divider:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4qft"]
+_data = {
+"RESET": SubResource("Animation_4gdbw"),
+"enemies_label": SubResource("Animation_51gt2"),
+"panel_appearing": SubResource("Animation_v7nfx"),
+"score_label": SubResource("Animation_qykme"),
+"show_button": SubResource("Animation_uxtxx"),
+"time_label": SubResource("Animation_1m7gk"),
+"total_score_label": SubResource("Animation_62cnb"),
+"win_label": SubResource("Animation_wbnan")
+}
+
+[node name="VictoryScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u43wv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_s46da")
+script = ExtResource("2_4syu7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VictoryLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_jt2fx")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "VOCÊ [color=\"green\"]VENCEU![/color]"
+fit_content = true
+visible_characters = 12
+
+[node name="Divider" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Divider"]
+custom_minimum_size = Vector2(200, 2)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_ih3gt")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ScoreLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_jt2fx")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "Pontuação: "
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="EnemiesLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.620167, 0.620167, 0.620167, 1)
+theme_override_fonts/normal_font = ExtResource("1_jt2fx")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "Inimigos derrotados: "
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TimeLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_jt2fx")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "Tempo: "
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="TotalScoreLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_jt2fx")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Pontuação Total: "
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="SpaceFiller" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SchoolButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Ir para a escola"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l4qft")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/SchoolButton" to="." method="GoToSchool"]
+[connection signal="timeout" from="Timer" to="." method="OnTimerOut"]

@@ -12,7 +12,7 @@ namespace Game.Gameplay
 		private string _backpack = "None";
 
 		public bool AllowActions { get; set; } = true;
-		public const float Speed = 300.0f;
+		[Export] public float Speed = 300.0f;
 		public Inventory Inventory { get; } = new();
 		public Stats Stats { get; } = new();
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://p3waxi0mdhu4"]
+[gd_scene load_steps=19 format=3 uid="uid://p3waxi0mdhu4"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Enemies/MathEnemy.cs" id="1_8hoew"]
 [ext_resource type="Texture2D" uid="uid://bwhoqanwk1qdv" path="res://src/entities/mathematics/zombie.png" id="2_d1rcb"]
@@ -74,7 +74,41 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.561111, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Animation" id="Animation_bfa72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8xg45"]
+resource_name = "unfreeze"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_um1hw"]
+_data = {
+"RESET": SubResource("Animation_bfa72"),
+"unfreeze": SubResource("Animation_8xg45")
+}
 
 [node name="Zombie" type="CharacterBody2D"]
 texture_filter = 1
@@ -87,15 +121,16 @@ Damage = 8
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.458824)
-position = Vector2(0, 22.83)
+position = Vector2(0, 0.83)
 scale = Vector2(0.05, 0.015)
 texture = ExtResource("2_yfmvr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16.6667)
+position = Vector2(0, -6.667)
 shape = SubResource("CapsuleShape2D_2m8rl")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -23)
 sprite_frames = SubResource("SpriteFrames_np227")
 animation = &"walk"
 autoplay = "walk"
@@ -105,7 +140,7 @@ offset = Vector2(4, 0)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="DeathSmoke" type="CPUParticles2D" parent="."]
-position = Vector2(0, 21.377)
+position = Vector2(0, 0.377)
 scale = Vector2(2.35, 2.35)
 emitting = false
 amount = 5
@@ -132,3 +167,8 @@ libraries = {
 
 [node name="SlowTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="FreezeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FreezeTimer" to="." method="OnFreezeTimerOut"]

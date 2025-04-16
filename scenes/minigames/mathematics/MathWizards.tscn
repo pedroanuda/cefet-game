@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://d1ialrklk0g5m"]
+[gd_scene load_steps=45 format=4 uid="uid://d1ialrklk0g5m"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/MathWizards.cs" id="1_2ifkc"]
 [ext_resource type="Texture2D" uid="uid://eq4k784b7ko5" path="res://src/tiles/mathematics/castle.png" id="1_u3cub"]
@@ -6,26 +6,49 @@
 [ext_resource type="Resource" uid="uid://c8weo05xvn56n" path="res://items/mathematics/GreenParchment.tres" id="2_u72t3"]
 [ext_resource type="Resource" uid="uid://cwlffi4mkjn0i" path="res://items/mathematics/YellowParchment.tres" id="3_1d2uf"]
 [ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="4_oxuf7"]
+[ext_resource type="Script" path="res://scenes/minigames/mathematics/MathRound.cs" id="5_70sod"]
 [ext_resource type="Resource" uid="uid://c26603dlw0l2s" path="res://items/mathematics/Spells/Meteor.tres" id="5_phvly"]
-[ext_resource type="Resource" uid="uid://b5hpvxq4hes62" path="res://items/mathematics/Spells/LaserBeam.tres" id="6_40xy0"]
 [ext_resource type="Resource" uid="uid://c2fq7ajmeq5ls" path="res://items/mathematics/Spells/Storm.tres" id="7_uak70"]
 [ext_resource type="Texture2D" uid="uid://bgl8kng7usjpk" path="res://src/tiles/mathematics/nature.png" id="8_4upfk"]
 [ext_resource type="Texture2D" uid="uid://c12hou52w08ab" path="res://src/tiles/mathematics/GrassGreen.png" id="8_b11rl"]
 [ext_resource type="Resource" uid="uid://dly6qe7v4jr8j" path="res://items/mathematics/Spells/Barrier.tres" id="8_dcs4d"]
+[ext_resource type="Resource" uid="uid://11lhpx88b5ts" path="res://items/mathematics/Spells/FreezingBreath.tres" id="8_hn5fe"]
 [ext_resource type="Script" path="res://scenes/Drag.cs" id="8_x4uk5"]
 [ext_resource type="Texture2D" uid="uid://bxo0o8g3x1p4" path="res://src/tiles/mathematics/path1.png" id="9_iinsf"]
+[ext_resource type="Resource" uid="uid://b5hpvxq4hes62" path="res://items/mathematics/Spells/LaserBeam.tres" id="9_re7gx"]
 [ext_resource type="Texture2D" uid="uid://d0feocx0kuwfe" path="res://src/tiles/mathematics/tree.png" id="9_rgtvu"]
+[ext_resource type="Resource" uid="uid://c05h4t1ur203" path="res://items/mathematics/Spells/Fireball.tres" id="10_4d040"]
 [ext_resource type="PackedScene" uid="uid://p3waxi0mdhu4" path="res://scenes/minigames/mathematics/Enemies/Zombie.tscn" id="10_5liqv"]
 [ext_resource type="Texture2D" uid="uid://d3mgugihno8gq" path="res://src/tiles/mathematics/grass.png" id="10_cy30x"]
 [ext_resource type="Resource" uid="uid://dbyextga2alwy" path="res://dialogues/minigames/mathematics/primeiro_pergaminho.tres" id="10_s33cm"]
 [ext_resource type="PackedScene" uid="uid://bdyso3q7uudjm" path="res://scenes/minigames/mathematics/Wizard/Wizard.tscn" id="15_kkokm"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="18_dkkvc"]
 
+[sub_resource type="Resource" id="Resource_s8lci"]
+script = ExtResource("5_70sod")
+RoundName = "Round 1"
+EnemiesAmount = 5
+
+[sub_resource type="Resource" id="Resource_8qs5h"]
+script = ExtResource("5_70sod")
+RoundName = "Round 2"
+EnemiesAmount = 8
+
+[sub_resource type="Resource" id="Resource_ffcnm"]
+script = ExtResource("5_70sod")
+RoundName = "Round 3"
+EnemiesAmount = 12
+
 [sub_resource type="GDScript" id="GDScript_82gye"]
 resource_name = "UIHandling"
 script/source = "extends CanvasLayer
 
 func _unhandled_input(event):
+	if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+		Global.GamepadOn = true
+	else:
+		Global.GamepadOn = false
+	
 	if event.is_action_released(\"go_back\"):
 		$PauseScreen.call(\"HandlePause\")
 "
@@ -198,15 +221,18 @@ Camera = NodePath("Camera2D")
 EasyAnswerItem = ExtResource("2_u72t3")
 MediumAnswerItem = ExtResource("3_1d2uf")
 HardAnswerItem = ExtResource("4_oxuf7")
+QuestionsFile = "res://src/misc/mathematics/questions.json"
+Rounds = Array[Resource]([SubResource("Resource_s8lci"), SubResource("Resource_8qs5h"), SubResource("Resource_ffcnm")])
 WizardNode = NodePath("Wall/Middle/Wizard")
-PossibleSpells = Array[Object]([ExtResource("5_phvly"), ExtResource("6_40xy0"), ExtResource("7_uak70"), ExtResource("8_dcs4d")])
-UnlimitedSpells = true
+PossibleSpells = Array[Object]([ExtResource("5_phvly"), ExtResource("7_uak70"), ExtResource("8_dcs4d"), ExtResource("8_hn5fe"), ExtResource("9_re7gx"), ExtResource("10_4d040")])
 EnemiesScenes = Array[PackedScene]([ExtResource("10_5liqv")])
 GoalDestiny = Vector2(645, 537)
 SpawnerYOrigin = -68.0
 SpawnerXStart = 316.0
 SpawnerXEnd = 919.0
 FirstParchmentDialogue = ExtResource("10_s33cm")
+metadata/_edit_horizontal_guides_ = [449.0]
+metadata/_edit_vertical_guides_ = [641.0]
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -247,6 +273,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Em desenvolvimento"
 
+[node name="NextRoundTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -254,7 +284,7 @@ autostart = true
 [node name="Enviroment" type="Node2D" parent="."]
 
 [node name="Grass" type="Sprite2D" parent="Enviroment"]
-position = Vector2(663.5, 268.75)
+position = Vector2(666, 314)
 scale = Vector2(23.8111, 14.0278)
 texture = ExtResource("8_b11rl")
 
@@ -273,12 +303,18 @@ scale = Vector2(4.505, 4.505)
 tile_map_data = PackedByteArray("AAABAPz/AwAAAAAAAAD7/wEAAwAAAAAAAAD8//v/AwAAAAAAABAAAP//AwAAAAAAABACAAIAAwAAAAAAAAAFAAMAAwAAAAAAABD5/wMAAwAAAAAAABD4////AwAAAAAAAAD9//7/AwAAAAAAAAD4//3/AwAAAAAAAAD5/wEAAwAAAAAAAAD3/wEAAwAAAAAAAAD7/wMAAwAAAAAAAAD//wEAAwAAAAAAAAABAAAAAwAAAAAAAAAAAAIAAwAAAAAAAAABAP7/AwAAAAAAAAADAP//AwAAAAAAAAAEAAEAAwAAAAAAAAAHAAIAAwAAAAAAAAADAAMAAwAAAAAAAAD8////AwAAAAAAAAD7//3/AwAAAAAAAAADAP3/AwAAAAAAAAD2/wAAAwAAAAAAAAD3//7/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_10b2f")
 
+[node name="Grass3" type="TileMapLayer" parent="Enviroment"]
+modulate = Color(1, 1, 1, 0.533333)
+scale = Vector2(4.505, 4.505)
+tile_map_data = PackedByteArray("AAAAAAkAAwAAAAAAAAACAAkAAwAAAAAAABALAAkAAwAAAAAAABANAAkAAwAAAAAAABAPAAkAAwAAAAAAAAARAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_10b2f")
+
 [node name="Flowers" type="TileMapLayer" parent="Enviroment"]
 z_index = 1
 use_parent_material = true
 position = Vector2(646, 183)
 scale = Vector2(4.505, 4.505)
-tile_map_data = PackedByteArray("AAD4////AQAAAAAAAAAAAPz/AQAAAAAAABD8/wIAAQACAAAAAAD7//n/AQACAAAAAAADAPz/AQADAAAAAAD5/wEAAQAEAAAAAAABAAEAAQAGAAAAAAADAAEAAQACAAAAAAD6/wIAAQAKAAAAAAAHAAIAAQAKAAAAABD6/wEAAQASAAAAAAAGAP3/AQALAAAAAAACAP7/AQANAAAAAAAEAAAAAQASAAAAAAD4/wAAAQATAAAAAAA=")
+tile_map_data = PackedByteArray("AAD4////AQAAAAAAAAAAAPz/AQAAAAAAABD8/wIAAQACAAAAAAD7//n/AQACAAAAAAADAPz/AQADAAAAAAD5/wEAAQAEAAAAAAABAAEAAQAGAAAAAAADAAEAAQACAAAAAAD6/wIAAQAKAAAAAAAHAAIAAQAKAAAAABD6/wEAAQASAAAAAAAGAP3/AQALAAAAAAACAP7/AQANAAAAAAAEAAAAAQASAAAAAAD4/wAAAQATAAAAAAD5/wYAAQABAAAAAAD7/wYAAQAEAAAAAAD3/wcAAQAFAAAAAAADAAYAAQAJAAAAAAAGAAYAAQAKAAAAAAAIAAYAAQALAAAAAAAEAAYAAQAMAAAAABA=")
 tile_set = SubResource("TileSet_10b2f")
 
 [node name="Trees" type="TileMapLayer" parent="Enviroment"]
@@ -336,7 +372,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Regions/EndpointArea"]
-position = Vector2(644.5, 533)
+position = Vector2(644.5, 510)
 shape = SubResource("RectangleShape2D_jt2t3")
 debug_color = Color(0.901961, 0.266667, 0.411765, 0.419608)
 
@@ -357,9 +393,32 @@ offset = Vector2(0, -28)
 hframes = 5
 frame = 2
 
+[node name="Shadow" type="Sprite2D" parent="Battlefield/Tree"]
+modulate = Color(0, 0, 0, 0.188235)
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(2.125, 2.09)
+scale = Vector2(1, 0.45)
+skew = 0.837758
+texture = ExtResource("9_rgtvu")
+offset = Vector2(0.5, -29.4)
+flip_h = true
+hframes = 5
+
 [node name="Tree2" type="Sprite2D" parent="Battlefield"]
 position = Vector2(246, 206)
 scale = Vector2(4.42187, 4.42187)
+texture = ExtResource("9_rgtvu")
+offset = Vector2(0.5, -29.4)
+flip_h = true
+hframes = 5
+
+[node name="Shadow" type="Sprite2D" parent="Battlefield/Tree2"]
+modulate = Color(0, 0, 0, 0.188235)
+show_behind_parent = true
+z_as_relative = false
+scale = Vector2(1, 0.45)
+skew = 0.837758
 texture = ExtResource("9_rgtvu")
 offset = Vector2(0.5, -29.4)
 flip_h = true
@@ -379,6 +438,19 @@ flip_h = true
 hframes = 5
 frame = 4
 
+[node name="Shadow" type="Sprite2D" parent="Battlefield/Tree3"]
+modulate = Color(0, 0, 0, 0.188235)
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(-2.25, 25.3)
+scale = Vector2(1, 0.45)
+skew = 0.837758
+texture = ExtResource("9_rgtvu")
+offset = Vector2(2.25, -25.8)
+flip_h = true
+hframes = 5
+frame = 1
+
 [node name="Tree4" type="Sprite2D" parent="Battlefield"]
 position = Vector2(980, 173)
 scale = Vector2(4.42187, 4.42187)
@@ -387,12 +459,25 @@ offset = Vector2(-2.25, -22.5)
 hframes = 5
 frame = 1
 
+[node name="Shadow" type="Sprite2D" parent="Battlefield/Tree4"]
+modulate = Color(0, 0, 0, 0.188235)
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(-4.445, 2.79)
+scale = Vector2(1, 0.45)
+skew = 0.837758
+texture = ExtResource("9_rgtvu")
+offset = Vector2(2.25, -25.8)
+hframes = 5
+frame = 1
+
 [node name="Wall" type="Node2D" parent="."]
-z_index = 2
+z_index = 4
 position = Vector2(158, 204.77)
 scale = Vector2(0.75, 0.75)
 
 [node name="Back" type="Node2D" parent="Wall"]
+z_index = -1
 
 [node name="Back1" type="Sprite2D" parent="Wall/Back"]
 texture_filter = 1
