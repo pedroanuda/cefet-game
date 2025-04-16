@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://do4eui0njknlf"]
+
+[ext_resource type="Texture2D" uid="uid://b7t4vgjbb34hd" path="res://src/tiles/mathematics/breath.png" id="1_bltqg"]
+[ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/FreezingBreath/MathFreezingBreath.cs" id="1_edcm5"]
+[ext_resource type="PackedScene" uid="uid://d4n0soy3hljx6" path="res://scenes/minigames/mathematics/Spells/FreezingBreath/FreezedPath.tscn" id="2_co5se"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ir8ki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq2dt"]
+size = Vector2(101, 17)
+
+[node name="FreezingBreath" type="Node2D"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_edcm5")
+FrezzedPathScene = "res://scenes/minigames/mathematics/Spells/FreezingBreath/FreezedPath.tscn"
+Speed = 10.0
+Start = Vector2(320, 220)
+
+[node name="Path" type="Sprite2D" parent="."]
+clip_children = 1
+light_mask = 2
+visibility_layer = 2
+z_as_relative = false
+scale = Vector2(101, 8)
+texture = SubResource("CanvasTexture_ir8ki")
+offset = Vector2(0, -0.5)
+
+[node name="Storage" type="Node2D" parent="Path"]
+
+[node name="FreezedPath" parent="Path/Storage" instance=ExtResource("2_co5se")]
+light_mask = 2
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.0178218, 0.224999)
+
+[node name="Breath" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_bltqg")
+
+[node name="FreezingBreathArea" type="Area2D" parent="Breath"]
+scale = Vector2(0.249377, 0.249377)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Breath/FreezingBreathArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_sq2dt")

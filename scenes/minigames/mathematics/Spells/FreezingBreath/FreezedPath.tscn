@@ -1,0 +1,377 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4n0soy3hljx6"]
+
+[ext_resource type="Texture2D" uid="uid://b5gxdmxn31d8u" path="res://src/tiles/mathematics/freezed_path.png" id="1_vi64n"]
+[ext_resource type="Texture2D" uid="uid://c1rqpawhofag3" path="res://src/tiles/mathematics/stalagmite.png" id="2_11fpx"]
+
+[sub_resource type="GDScript" id="GDScript_vyg2u"]
+resource_name = "FreezedPathScript"
+script/source = "extends Node2D
+
+signal melted
+
+func _on_path_animation_finished() -> void:
+	melted.emit()
+	queue_free()
+
+
+func _on_time_on_timeout() -> void:
+	$Path.play()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne603"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(0, 0, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qejxq"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(56, 0, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khbu1"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(0, 16, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68j7v"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(56, 16, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxu37"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(0, 32, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo7f1"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(56, 32, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yg1e"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(0, 48, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbx60"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(56, 48, 56, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukn50"]
+atlas = ExtResource("1_vi64n")
+region = Rect2(0, 64, 56, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0un6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne603")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qejxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khbu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68j7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxu37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo7f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yg1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbx60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukn50")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_18wqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stalagmites Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nd1sx"]
+resource_name = "default"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stalagmites Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stalagmites Right:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62oya"]
+_data = {
+"RESET": SubResource("Animation_18wqa"),
+"default": SubResource("Animation_nd1sx")
+}
+
+[node name="FreezedPath" type="Node2D"]
+texture_filter = 1
+scale = Vector2(2.7, 2.7)
+script = SubResource("GDScript_vyg2u")
+
+[node name="Path" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_0un6y")
+
+[node name="Stalagmites Left" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="Stalagmites" type="Node2D" parent="Stalagmites Left"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Left/Stalagmites"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="Stalagmites2" type="Node2D" parent="Stalagmites Left"]
+position = Vector2(-0.255, 5.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Left/Stalagmites2"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="Stalagmites3" type="Node2D" parent="Stalagmites Left"]
+position = Vector2(-0.3, 10.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Left/Stalagmites3"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="Stalagmites Right" type="Node2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(-1, 1)
+
+[node name="Stalagmites" type="Node2D" parent="Stalagmites Right"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Right/Stalagmites"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="Stalagmites2" type="Node2D" parent="Stalagmites Right"]
+position = Vector2(-0.255, 5.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Right/Stalagmites2"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="Stalagmites3" type="Node2D" parent="Stalagmites Right"]
+position = Vector2(-0.3, 10.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-27.075, -8.75)
+scale = Vector2(0.0934783, 0.0875)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-27, -7.91641)
+scale = Vector2(0.0869566, 0.0541797)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-26.6, -7.425)
+scale = Vector2(0.130922, 0.0816874)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-26.77, -6.037)
+scale = Vector2(0.0934783, 0.048125)
+texture = ExtResource("2_11fpx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-27.11, -5.637)
+scale = Vector2(0.0934783, 0.0661375)
+texture = ExtResource("2_11fpx")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Stalagmites Right/Stalagmites3"]
+position = Vector2(-27.11, -4.86462)
+scale = Vector2(0.0934783, 0.0567688)
+texture = ExtResource("2_11fpx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_62oya")
+}
+autoplay = "default"
+
+[node name="TimeOn" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="Path" to="." method="_on_path_animation_finished"]
+[connection signal="timeout" from="TimeOn" to="." method="_on_time_on_timeout"]
