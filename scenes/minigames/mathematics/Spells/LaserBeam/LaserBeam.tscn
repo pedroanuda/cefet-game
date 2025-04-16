@@ -1,0 +1,171 @@
+[gd_scene load_steps=15 format=3 uid="uid://bbknn65fnh5rr"]
+
+[ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/LaserBeam/MathLaserBeam.cs" id="1_fb148"]
+[ext_resource type="Texture2D" uid="uid://dgt750nboynxr" path="res://src/tiles/mathematics/laserbeam.png" id="2_ngv20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb4f7"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2mp"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjkp7"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1urf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb4f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjkp7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4teh"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecbdi"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ys8p"]
+atlas = ExtResource("2_ngv20")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6m3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4teh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecbdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ys8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_c3yh5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserOrigin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3l5i8"]
+resource_name = "default"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserOrigin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rb6k3"]
+resource_name = "ely"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserOrigin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 1.15), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7sk5d"]
+_data = {
+"RESET": SubResource("Animation_c3yh5"),
+"default": SubResource("Animation_3l5i8"),
+"ely": SubResource("Animation_rb6k3")
+}
+
+[node name="LaserBeam" type="Node2D"]
+script = ExtResource("1_fb148")
+LaserColor = Color(0.742806, 0.556453, 0.982784, 1)
+
+[node name="Beams" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Beam" type="Node2D" parent="Beams"]
+visible = false
+z_index = 1
+y_sort_enabled = true
+
+[node name="Fragment" type="Sprite2D" parent="Beams/Beam"]
+texture_filter = 1
+scale = Vector2(2, 0.74)
+texture = ExtResource("2_ngv20")
+offset = Vector2(2, -32)
+hframes = 12
+
+[node name="HitFragment" type="AnimatedSprite2D" parent="Beams/Beam"]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -108)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1urf0")
+autoplay = "default"
+frame_progress = 0.835262
+offset = Vector2(2, 22)
+
+[node name="LaserOrigin" type="AnimatedSprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w6m3j")
+autoplay = "default"
+frame_progress = 0.588994
+
+[node name="HitTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="FreedomTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7sk5d")
+}
+autoplay = "default"
+
+[connection signal="timeout" from="HitTimer" to="." method="OnHitTime"]
+[connection signal="timeout" from="FreedomTimer" to="." method="OnFreedomTime"]
