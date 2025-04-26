@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://p3waxi0mdhu4"]
+[gd_scene load_steps=18 format=3 uid="uid://p3waxi0mdhu4"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Enemies/MathEnemy.cs" id="1_8hoew"]
-[ext_resource type="Texture2D" uid="uid://bwhoqanwk1qdv" path="res://src/entities/mathematics/zombie.png" id="2_d1rcb"]
-[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="2_yfmvr"]
-[ext_resource type="Texture2D" uid="uid://d2w0v6btkwip0" path="res://src/Particles/smoke.png" id="4_1oo87"]
+[ext_resource type="Texture2D" uid="uid://bwhoqanwk1qdv" path="res://assets/images/entities/mathematics/zombie.png" id="2_d1rcb"]
+[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="2_yfmvr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2m8rl"]
 radius = 8.66665
@@ -149,7 +148,6 @@ one_shot = true
 speed_scale = 0.5
 explosiveness = 0.65
 randomness = 0.15
-texture = ExtResource("4_1oo87")
 emission_shape = 1
 emission_sphere_radius = 5.2
 gravity = Vector2(0, -50)

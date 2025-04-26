@@ -1,13 +1,13 @@
 [gd_resource type="Theme" load_steps=28 format=3 uid="uid://d4a4pvbi8xsxx"]
 
-[ext_resource type="Texture2D" uid="uid://dp2pwqpasc1j" path="res://src/ui/minigames/mathematics/blocked_button.png" id="1_5k2bw"]
-[ext_resource type="Texture2D" uid="uid://dww1ty36t7cs6" path="res://src/ui/minigames/mathematics/easy_button.png" id="1_34370"]
-[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://fonts/RetroSans.ttf" id="1_ydjj5"]
-[ext_resource type="Texture2D" uid="uid://kyy3aeoam8lm" path="res://src/ui/minigames/mathematics/easy_button_pressed.png" id="2_ueslx"]
-[ext_resource type="Texture2D" uid="uid://bdkwwulcgtb07" path="res://src/ui/minigames/mathematics/hard_button.png" id="3_oqxgd"]
-[ext_resource type="Texture2D" uid="uid://dgq5vug5hedha" path="res://src/ui/minigames/mathematics/hard_button_pressed.png" id="4_du5l8"]
-[ext_resource type="Texture2D" uid="uid://qcwrqr4tew8b" path="res://src/ui/minigames/mathematics/medium_button.png" id="5_ucmsx"]
-[ext_resource type="Texture2D" uid="uid://cmx02poo1i3v6" path="res://src/ui/minigames/mathematics/medium_button_pressed.png" id="6_65sy4"]
+[ext_resource type="Texture2D" uid="uid://dp2pwqpasc1j" path="res://assets/images/ui/minigames/mathematics/blocked_button.png" id="1_5k2bw"]
+[ext_resource type="Texture2D" uid="uid://dww1ty36t7cs6" path="res://assets/images/ui/minigames/mathematics/easy_button.png" id="1_34370"]
+[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://assets/fonts/RetroSans.ttf" id="1_ydjj5"]
+[ext_resource type="Texture2D" uid="uid://kyy3aeoam8lm" path="res://assets/images/ui/minigames/mathematics/easy_button_pressed.png" id="2_ueslx"]
+[ext_resource type="Texture2D" uid="uid://bdkwwulcgtb07" path="res://assets/images/ui/minigames/mathematics/hard_button.png" id="3_oqxgd"]
+[ext_resource type="Texture2D" uid="uid://dgq5vug5hedha" path="res://assets/images/ui/minigames/mathematics/hard_button_pressed.png" id="4_du5l8"]
+[ext_resource type="Texture2D" uid="uid://qcwrqr4tew8b" path="res://assets/images/ui/minigames/mathematics/medium_button.png" id="5_ucmsx"]
+[ext_resource type="Texture2D" uid="uid://cmx02poo1i3v6" path="res://assets/images/ui/minigames/mathematics/medium_button_pressed.png" id="6_65sy4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lwmu"]
 texture = ExtResource("1_5k2bw")

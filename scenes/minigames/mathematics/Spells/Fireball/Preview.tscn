@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkv05rog3r6th"]
 
-[ext_resource type="Texture2D" uid="uid://dodncn6nu25ab" path="res://src/entities/preview_shadow.png" id="1_36yst"]
+[ext_resource type="Texture2D" uid="uid://dodncn6nu25ab" path="res://assets/images/entities/preview_shadow.png" id="1_36yst"]
 
 [node name="Preview" type="Sprite2D"]
 modulate = Color(1, 0.23, 0.23, 0.545098)

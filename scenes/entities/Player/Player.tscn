@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/entities/Player/Player.cs" id="1_w6u6y"]
 [ext_resource type="Script" path="res://scenes/entities/InteractionArea.cs" id="2_ceny5"]
-[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://src/entities/Player.png" id="3_1i4ru"]
-[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="3_emeso"]
-[ext_resource type="Texture2D" uid="uid://ddbfg41c3up4s" path="res://src/equipments/backpack_1.png" id="4_gd2qs"]
+[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://assets/images/entities/Player.png" id="3_1i4ru"]
+[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="3_emeso"]
+[ext_resource type="Texture2D" uid="uid://ddbfg41c3up4s" path="res://assets/images/equipments/backpack_1.png" id="4_gd2qs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2hbj"]
 radius = 50.2494
@@ -353,7 +353,7 @@ texture_filter = 1
 texture = ExtResource("3_1i4ru")
 offset = Vector2(-2, 0)
 hframes = 21
-frame = 5
+frame = 3
 
 [node name="Backpacks" type="Node2D" parent="."]
 scale = Vector2(2, 2)

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Character" load_steps=8 format=3 uid="uid://8ihlbd0x032y"]
+
+[ext_resource type="Script" path="res://misc/characters/Character.cs" id="1_o0e8d"]
+[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://assets/images/entities/Player.png" id="1_r3jwd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6nd4"]
+atlas = ExtResource("1_r3jwd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyx7d"]
+atlas = ExtResource("1_r3jwd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pbss"]
+atlas = ExtResource("1_r3jwd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp266"]
+atlas = ExtResource("1_r3jwd")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_33tyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6nd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyx7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pbss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp266")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[resource]
+script = ExtResource("1_o0e8d")
+SpriteAnimations = SubResource("SpriteFrames_33tyq")
+SpritesOffset = Vector2(-2, 0)
+Name = "Gustavo Black"

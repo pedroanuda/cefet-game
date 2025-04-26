@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://bd7blhccorvae"]
 
-[ext_resource type="Texture2D" uid="uid://dfe63agjv3grb" path="res://src/tiles/mathematics/storm_lightnings.png" id="1_w67so"]
-[ext_resource type="AudioStream" uid="uid://gelef2mpepkw" path="res://src/sounds/mathematics/storm_thunder_1.mp3" id="2_5p0xb"]
-[ext_resource type="AudioStream" uid="uid://ivbaijbsj2d4" path="res://src/sounds/mathematics/storm_thunder_2.mp3" id="3_w1rbd"]
+[ext_resource type="Texture2D" uid="uid://dfe63agjv3grb" path="res://assets/images/tiles/mathematics/storm_lightnings.png" id="1_w67so"]
+[ext_resource type="AudioStream" uid="uid://gelef2mpepkw" path="res://assets/sounds/mathematics/storm_thunder_1.mp3" id="2_5p0xb"]
+[ext_resource type="AudioStream" uid="uid://ivbaijbsj2d4" path="res://assets/sounds/mathematics/storm_thunder_2.mp3" id="3_w1rbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p34vi"]
 atlas = ExtResource("1_w67so")

@@ -1,7 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 builds/
+*.import
 
 # Visual Studio ignores
 .vs/
 Properties/
+Cefet\ Game.csproj.user

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/entities/items/CollectableItem.cs" id="1_d6ny2"]
 [ext_resource type="Script" path="res://scenes/entities/items/CollectableItemArea.cs" id="2_anybb"]
-[ext_resource type="Resource" uid="uid://bxwmj6b0w78w" path="res://items/SimpleBackpack.tres" id="3_d6n1w"]
-[ext_resource type="Texture2D" uid="uid://bbr331px6pkyi" path="res://src/items/SimpleBackpackIcon.png" id="4_0qkjc"]
+[ext_resource type="Resource" uid="uid://bxwmj6b0w78w" path="res://misc/items/SimpleBackpack.tres" id="3_d6n1w"]
+[ext_resource type="Texture2D" uid="uid://bbr331px6pkyi" path="res://assets/images/items/SimpleBackpackIcon.png" id="4_0qkjc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hi8do"]
 radius = 30.1496

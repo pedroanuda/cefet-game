@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MathSpell" load_steps=5 format=3 uid="uid://b5hpvxq4hes62"]
+
+[ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://misc/items/mathematics/RedParchment.tres" id="1_h4crt"]
+[ext_resource type="Resource" uid="uid://cwlffi4mkjn0i" path="res://misc/items/mathematics/YellowParchment.tres" id="2_x7s2f"]
+[ext_resource type="Script" path="res://misc/items/mathematics/Spells/MathSpell.cs" id="3_nugw7"]
+[ext_resource type="Texture2D" uid="uid://dqsbr5w21gp5f" path="res://assets/images/items/mathematics/temp-laser-icon.png" id="3_pdbu0"]
+
+[resource]
+script = ExtResource("3_nugw7")
+SpellScenePath = "res://scenes/minigames/mathematics/Spells/LaserBeam/LaserBeam.tscn"
+CraftRecipe = Array[Object]([ExtResource("1_h4crt"), ExtResource("2_x7s2f")])
+Id = 104
+Name = {
+"en_US": "Laser Beam",
+"pt_BR": "Raio Laser"
+}
+Description = null
+StackSize = 1
+SlotType = 3
+Icon = ExtResource("3_pdbu0")

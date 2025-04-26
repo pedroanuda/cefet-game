@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dag5tt3yylkli"]
 
 [ext_resource type="Script" path="res://scenes/ui/InventoryUI/ItemSlot.cs" id="1_vs8wo"]
-[ext_resource type="Texture2D" uid="uid://dfo52rpd074mq" path="res://src/ui/inventory_pressed.png" id="3_b8f2v"]
-[ext_resource type="Texture2D" uid="uid://bmtjv8n6pgvdi" path="res://src/ui/inventory_selected.png" id="4_lkv6p"]
+[ext_resource type="Texture2D" uid="uid://dfo52rpd074mq" path="res://assets/images/ui/inventory_pressed.png" id="3_b8f2v"]
+[ext_resource type="Texture2D" uid="uid://bmtjv8n6pgvdi" path="res://assets/images/ui/inventory_selected.png" id="4_lkv6p"]
 
 [node name="ItemSlot" type="Control"]
 custom_minimum_size = Vector2(172, 172)

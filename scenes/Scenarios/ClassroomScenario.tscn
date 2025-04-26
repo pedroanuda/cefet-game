@@ -1,17 +1,17 @@
 [gd_scene load_steps=25 format=4 uid="uid://c8su53kxl3s01"]
 
-[ext_resource type="Texture2D" uid="uid://73q83y4ukkhb" path="res://scenes/Floor.png" id="1_os648"]
+[ext_resource type="Texture2D" uid="uid://73q83y4ukkhb" path="res://assets/images/tiles/Floor.png" id="1_os648"]
 [ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
-[ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://src/misc/World/Floor.png" id="2_v5vt2"]
+[ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
 [ext_resource type="PackedScene" uid="uid://b7etykk20vn6n" path="res://scenes/Scenarios/ClassroomScenario/StudentDesk.tscn" id="3_r5yv7"]
-[ext_resource type="Texture2D" uid="uid://dn1wsnce5vjgj" path="res://src/misc/World/door.png" id="4_mv4wr"]
+[ext_resource type="Texture2D" uid="uid://dn1wsnce5vjgj" path="res://assets/misc/World/door.png" id="4_mv4wr"]
 [ext_resource type="PackedScene" uid="uid://bwnqaaalxpvb" path="res://scenes/Scenarios/ClassroomScenario/TeacherDesk.tscn" id="6_5c1lh"]
 [ext_resource type="Shader" path="res://scenes/Scenarios/ClassroomScenario/new_shader.gdshader" id="7_mn6n8"]
-[ext_resource type="Texture2D" uid="uid://ebu0l4dg44s0" path="res://src/misc/World/generic_board.png" id="8_rn6hk"]
-[ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://src/misc/World/leaderboard.png" id="9_7cvk2"]
+[ext_resource type="Texture2D" uid="uid://ebu0l4dg44s0" path="res://assets/misc/World/generic_board.png" id="8_rn6hk"]
+[ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
 [ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
-[ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://characters/vitoria.tres" id="11_yq3et"]
-[ext_resource type="Resource" uid="uid://dauliupv2yild" path="res://dialogues/Vitoria/dialogo_demo.tres" id="12_njuc7"]
+[ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://misc/characters/vitoria.tres" id="11_yq3et"]
+[ext_resource type="Resource" uid="uid://dauliupv2yild" path="res://misc/dialogues/Vitoria/dialogo_demo.tres" id="12_i830g"]
 [ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
 [ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
 [ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="14_iyklr"]
@@ -281,7 +281,7 @@ texture = ExtResource("9_7cvk2")
 [node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
 position = Vector2(808, 191)
 CharacterInfo = ExtResource("11_yq3et")
-Dialogues = ExtResource("12_njuc7")
+Dialogues = ExtResource("12_i830g")
 InteractionUI = NodePath("../UI/DialogueUi")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]

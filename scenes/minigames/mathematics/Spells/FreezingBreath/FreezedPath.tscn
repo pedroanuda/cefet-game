@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d4n0soy3hljx6"]
 
-[ext_resource type="Texture2D" uid="uid://b5gxdmxn31d8u" path="res://src/tiles/mathematics/freezed_path.png" id="1_vi64n"]
-[ext_resource type="Texture2D" uid="uid://c1rqpawhofag3" path="res://src/tiles/mathematics/stalagmite.png" id="2_11fpx"]
+[ext_resource type="Texture2D" uid="uid://b5gxdmxn31d8u" path="res://assets/images/tiles/mathematics/freezed_path.png" id="1_vi64n"]
+[ext_resource type="Texture2D" uid="uid://c1rqpawhofag3" path="res://assets/images/tiles/mathematics/stalagmite.png" id="2_11fpx"]
 
 [sub_resource type="GDScript" id="GDScript_vyg2u"]
 resource_name = "FreezedPathScript"

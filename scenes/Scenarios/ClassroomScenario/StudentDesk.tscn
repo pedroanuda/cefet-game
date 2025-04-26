@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7etykk20vn6n"]
 
-[ext_resource type="Texture2D" uid="uid://ci2uaciqqjsdl" path="res://src/misc/World/student_desk.png" id="1_driny"]
+[ext_resource type="Texture2D" uid="uid://ci2uaciqqjsdl" path="res://assets/misc/World/student_desk.png" id="1_driny"]
 
 [node name="StudentDesk" type="StaticBody2D"]
 scale = Vector2(1.35, 1.35)

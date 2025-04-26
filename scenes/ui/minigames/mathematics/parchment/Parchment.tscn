@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://duiuh1rcwnwgp"]
 
-[ext_resource type="Texture2D" uid="uid://d00gr4gu1acbd" path="res://src/ui/minigames/mathematics/long_parchment_body_spreadsheet.png" id="1_lwkf3"]
+[ext_resource type="Texture2D" uid="uid://d00gr4gu1acbd" path="res://assets/images/ui/minigames/mathematics/long_parchment_body_spreadsheet.png" id="1_lwkf3"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/parchment/MathParchment.cs" id="1_yor53"]
-[ext_resource type="Texture2D" uid="uid://dch2opw13aaet" path="res://src/ui/minigames/mathematics/long_parchment_rolls.png" id="2_gptdy"]
+[ext_resource type="Texture2D" uid="uid://dch2opw13aaet" path="res://assets/images/ui/minigames/mathematics/long_parchment_rolls.png" id="2_gptdy"]
 [ext_resource type="PackedScene" uid="uid://cwc5y66ft3338" path="res://scenes/ui/minigames/mathematics/parchment/GuideRow.tscn" id="3_yrsgu"]
 
 [sub_resource type="Animation" id="Animation_4w23i"]
@@ -191,7 +191,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_yor53")
-SpellsDir = "res://items/mathematics/Spells"
+SpellsDir = "res://misc/items/mathematics/Spells"
 GuideRowScenePath = "res://scenes/ui/minigames/mathematics/parchment/GuideRow.tscn"
 
 [node name="Parchment" type="Control" parent="."]
@@ -202,8 +202,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
-offset_right = -450.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

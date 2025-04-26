@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bdyso3q7uudjm"]
 
-[ext_resource type="Texture2D" uid="uid://dpq68qg7a5r3h" path="res://src/entities/mathematics/wizard.png" id="1_cer7f"]
-[ext_resource type="Texture2D" uid="uid://cyamcii2f7xts" path="res://src/entities/mathematics/cajado.png" id="2_uht57"]
-[ext_resource type="Texture2D" uid="uid://bnvmalqrujvmb" path="res://src/entities/mathematics/cajado_faisca.png" id="3_m782f"]
+[ext_resource type="Texture2D" uid="uid://dpq68qg7a5r3h" path="res://assets/images/entities/mathematics/wizard.png" id="1_cer7f"]
+[ext_resource type="Texture2D" uid="uid://cyamcii2f7xts" path="res://assets/images/entities/mathematics/cajado.png" id="2_uht57"]
+[ext_resource type="Texture2D" uid="uid://bnvmalqrujvmb" path="res://assets/images/entities/mathematics/cajado_faisca.png" id="3_m782f"]
 
 [sub_resource type="GDScript" id="GDScript_atj2g"]
 resource_name = "ThePower"

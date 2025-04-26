@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://djkq1esbicg1m"]
 
-[ext_resource type="Texture2D" uid="uid://csjksbe4u6q6o" path="res://src/tiles/mathematics/barrier.png" id="1_a445h"]
+[ext_resource type="Texture2D" uid="uid://csjksbe4u6q6o" path="res://assets/images/tiles/mathematics/barrier.png" id="1_a445h"]
 
 [node name="BarrierPreview" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.47451)

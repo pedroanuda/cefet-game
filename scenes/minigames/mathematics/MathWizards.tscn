@@ -1,26 +1,26 @@
 [gd_scene load_steps=45 format=4 uid="uid://d1ialrklk0g5m"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/MathWizards.cs" id="1_2ifkc"]
-[ext_resource type="Texture2D" uid="uid://eq4k784b7ko5" path="res://src/tiles/mathematics/castle.png" id="1_u3cub"]
+[ext_resource type="Texture2D" uid="uid://eq4k784b7ko5" path="res://assets/images/tiles/mathematics/castle.png" id="1_u3cub"]
 [ext_resource type="PackedScene" uid="uid://bcekdwfv7ruq0" path="res://scenes/ui/minigames/mathematics/MathUi.tscn" id="2_45eox"]
-[ext_resource type="Resource" uid="uid://c8weo05xvn56n" path="res://items/mathematics/GreenParchment.tres" id="2_u72t3"]
-[ext_resource type="Resource" uid="uid://cwlffi4mkjn0i" path="res://items/mathematics/YellowParchment.tres" id="3_1d2uf"]
-[ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://items/mathematics/RedParchment.tres" id="4_oxuf7"]
+[ext_resource type="Resource" uid="uid://c8weo05xvn56n" path="res://misc/items/mathematics/GreenParchment.tres" id="2_u72t3"]
+[ext_resource type="Resource" uid="uid://cwlffi4mkjn0i" path="res://misc/items/mathematics/YellowParchment.tres" id="3_1d2uf"]
+[ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://misc/items/mathematics/RedParchment.tres" id="4_oxuf7"]
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/MathRound.cs" id="5_70sod"]
-[ext_resource type="Resource" uid="uid://c26603dlw0l2s" path="res://items/mathematics/Spells/Meteor.tres" id="5_phvly"]
-[ext_resource type="Resource" uid="uid://c2fq7ajmeq5ls" path="res://items/mathematics/Spells/Storm.tres" id="7_uak70"]
-[ext_resource type="Texture2D" uid="uid://bgl8kng7usjpk" path="res://src/tiles/mathematics/nature.png" id="8_4upfk"]
-[ext_resource type="Texture2D" uid="uid://c12hou52w08ab" path="res://src/tiles/mathematics/GrassGreen.png" id="8_b11rl"]
-[ext_resource type="Resource" uid="uid://dly6qe7v4jr8j" path="res://items/mathematics/Spells/Barrier.tres" id="8_dcs4d"]
-[ext_resource type="Resource" uid="uid://11lhpx88b5ts" path="res://items/mathematics/Spells/FreezingBreath.tres" id="8_hn5fe"]
+[ext_resource type="Resource" uid="uid://c26603dlw0l2s" path="res://misc/items/mathematics/Spells/Meteor.tres" id="5_phvly"]
+[ext_resource type="Resource" uid="uid://c2fq7ajmeq5ls" path="res://misc/items/mathematics/Spells/Storm.tres" id="7_uak70"]
+[ext_resource type="Texture2D" uid="uid://bgl8kng7usjpk" path="res://assets/images/tiles/mathematics/nature.png" id="8_4upfk"]
+[ext_resource type="Texture2D" uid="uid://c12hou52w08ab" path="res://assets/images/tiles/mathematics/GrassGreen.png" id="8_b11rl"]
+[ext_resource type="Resource" uid="uid://dly6qe7v4jr8j" path="res://misc/items/mathematics/Spells/Barrier.tres" id="8_dcs4d"]
+[ext_resource type="Resource" uid="uid://11lhpx88b5ts" path="res://misc/items/mathematics/Spells/FreezingBreath.tres" id="8_hn5fe"]
 [ext_resource type="Script" path="res://scenes/Drag.cs" id="8_x4uk5"]
-[ext_resource type="Texture2D" uid="uid://bxo0o8g3x1p4" path="res://src/tiles/mathematics/path1.png" id="9_iinsf"]
-[ext_resource type="Resource" uid="uid://b5hpvxq4hes62" path="res://items/mathematics/Spells/LaserBeam.tres" id="9_re7gx"]
-[ext_resource type="Texture2D" uid="uid://d0feocx0kuwfe" path="res://src/tiles/mathematics/tree.png" id="9_rgtvu"]
-[ext_resource type="Resource" uid="uid://c05h4t1ur203" path="res://items/mathematics/Spells/Fireball.tres" id="10_4d040"]
+[ext_resource type="Texture2D" uid="uid://bxo0o8g3x1p4" path="res://assets/images/tiles/mathematics/path1.png" id="9_iinsf"]
+[ext_resource type="Resource" uid="uid://b5hpvxq4hes62" path="res://misc/items/mathematics/Spells/LaserBeam.tres" id="9_re7gx"]
+[ext_resource type="Texture2D" uid="uid://d0feocx0kuwfe" path="res://assets/images/tiles/mathematics/tree.png" id="9_rgtvu"]
+[ext_resource type="Resource" uid="uid://c05h4t1ur203" path="res://misc/items/mathematics/Spells/Fireball.tres" id="10_4d040"]
 [ext_resource type="PackedScene" uid="uid://p3waxi0mdhu4" path="res://scenes/minigames/mathematics/Enemies/Zombie.tscn" id="10_5liqv"]
-[ext_resource type="Texture2D" uid="uid://d3mgugihno8gq" path="res://src/tiles/mathematics/grass.png" id="10_cy30x"]
-[ext_resource type="Resource" uid="uid://dbyextga2alwy" path="res://dialogues/minigames/mathematics/primeiro_pergaminho.tres" id="10_s33cm"]
+[ext_resource type="Texture2D" uid="uid://d3mgugihno8gq" path="res://assets/images/tiles/mathematics/grass.png" id="10_cy30x"]
+[ext_resource type="Resource" uid="uid://dbyextga2alwy" path="res://misc/dialogues/minigames/mathematics/primeiro_pergaminho.tres" id="10_s33cm"]
 [ext_resource type="PackedScene" uid="uid://bdyso3q7uudjm" path="res://scenes/minigames/mathematics/Wizard/Wizard.tscn" id="15_kkokm"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="18_dkkvc"]
 
@@ -221,7 +221,7 @@ Camera = NodePath("Camera2D")
 EasyAnswerItem = ExtResource("2_u72t3")
 MediumAnswerItem = ExtResource("3_1d2uf")
 HardAnswerItem = ExtResource("4_oxuf7")
-QuestionsFile = "res://src/misc/mathematics/questions.json"
+QuestionsFile = "res://assets/misc/mathematics/questions.json"
 Rounds = Array[Resource]([SubResource("Resource_s8lci"), SubResource("Resource_8qs5h"), SubResource("Resource_ffcnm")])
 WizardNode = NodePath("Wall/Middle/Wizard")
 PossibleSpells = Array[Object]([ExtResource("5_phvly"), ExtResource("7_uak70"), ExtResource("8_dcs4d"), ExtResource("8_hn5fe"), ExtResource("9_re7gx"), ExtResource("10_4d040")])

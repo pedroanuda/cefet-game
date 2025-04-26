@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DialogueCollection" load_steps=15 format=3 uid="uid://dauliupv2yild"]
+
+[ext_resource type="Script" path="res://misc/dialogues/Dialogue.cs" id="1_jdiyw"]
+[ext_resource type="Script" path="res://misc/dialogues/DialogueCollection.cs" id="1_wwohm"]
+[ext_resource type="Script" path="res://misc/dialogues/DialogueOption.cs" id="3_2a8hq"]
+[ext_resource type="Script" path="res://misc/dialogues/ChooseDialogue.cs" id="4_1em13"]
+
+[sub_resource type="Resource" id="Resource_g23nc"]
+script = ExtResource("1_jdiyw")
+Title = "{character}"
+Body = "Oi, eu sou a Vitória! Você deve ser o aluno novo."
+
+[sub_resource type="Resource" id="Resource_bpg7k"]
+script = ExtResource("1_jdiyw")
+Title = "{character}"
+Body = "Primeiramente, gostaria de te desejar boas vindas ao CEFET."
+
+[sub_resource type="Resource" id="Resource_g3lbs"]
+script = ExtResource("1_jdiyw")
+Title = "{character}"
+Body = "Se quiser, eu posso te demonstrar como fazemos as coisas por aqui."
+
+[sub_resource type="Resource" id="Resource_gyvfc"]
+script = ExtResource("1_jdiyw")
+Title = "{character}"
+Body = "Boa sorte!"
+
+[sub_resource type="Resource" id="Resource_ygv32"]
+script = ExtResource("1_wwohm")
+Dialogues = Array[Object]([SubResource("Resource_gyvfc")])
+EndingType = 2
+EndingExpression = "res://scenes/minigames/mathematics/MathWizards.tscn"
+
+[sub_resource type="Resource" id="Resource_febes"]
+script = ExtResource("3_2a8hq")
+OptionText = "Sim"
+CourseOfAction = SubResource("Resource_ygv32")
+
+[sub_resource type="Resource" id="Resource_k5bsg"]
+script = ExtResource("1_jdiyw")
+Title = "{character}"
+Body = "Okay, estarei por aqui."
+
+[sub_resource type="Resource" id="Resource_qxwtk"]
+script = ExtResource("1_wwohm")
+Dialogues = Array[Object]([SubResource("Resource_k5bsg")])
+EndingType = 0
+EndingExpression = ""
+
+[sub_resource type="Resource" id="Resource_qxhqc"]
+script = ExtResource("3_2a8hq")
+OptionText = "Não"
+CourseOfAction = SubResource("Resource_qxwtk")
+
+[sub_resource type="Resource" id="Resource_pgdvr"]
+script = ExtResource("4_1em13")
+Options = Array[Object]([SubResource("Resource_febes"), SubResource("Resource_qxhqc")])
+Title = "{character}"
+Body = "Gostaria de jogar um jogo de matemática?"
+
+[resource]
+script = ExtResource("1_wwohm")
+Dialogues = Array[Object]([SubResource("Resource_g23nc"), SubResource("Resource_bpg7k"), SubResource("Resource_g3lbs"), SubResource("Resource_pgdvr")])
+EndingType = 0
+EndingExpression = ""

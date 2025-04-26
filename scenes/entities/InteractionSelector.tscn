@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmovec4o5pcir"]
 
-[ext_resource type="Texture2D" uid="uid://ckh0oxp1n38hd" path="res://src/entities/interaction_selector.png" id="1_kl3yh"]
+[ext_resource type="Texture2D" uid="uid://ckh0oxp1n38hd" path="res://assets/images/entities/interaction_selector.png" id="1_kl3yh"]
 
 [sub_resource type="Animation" id="Animation_05l88"]
 resource_name = "hover"

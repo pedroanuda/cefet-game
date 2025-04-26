@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bbknn65fnh5rr"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/LaserBeam/MathLaserBeam.cs" id="1_fb148"]
-[ext_resource type="Texture2D" uid="uid://dgt750nboynxr" path="res://src/tiles/mathematics/laserbeam.png" id="2_ngv20"]
+[ext_resource type="Texture2D" uid="uid://dgt750nboynxr" path="res://assets/images/tiles/mathematics/laserbeam.png" id="2_ngv20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wb4f7"]
 atlas = ExtResource("2_ngv20")

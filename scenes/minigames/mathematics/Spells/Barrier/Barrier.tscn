@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbp45osq856wv"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Barrier/Barrier.cs" id="1_uauih"]
-[ext_resource type="Texture2D" uid="uid://csjksbe4u6q6o" path="res://src/tiles/mathematics/barrier.png" id="2_asnag"]
+[ext_resource type="Texture2D" uid="uid://csjksbe4u6q6o" path="res://assets/images/tiles/mathematics/barrier.png" id="2_asnag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwyrt"]
 size = Vector2(232, 24)

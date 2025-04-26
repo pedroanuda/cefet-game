@@ -2,11 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://d4a4pvbi8xsxx" path="res://themes/mathWizards.tres" id="1_e4bqr"]
 [ext_resource type="Script" path="res://scenes/ui/minigames/mathematics/SpellSlot/SpellSlot.cs" id="2_g81eh"]
-[ext_resource type="Texture2D" uid="uid://badyj0l63mbrh" path="res://src/tiles/mathematics/light.png.png" id="3_ps48p"]
-[ext_resource type="Texture2D" uid="uid://c1qtln45av3nf" path="res://src/items/mathematics/freez-breath-icon.png" id="4_3yhmi"]
-[ext_resource type="Texture2D" uid="uid://d3bagbsufw5d6" path="res://src/ui/minigames/mathematics/selection_arrow.png" id="5_4qo0d"]
-[ext_resource type="Texture2D" uid="uid://ciu2tf3hrfgjc" path="res://src/ui/buttons/button_3.png" id="5_no137"]
-[ext_resource type="Texture2D" uid="uid://rxacrjbosv2r" path="res://src/ui/buttons/button_0.png" id="6_d6drk"]
+[ext_resource type="Texture2D" uid="uid://badyj0l63mbrh" path="res://assets/images/tiles/mathematics/light.png.png" id="3_ps48p"]
+[ext_resource type="Texture2D" uid="uid://c1qtln45av3nf" path="res://assets/images/items/mathematics/freez-breath-icon.png" id="4_3yhmi"]
+[ext_resource type="Texture2D" uid="uid://d3bagbsufw5d6" path="res://assets/images/ui/minigames/mathematics/selection_arrow.png" id="5_4qo0d"]
+[ext_resource type="Texture2D" uid="uid://ciu2tf3hrfgjc" path="res://assets/images/ui/buttons/button_3.png" id="5_no137"]
+[ext_resource type="Texture2D" uid="uid://rxacrjbosv2r" path="res://assets/images/ui/buttons/button_0.png" id="6_d6drk"]
 
 [node name="SpellSlot" type="PanelContainer"]
 theme = ExtResource("1_e4bqr")

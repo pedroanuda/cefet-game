@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwnqaaalxpvb"]
 
-[ext_resource type="Texture2D" uid="uid://b62l1tmha5tui" path="res://src/misc/World/teacher_desk.png" id="1_nveys"]
+[ext_resource type="Texture2D" uid="uid://b62l1tmha5tui" path="res://assets/misc/World/teacher_desk.png" id="1_nveys"]
 
 [node name="TeacherDesk" type="StaticBody2D"]
 texture_filter = 1

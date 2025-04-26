@@ -1,9 +1,9 @@
 [gd_scene load_steps=53 format=3 uid="uid://cplxgo3y58lpq"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Fireball/MathFireball.cs" id="1_2m8v1"]
-[ext_resource type="Texture2D" uid="uid://nvilra70ch2y" path="res://src/tiles/mathematics/fireball.png" id="1_8d7rk"]
-[ext_resource type="Texture2D" uid="uid://c7dtxi7hhwi0f" path="res://src/tiles/mathematics/fireball_circle.png" id="2_n1n6o"]
-[ext_resource type="Texture2D" uid="uid://d2w0v6btkwip0" path="res://src/Particles/smoke.png" id="4_njvec"]
+[ext_resource type="Texture2D" uid="uid://nvilra70ch2y" path="res://assets/images/tiles/mathematics/fireball.png" id="1_8d7rk"]
+[ext_resource type="Texture2D" uid="uid://c7dtxi7hhwi0f" path="res://assets/images/tiles/mathematics/fireball_circle.png" id="2_n1n6o"]
+[ext_resource type="Texture2D" uid="uid://d2w0v6btkwip0" path="res://assets/images/particles/smoke.png" id="4_njvec"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_puuvj"]
 

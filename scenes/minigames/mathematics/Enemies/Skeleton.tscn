@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1jgtldumndf4"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Enemies/MathEnemy.cs" id="1_1pes6"]
-[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://src/entities/Player.png" id="2_ub60h"]
+[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://assets/images/entities/Player.png" id="2_ub60h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8i5pk"]
 atlas = ExtResource("2_ub60h")

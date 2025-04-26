@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MathSpell" load_steps=5 format=3 uid="uid://c26603dlw0l2s"]
+
+[ext_resource type="Script" path="res://misc/items/mathematics/Spells/MathSpell.cs" id="1_3u3qc"]
+[ext_resource type="Resource" uid="uid://ba0haenp5atyb" path="res://misc/items/mathematics/RedParchment.tres" id="1_4t371"]
+[ext_resource type="Texture2D" uid="uid://dr4nymikdndgl" path="res://assets/images/items/mathematics/meteor-icon.png" id="2_ngsch"]
+[ext_resource type="PackedScene" uid="uid://r5d0vkeef45b" path="res://scenes/minigames/mathematics/Spells/Meteor/MeteorPreview.tscn" id="3_1hj03"]
+
+[resource]
+script = ExtResource("1_3u3qc")
+SpellScenePath = "res://scenes/minigames/mathematics/Spells/Meteor/Meteor.tscn"
+PreviewScene = ExtResource("3_1hj03")
+CraftRecipe = Array[Object]([ExtResource("1_4t371"), ExtResource("1_4t371")])
+Id = 103
+Name = {
+"en_US": "Meteor",
+"pt_BR": "Meteoro"
+}
+Description = null
+StackSize = 1
+SlotType = 3
+Icon = ExtResource("2_ngsch")

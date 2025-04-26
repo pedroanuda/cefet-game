@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhmeixm31igjf"]
 
-[ext_resource type="Texture2D" uid="uid://bamny1ek877hb" path="res://src/tiles/mathematics/freez-breath-preview.png" id="1_em4xc"]
+[ext_resource type="Texture2D" uid="uid://bamny1ek877hb" path="res://assets/images/tiles/mathematics/freez-breath-preview.png" id="1_em4xc"]
 
 [node name="BreathPreview" type="Sprite2D" groups=["freez_preview"]]
 z_as_relative = false

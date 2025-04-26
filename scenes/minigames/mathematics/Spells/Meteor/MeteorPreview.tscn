@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://r5d0vkeef45b"]
 
-[ext_resource type="Texture2D" uid="uid://duxc3kchnyaq" path="res://src/tiles/mathematics/meteor_preview.png" id="1_x0rc2"]
+[ext_resource type="Texture2D" uid="uid://duxc3kchnyaq" path="res://assets/images/tiles/mathematics/meteor_preview.png" id="1_x0rc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlbu8"]
 atlas = ExtResource("1_x0rc2")

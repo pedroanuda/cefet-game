@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://n6oj0bj618d"]
 
-[ext_resource type="Texture2D" uid="uid://rs0cu76yr0x7" path="res://src/Logos Splash.png" id="1_8txlt"]
+[ext_resource type="Texture2D" uid="uid://rs0cu76yr0x7" path="res://assets/images/Logos Splash.png" id="1_8txlt"]
 [ext_resource type="Script" path="res://scenes/ui/SplashScreen/SplashScreen.cs" id="1_cv34l"]
 [ext_resource type="PackedScene" uid="uid://dqmdj2dwc6tbs" path="res://scenes/ui/Menu/MainMenu.tscn" id="2_ixxgp"]
-[ext_resource type="Texture2D" uid="uid://cmc4txu1bj2r" path="res://src/Brain Logo.png" id="4_mqx1b"]
+[ext_resource type="Texture2D" uid="uid://cmc4txu1bj2r" path="res://assets/images/Brain Logo.png" id="4_mqx1b"]
 [ext_resource type="PackedScene" uid="uid://b71xlkcni85kh" path="res://scenes/ui/SplashScreen/SplashFrame.tscn" id="5_wpeoj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8d8k"]

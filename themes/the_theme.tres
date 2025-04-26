@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://0yaj4jmqmnuh"]
 
-[ext_resource type="Texture2D" uid="uid://cdnltcgkflgvj" path="res://src/ui/button_selected.png" id="1_crigv"]
-[ext_resource type="Texture2D" uid="uid://gc3u6h3hjcnk" path="res://src/ui/button_focus.png" id="1_m1805"]
-[ext_resource type="Texture2D" uid="uid://c1pca754dytbk" path="res://src/ui/button.png" id="2_4oifr"]
-[ext_resource type="Texture2D" uid="uid://bsjt7xe0gn41m" path="res://src/ui/button_pressed.png" id="3_vytu5"]
-[ext_resource type="FontFile" uid="uid://cnol5ck8qer0n" path="res://fonts/BRLNSR.TTF" id="4_4hsye"]
+[ext_resource type="Texture2D" uid="uid://cdnltcgkflgvj" path="res://assets/images/ui/button_selected.png" id="1_crigv"]
+[ext_resource type="Texture2D" uid="uid://gc3u6h3hjcnk" path="res://assets/images/ui/button_focus.png" id="1_m1805"]
+[ext_resource type="Texture2D" uid="uid://c1pca754dytbk" path="res://assets/images/ui/button.png" id="2_4oifr"]
+[ext_resource type="Texture2D" uid="uid://bsjt7xe0gn41m" path="res://assets/images/ui/button_pressed.png" id="3_vytu5"]
+[ext_resource type="FontFile" uid="uid://cnol5ck8qer0n" path="res://assets/fonts/BRLNSR.TTF" id="4_4hsye"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obr4n"]
 texture = ExtResource("1_m1805")

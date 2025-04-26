@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MathSpell" load_steps=5 format=3 uid="uid://dly6qe7v4jr8j"]
+
+[ext_resource type="Resource" uid="uid://c8weo05xvn56n" path="res://misc/items/mathematics/GreenParchment.tres" id="1_eo5nb"]
+[ext_resource type="Script" path="res://misc/items/mathematics/Spells/MathSpell.cs" id="1_hqa13"]
+[ext_resource type="Texture2D" uid="uid://disj1logkjw1m" path="res://assets/images/items/mathematics/barrier-icon.png" id="2_ab2qe"]
+[ext_resource type="PackedScene" uid="uid://djkq1esbicg1m" path="res://scenes/minigames/mathematics/Spells/Barrier/BarrierPreview.tscn" id="3_uw4ym"]
+
+[resource]
+script = ExtResource("1_hqa13")
+SpellScenePath = "res://scenes/minigames/mathematics/Spells/Barrier/Barrier.tscn"
+PreviewScene = ExtResource("3_uw4ym")
+CraftRecipe = Array[Object]([ExtResource("1_eo5nb"), ExtResource("1_eo5nb")])
+Id = 106
+Name = {
+"en_US": "Barrier",
+"pt_BR": "Barreira"
+}
+Description = null
+StackSize = 1
+SlotType = 3
+Icon = ExtResource("2_ab2qe")

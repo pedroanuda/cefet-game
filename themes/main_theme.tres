@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://y4ylw6bm3qts"]
 
-[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://fonts/RetroSans.ttf" id="1_22coy"]
-[ext_resource type="Texture2D" uid="uid://bhr4551a35uwv" path="res://src/ui/main-menu_button.png" id="2_jwyng"]
+[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://assets/fonts/RetroSans.ttf" id="1_22coy"]
+[ext_resource type="Texture2D" uid="uid://bhr4551a35uwv" path="res://assets/images/ui/main-menu_button.png" id="2_jwyng"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6kyy"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bufr2au42hyom"]
 
-[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="1_7aqiv"]
+[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="1_7aqiv"]
 [ext_resource type="Script" path="res://scenes/transition/TransitionScene.cs" id="1_owpgk"]
 
 [sub_resource type="Animation" id="Animation_rimcr"]

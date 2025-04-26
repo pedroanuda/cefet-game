@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://do4eui0njknlf"]
 
-[ext_resource type="Texture2D" uid="uid://b7t4vgjbb34hd" path="res://src/tiles/mathematics/breath.png" id="1_bltqg"]
+[ext_resource type="Texture2D" uid="uid://b7t4vgjbb34hd" path="res://assets/images/tiles/mathematics/breath.png" id="1_bltqg"]
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/FreezingBreath/MathFreezingBreath.cs" id="1_edcm5"]
 [ext_resource type="PackedScene" uid="uid://d4n0soy3hljx6" path="res://scenes/minigames/mathematics/Spells/FreezingBreath/FreezedPath.tscn" id="2_co5se"]
 

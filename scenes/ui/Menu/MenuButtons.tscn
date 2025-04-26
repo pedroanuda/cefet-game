@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm5mtkg8ixc42"]
 
-[ext_resource type="Texture2D" uid="uid://8mq8kn6jfwas" path="res://src/buttons/Gamepad_A.png" id="1_qquw7"]
-[ext_resource type="FontFile" uid="uid://cnol5ck8qer0n" path="res://fonts/BRLNSR.TTF" id="2_fqem5"]
+[ext_resource type="Texture2D" path="res://src/buttons/Gamepad_A.png" id="1_qquw7"]
+[ext_resource type="FontFile" uid="uid://cnol5ck8qer0n" path="res://assets/fonts/BRLNSR.TTF" id="2_fqem5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1urge"]
 font = ExtResource("2_fqem5")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ba0haenp5atyb"]
+
+[ext_resource type="Texture2D" uid="uid://bblcmlmp1kyi0" path="res://assets/images/items/mathematics/red-parchment.png" id="1_6gx8e"]
+[ext_resource type="Script" path="res://misc/items/Item.cs" id="2_uf8rf"]
+
+[resource]
+script = ExtResource("2_uf8rf")
+Id = 102
+Name = {
+"en_US": "Red Parchment",
+"pt_BR": "Pergaminho Vermelho"
+}
+Description = {}
+StackSize = 1
+SlotType = 3
+Icon = ExtResource("1_6gx8e")

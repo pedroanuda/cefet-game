@@ -1,0 +1,50 @@
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://dwcwi1x0kqcmm"]
+
+[ext_resource type="Script" path="res://misc/dialogues/Dialogue.cs" id="1_em5g5"]
+[ext_resource type="Script" path="res://misc/dialogues/DialogueCollection.cs" id="1_nxbny"]
+[ext_resource type="Script" path="res://misc/dialogues/ChooseDialogue.cs" id="2_j32tc"]
+[ext_resource type="Script" path="res://misc/dialogues/DialogueOption.cs" id="3_ulkek"]
+
+[sub_resource type="Resource" id="Resource_65bij"]
+script = ExtResource("1_em5g5")
+Title = "{character}"
+Body = "Boa sorte!"
+
+[sub_resource type="Resource" id="Resource_adpbc"]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_65bij")])
+EndingType = 2
+EndingExpression = "res://scenes/minigames/mathematics/MathWizards.tscn"
+
+[sub_resource type="Resource" id="Resource_073f2"]
+script = ExtResource("3_ulkek")
+OptionText = "Sim"
+CourseOfAction = SubResource("Resource_adpbc")
+
+[sub_resource type="Resource" id="Resource_4ehhb"]
+script = ExtResource("1_em5g5")
+Title = "{character}"
+Body = "Okay, passar bem!"
+
+[sub_resource type="Resource" id="Resource_66xrs"]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_4ehhb")])
+EndingType = 0
+EndingExpression = ""
+
+[sub_resource type="Resource" id="Resource_bj8u1"]
+script = ExtResource("3_ulkek")
+OptionText = "Não"
+CourseOfAction = SubResource("Resource_66xrs")
+
+[sub_resource type="Resource" id="Resource_rwcf4"]
+script = ExtResource("2_j32tc")
+Options = Array[Object]([SubResource("Resource_073f2"), SubResource("Resource_bj8u1")])
+Title = "{character}"
+Body = "Você gostaria de experimentar um jogo de matemática?"
+
+[resource]
+script = ExtResource("1_nxbny")
+Dialogues = Array[Object]([SubResource("Resource_rwcf4")])
+EndingType = 0
+EndingExpression = ""

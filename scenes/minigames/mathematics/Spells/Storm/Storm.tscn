@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://rm22epgv02fb"]
 
 [ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/Storm/MathStorm.cs" id="1_xe2uy"]
-[ext_resource type="Texture2D" uid="uid://ddhcxoxefstyf" path="res://src/tiles/mathematics/storm_clouds.png" id="2_1aufn"]
+[ext_resource type="Texture2D" uid="uid://ddhcxoxefstyf" path="res://assets/images/tiles/mathematics/storm_clouds.png" id="2_1aufn"]
 [ext_resource type="PackedScene" uid="uid://bd7blhccorvae" path="res://scenes/minigames/mathematics/Spells/Storm/StormLightning.tscn" id="3_bjmw7"]
-[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://src/entities/shadow.png" id="3_xdeea"]
-[ext_resource type="Texture2D" uid="uid://bvvxnt52q6qqw" path="res://src/tiles/mathematics/storm_drop.png" id="5_qsk65"]
-[ext_resource type="AudioStream" uid="uid://dwf0rws37oc58" path="res://src/sounds/mathematics/storm_rain.mp3" id="6_sxbxa"]
+[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="3_xdeea"]
+[ext_resource type="Texture2D" uid="uid://bvvxnt52q6qqw" path="res://assets/images/tiles/mathematics/storm_drop.png" id="5_qsk65"]
+[ext_resource type="AudioStream" uid="uid://dwf0rws37oc58" path="res://assets/sounds/mathematics/storm_rain.mp3" id="6_sxbxa"]
 
 [sub_resource type="Animation" id="Animation_n0qw6"]
 length = 0.001
