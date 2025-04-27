@@ -11,7 +11,7 @@ namespace Game.Gameplay
         SceneSwitch
     }
 
-    [GlobalClass, Tool, Icon("res://src/engine_ui/dialogue_collection_icon.svg")]
+    [GlobalClass, Tool, Icon("res://misc/engine_ui/dialogue_collection_icon.svg")]
     public partial class DialogueCollection : Resource
     {
         [Export]

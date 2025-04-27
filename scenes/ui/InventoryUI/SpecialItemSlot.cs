@@ -20,7 +20,7 @@ namespace Game.UI
             _button.Disabled = true;
             _placeholder.Texture = SlotType switch
             {
-                ItemCategory.Backpack => GD.Load<Texture2D>("res://src/ui/inventory/backpack_slot_placeholder.png"),
+                ItemCategory.Backpack => GD.Load<Texture2D>("res://assets/ui/inventory/backpack_slot_placeholder.png"),
                 _ => null
             };
         }

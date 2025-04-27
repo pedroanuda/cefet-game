@@ -7,7 +7,7 @@ using System;
 
 namespace Game.Entities
 {
-    [GlobalClass, Icon("res://src/engine_ui/character_icon.svg"), Tool]
+    [GlobalClass, Icon("res://misc/engine_ui/character_icon.svg"), Tool]
     public partial class Character : Resource
     {
         [Export]
