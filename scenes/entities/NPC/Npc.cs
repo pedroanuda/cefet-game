@@ -45,9 +45,22 @@ namespace Game.Entities
         [Export]
         public Control InteractionUI { get; set; }
 
-        public void PlayAnimation(StringName animName)
+        public void ToggleHighlight(bool state)
         {
-            _animatedSprite.Play(animName);
+            var animationName = _animatedSprite.Animation.ToString();
+            var isCurrentAnimationHighlighted = animationName.EndsWith("selected");
+            var frame = _animatedSprite.Frame;
+            var frameProgress = _animatedSprite.FrameProgress;
+            if (state && !isCurrentAnimationHighlighted)
+            {
+                _animatedSprite.Play($"{animationName}_selected");
+                _animatedSprite.SetFrameAndProgress(frame, frameProgress);
+            }
+            else if (!state && isCurrentAnimationHighlighted)
+            {
+                _animatedSprite.Play(animationName.Replace("_selected", ""));
+                _animatedSprite.SetFrameAndProgress(frame, frameProgress);
+            }
         }
 
         public override void _Ready()
