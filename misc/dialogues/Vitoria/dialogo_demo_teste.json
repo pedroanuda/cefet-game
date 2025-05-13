@@ -1,0 +1,36 @@
+{
+    "$schema": "../dialogue.schema.json",
+    "start": [
+        {
+            "title": "{character}",
+            "body": "Olá, você deve ser o aluno novo! Esta é uma mensagem de teste."
+        },
+        {
+            "title": "{character}",
+            "body": "Gostaria de jogar um minijogo de matemática?",
+            "choices": [
+                {
+                    "text": "Sim",
+                    "goTo": "yes_answer"
+                },
+                {
+                    "text": "Não",
+                    "goTo": "no_answer"
+                }
+            ]
+        }
+    ],
+    "yes_answer": [
+        {
+            "title": "{character}",
+            "body": "Boa sorte!",
+            "goToScene": "res://scenes/minigames/mathematics/MathWizards.tscn"
+        }
+    ],
+    "no_answer": [
+        {
+            "title": "{character}",
+            "body": "Ok, estarei por aqui!"
+        }
+    ]
+}

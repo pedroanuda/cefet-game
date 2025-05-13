@@ -74,7 +74,8 @@ namespace Game.Minigames
 
         // Helpers Logic
         [ExportCategory("Helpers")]
-        [Export] public DialogueCollection FirstParchmentDialogue { get; set; }
+        [Export(PropertyHint.File, "*.json")] 
+        public string FirstParchmentDialoguePath { get; set; }
         [ExportGroup("Helpers Debugging")]
         [Export] private bool FirstTimePlaying { get; set; } = true;
         private int answersAnsweredCorrectly;
@@ -126,7 +127,7 @@ namespace Game.Minigames
             if (answersAnsweredCorrectly == 1 && FirstTimePlaying)
             {
                 Engine.TimeScale = 0.25f;
-                Ui.OpenDialogue(FirstParchmentDialogue, () =>
+                Ui.OpenDialogue(FirstParchmentDialoguePath, () =>
                 {
                     Engine.TimeScale = 1;
                     Ui.OpenParchment(earnedItem);

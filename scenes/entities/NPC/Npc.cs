@@ -22,11 +22,13 @@ namespace Game.Entities
                 if (value is Character character)
                 {
                     _characterInfo = character;
-                    if (_animatedSprite is null) _animatedSprite = GetNode<AnimatedSprite2D>("Sprites");
+                    _animatedSprite ??= GetNode<AnimatedSprite2D>("Sprites");
                     _animatedSprite.SpriteFrames = character.SpriteAnimations;
                     _animatedSprite.Offset = character.SpritesOffset;
                     _animatedSprite.Play();
-                    _hasSelect = _animatedSprite.SpriteFrames.HasAnimation("idle_selected");
+                    if (_animatedSprite.SpriteFrames is not null)
+                        _hasSelect = _animatedSprite.SpriteFrames.HasAnimation("idle_selected");
+                    else _hasSelect = false;
                 }
                 else
                 {
@@ -39,8 +41,8 @@ namespace Game.Entities
             }
         }
 
-        [Export]
-        public DialogueCollection Dialogues { get; set; }
+        [Export(PropertyHint.File, "*.json")]
+        public string DialoguePath { get; set; }
 
         [Export]
         public Control InteractionUI { get; set; }

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://jttt1gv0x8w5"]
+[gd_scene load_steps=3 format=3 uid="uid://dutljyogmx02w"]
 
-[ext_resource type="Script" path="res://scenes/ui/Dialogue/DialogueUi.cs" id="1_x8wei"]
+[ext_resource type="Script" path="res://scenes/ui/Dialogue/NewDialogueUi.cs" id="1_8caad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74ngh"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -9,14 +9,15 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="DialogueUi" type="Control"]
+[node name="NewDialogueUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x8wei")
+script = ExtResource("1_8caad")
+OptionButtonPath = "res://scenes/ui/Menu/menu_button.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -71,15 +72,27 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TextBody" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue/MarginContainer"]
+layout_mode = 2
+
+[node name="DialogueTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "[b]Hey[/b]
+text = "[b]Hey[/b]"
+scroll_active = false
 
-sdflkdjsflksdjfsdlfkjaçlkjf"
+[node name="DialogueBody" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/Dialogue/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "sdflkdjsflksdjfsdlfkjaçlkjf"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -88,3 +101,5 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
+
+[node name="DelayTimer" type="Timer" parent="."]
