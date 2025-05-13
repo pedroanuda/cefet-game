@@ -6,4 +6,10 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>CefetGame</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="misc\dialogues\dialogue.schema.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

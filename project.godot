@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.cs"
 TransitionHandler="*res://scenes/transition/TransitionHandler.cs"
+DialogueSystem="*res://misc/DialogueSystem.cs"
 
 [display]
 
