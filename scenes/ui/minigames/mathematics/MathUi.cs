@@ -597,9 +597,12 @@ namespace Game.UI
 
             // Gets the spells containers and give the correct one a focus;
             var containers = _spellsContainer.GetChildren();
-            var lSPIdx = lastSelectedSpell.GetIndex();
+             var lSPIdx = 0;
+             if (lastSelectedSpell != null) {
+                 lSPIdx = lastSelectedSpell.GetIndex();
+             }
 
-            if (lastSelectedSpell.Item is null) {
+            if (lastSelectedSpell?.Item is null) {
                 var previous = containers[lSPIdx != 0 ? lSPIdx - 1 : 0] as SpellSlot;
                 var next = containers[lSPIdx != containers.Count - 1 ? lSPIdx + 1 : containers.Count - 1] as SpellSlot;
 
