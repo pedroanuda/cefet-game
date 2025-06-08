@@ -18,5 +18,8 @@ namespace Game.Entities
 
         [Export]
         public string Name { get; set; }
+
+        [Export(PropertyHint.Dir)]
+        public string ImagesPath { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace CefetGame.Misc
 {
     public partial class DialogueSystem : Node
     {
+        // TODO: Add rewards support when possible.
+
         [Signal]
         public delegate void DialogueFinishedEventHandler();
 
@@ -37,7 +39,7 @@ namespace CefetGame.Misc
 
             currentDialogueCourse = "start"; // There must always be a "start" course!
             currentDialoguePart = dialogues[currentDialogueCourse][0];
-            MaskTitleIfNeeded(currentDialoguePart);
+            PrepareCharInfo(currentDialoguePart);
 
             ui.StartDialogue(currentDialoguePart);
             ui.Advanced += AdvanceDialogue;
@@ -57,7 +59,7 @@ namespace CefetGame.Misc
                 dialoguePartsIndex = 0;
                 currentDialogueCourse = currentDialoguePart.GoTo;
                 currentDialoguePart = dialogues[currentDialogueCourse][0];
-                MaskTitleIfNeeded(currentDialoguePart);
+                PrepareCharInfo(currentDialoguePart);
                 ui.ChangeDialogue(currentDialoguePart);
                 return;
             }
@@ -78,7 +80,7 @@ namespace CefetGame.Misc
             if (dialoguePartsIndex < dialogues[currentDialogueCourse].Length)
             {
                 currentDialoguePart = dialogues[currentDialogueCourse][dialoguePartsIndex];
-                MaskTitleIfNeeded(currentDialoguePart);
+                PrepareCharInfo(currentDialoguePart);
                 ui.ChangeDialogue(currentDialoguePart);
                 return;
             }
@@ -98,12 +100,43 @@ namespace CefetGame.Misc
             EmitSignal(SignalName.DialogueFinished);
         }
 
-        private void MaskTitleIfNeeded(DialoguePart dialoguePart)
+        private void PrepareCharInfo(DialoguePart dialoguePart)
         {
-            if (speakingCharacter is not null && dialoguePart.Title == "{character}")
+            if (speakingCharacter is null)
+                return;
+
+            if (dialoguePart.Title == "{character}")
             {
                 dialoguePart.Title = speakingCharacter.Name;
             }
+
+            if (speakingCharacter.ImagesPath == "" || speakingCharacter.ImagesPath is null)
+                return;
+
+            var imgPath = GetCharacterImagePath(dialoguePart.Mood);
+            if (ResourceLoader.Exists(imgPath))
+            {
+                var img = ResourceLoader.Load<Texture2D>(imgPath);
+                ui.ChangeImage(img);
+                return;
+            }
+
+            ui.ChangeImage(null);
+        }
+
+        private string GetCharacterImagePath(CharacterMood mood)
+        {
+            string imagePath = mood switch
+            {
+                CharacterMood.Happy => speakingCharacter.ImagesPath + "/happy.png",
+                CharacterMood.Angry => speakingCharacter.ImagesPath + "/angry.png",
+                CharacterMood.Nervous => speakingCharacter.ImagesPath + "/nervous.png",
+                CharacterMood.Confused => speakingCharacter.ImagesPath + "/confused.png",
+                CharacterMood.Reflexive => speakingCharacter.ImagesPath + "/reflexive.png",
+                _ => speakingCharacter.ImagesPath + "/neutral.png"
+            };
+
+            return imagePath;
         }
 
         private void OnOptionChosen(string choiceJson)
@@ -114,7 +147,7 @@ namespace CefetGame.Misc
                 dialoguePartsIndex = 0;
                 currentDialogueCourse = choice.GoTo;
                 currentDialoguePart = dialogues[currentDialogueCourse][0];
-                MaskTitleIfNeeded(currentDialoguePart);
+                PrepareCharInfo(currentDialoguePart);
                 ui.ChangeDialogue(currentDialoguePart);
                 return;
             }

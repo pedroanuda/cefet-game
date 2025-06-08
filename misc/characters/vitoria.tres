@@ -65,3 +65,4 @@ script = ExtResource("1_g6utg")
 SpriteAnimations = SubResource("SpriteFrames_kf5dk")
 SpritesOffset = Vector2(-1, 0)
 Name = "Vitória"
+ImagesPath = "res://assets/misc/characters/Vitoria"

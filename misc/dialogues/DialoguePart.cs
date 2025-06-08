@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Game.Entities;
+using Newtonsoft.Json;
 
 namespace CefetGame.Gameplay
 {
@@ -23,6 +24,6 @@ namespace CefetGame.Gameplay
         public int RewardId { get; set; }
         
         [JsonProperty("mood")]
-        public string Mood { get; set; }
+        public CharacterMood Mood { get; set; }
     }
 }

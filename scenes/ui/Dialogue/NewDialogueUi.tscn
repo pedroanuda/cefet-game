@@ -41,6 +41,25 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="PicBox" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="PicRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/PicBox"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 221.0
+expand_mode = 3
+stretch_mode = 6
+
+[node name="FrameRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/PicBox"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 221.0
+expand_mode = 5
+
 [node name="Dialogue" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 221)
 layout_mode = 2

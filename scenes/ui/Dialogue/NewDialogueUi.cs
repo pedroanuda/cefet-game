@@ -16,9 +16,13 @@ namespace CefetGame.Ui
         [Export(PropertyHint.File, "*.tscn,*.scn")]
         public string OptionButtonPath { get; set; }
         protected PackedScene OptionButtonScene { get; set; }
+
         protected RichTextLabel TitleNode { get; set; }
         protected RichTextLabel BodyNode { get; set; }
+        protected Control CharacterFrameNode { get; set; }
+        protected TextureRect CharacterImageNode { get; set; }
         protected BoxContainer OptionsContainer { get; set; }
+
         protected System.Timers.Timer CharAnimationTimer { get; set; }
         protected Godot.Timer DelayTimer { get; set; }
         protected bool IsChoiceDialogue { get; set; } = false;
@@ -57,6 +61,12 @@ namespace CefetGame.Ui
 
             CharAnimationTimer.Interval = 50;
             CharAnimationTimer.Start();
+        }
+
+        public virtual void ChangeImage(Texture2D texture)
+        {
+            CharacterImageNode.Texture = texture;
+            CharacterFrameNode.Visible = texture != null;
         }
 
         public virtual void Finish()
@@ -149,7 +159,7 @@ namespace CefetGame.Ui
 
         public override void _Input(InputEvent @event)
         {
-            if (@event is InputEventKey key && key.IsReleased())
+            if (@event is InputEventKey key && key.IsReleased() && Visible)
             {
                 if (key.Keycode == Key.Enter || key.Keycode == Key.Space)
                 {
@@ -165,6 +175,8 @@ namespace CefetGame.Ui
         {
             TitleNode = GetNode<RichTextLabel>("%DialogueTitle");
             BodyNode = GetNode<RichTextLabel>("%DialogueBody");
+            CharacterImageNode = GetNode<TextureRect>("%PicRect");
+            CharacterFrameNode = CharacterImageNode.GetParent<Control>();
             OptionsContainer = GetNode<BoxContainer>("%OptionsContainer");
             DelayTimer = GetNode<Godot.Timer>("DelayTimer");
             OptionButtonScene = ResourceLoader.Load<PackedScene>(OptionButtonPath);
