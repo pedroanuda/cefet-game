@@ -291,7 +291,6 @@ player = NodePath("../Player")
 texture = SubResource("CanvasTexture_vwgv1")
 
 [node name="MainGameUi" parent="UI" instance=ExtResource("13_p8w5o")]
-visible = false
 
 [node name="NewDialogueUi" parent="UI" instance=ExtResource("14_hixty")]
 visible = false
