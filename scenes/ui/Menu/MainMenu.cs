@@ -10,6 +10,7 @@ namespace Game.UI
 
 		public override void _Ready()
 		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
 			var button = GetNode<Button>("MarginContainer/VBoxContainer/NewGameButton");
 			button.GrabFocus();
 		}

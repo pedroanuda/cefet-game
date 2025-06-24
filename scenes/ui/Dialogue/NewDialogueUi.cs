@@ -159,15 +159,24 @@ namespace CefetGame.Ui
 
         public override void _Input(InputEvent @event)
         {
-            if (@event is InputEventKey key && key.IsReleased() && Visible)
+            if (!Visible)
+                return;
+                
+            if (@event is InputEventKey key && key.IsReleased())
             {
                 if (key.Keycode == Key.Enter || key.Keycode == Key.Space)
                 {
                     TryAdvance();
 
                     if (!IsChoiceDialogue)
-                    GetViewport().SetInputAsHandled();
+                        GetViewport().SetInputAsHandled();
                 }
+                return;
+            }
+
+            if (@event is InputEventMouseButton mb && mb.IsReleased())
+            {
+                TryAdvance();
             }
         }
 
@@ -185,7 +194,8 @@ namespace CefetGame.Ui
             // CharAnimation Timer configuration
             void onTimerElapsed(object source, ElapsedEventArgs e)
             {
-                CallDeferred(MethodName.OnCharacterAnimationTimeout);
+                if (!GetTree().Paused)
+                    CallDeferred(MethodName.OnCharacterAnimationTimeout);
             }
             CharAnimationTimer = new System.Timers.Timer
             {
