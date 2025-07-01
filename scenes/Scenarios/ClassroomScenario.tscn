@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c8su53kxl3s01"]
+[gd_scene load_steps=24 format=4 uid="uid://c8su53kxl3s01"]
 
 [ext_resource type="Texture2D" uid="uid://73q83y4ukkhb" path="res://assets/images/tiles/Floor.png" id="1_os648"]
 [ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
@@ -11,10 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
 [ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
 [ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://misc/characters/vitoria.tres" id="11_yq3et"]
-[ext_resource type="Resource" uid="uid://dauliupv2yild" path="res://misc/dialogues/Vitoria/dialogo_demo.tres" id="12_i830g"]
 [ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
 [ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
-[ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="14_iyklr"]
+[ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="16_trkn7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rctbj"]
@@ -167,7 +166,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row1" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Row2" type="Node2D" parent="Desks"]
 y_sort_enabled = true
@@ -186,7 +185,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row2" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Row3" type="Node2D" parent="Desks"]
 y_sort_enabled = true
@@ -205,7 +204,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row3" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Row4" type="Node2D" parent="Desks"]
 y_sort_enabled = true
@@ -224,7 +223,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row4" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Row5" type="Node2D" parent="Desks"]
 y_sort_enabled = true
@@ -243,7 +242,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row5" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Row6" type="Node2D" parent="Desks"]
 y_sort_enabled = true
@@ -262,7 +261,7 @@ position = Vector2(286, 398)
 position = Vector2(286, 464)
 
 [node name="StudentDesk5" parent="Desks/Row6" instance=ExtResource("3_r5yv7")]
-position = Vector2(286, 529)
+position = Vector2(286, 530)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -281,8 +280,8 @@ texture = ExtResource("9_7cvk2")
 [node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
 position = Vector2(808, 191)
 CharacterInfo = ExtResource("11_yq3et")
-Dialogues = ExtResource("12_i830g")
-InteractionUI = NodePath("../UI/DialogueUi")
+DialoguePath = "res://misc/dialogues/Vitoria/dialogo_demo_teste.json"
+InteractionUI = NodePath("../UI/NewDialogueUi")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("12_v1dhh")
@@ -292,9 +291,8 @@ player = NodePath("../Player")
 texture = SubResource("CanvasTexture_vwgv1")
 
 [node name="MainGameUi" parent="UI" instance=ExtResource("13_p8w5o")]
-visible = false
 
-[node name="DialogueUi" parent="UI" instance=ExtResource("14_iyklr")]
+[node name="NewDialogueUi" parent="UI" instance=ExtResource("14_hixty")]
 visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("16_trkn7")]

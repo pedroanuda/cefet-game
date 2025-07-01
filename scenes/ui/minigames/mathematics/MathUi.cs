@@ -6,6 +6,8 @@ using System.Linq;
 using Game.Items;
 using Game.Gameplay;
 using Extensions;
+using CefetGame.Ui;
+using CefetGame.Misc;
 
 namespace Game.UI
 {
@@ -293,17 +295,23 @@ namespace Game.UI
         public void UpdateHealthProgress(int health) =>
             GetNode<TextureProgressBar>("%HealthProgressBar").Value = health;
 
-        public void OpenDialogue(DialogueCollection d, Action finishAction = null)
+        public void OpenDialogue(string dialogueJsonPath, Action finishAction = null)
         {
             _dialogueOnScreen = true;
             var panel = GetNode<Panel>("Panel");
             panel.Visible = true;
             lastSelectedQuestion.ReleaseFocus();
-            GetNode<DialogueUi>("DialogueUi").Open(d, () =>
+
+            void onDialogueFinished()
             {
                 finishAction?.Invoke();
                 _dialogueOnScreen = false;
-            });
+                DialogueSystem.Instance.DialogueFinished -= onDialogueFinished;
+            }
+
+            var dialogueUi = GetNode<NewDialogueUi>("NewDialogueUi");
+            DialogueSystem.Instance.StartDialogue(dialogueUi, dialogueJsonPath);
+            DialogueSystem.Instance.DialogueFinished += onDialogueFinished;
         }
 
         public void AddToParchment(Item item) =>

@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://kb1rveeu2ub0" path="res://assets/images/ui/minigames/mathematics/heart-fulfilled.png" id="6_tmvlg"]
 [ext_resource type="Texture2D" uid="uid://dfkxnaxtwic6t" path="res://assets/images/ui/buttons/button_1.png" id="7_hrypn"]
 [ext_resource type="PackedScene" uid="uid://duiuh1rcwnwgp" path="res://scenes/ui/minigames/mathematics/parchment/Parchment.tscn" id="7_wsvja"]
-[ext_resource type="PackedScene" uid="uid://jttt1gv0x8w5" path="res://scenes/ui/Dialogue/DialogueUi.tscn" id="8_ywmgh"]
 [ext_resource type="PackedScene" uid="uid://ce0we1vumtf6j" path="res://scenes/ui/minigames/mathematics/GameOverScreen.tscn" id="9_178yp"]
+[ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="9_jlo8o"]
 [ext_resource type="PackedScene" uid="uid://dioc06yx6xhsn" path="res://scenes/ui/minigames/mathematics/VictoryScreen.tscn" id="10_bofda"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1rbct"]
@@ -459,7 +459,7 @@ visible = false
 layout_mode = 1
 ModulatePanel = NodePath("../Panel")
 
-[node name="DialogueUi" parent="." instance=ExtResource("8_ywmgh")]
+[node name="NewDialogueUi" parent="." instance=ExtResource("9_jlo8o")]
 visible = false
 layout_mode = 1
 

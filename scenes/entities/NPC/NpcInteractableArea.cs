@@ -1,3 +1,5 @@
+using CefetGame.Misc;
+using CefetGame.Ui;
 using Game.Entities;
 using Game.Gameplay;
 using Game.UI;
@@ -14,6 +16,7 @@ namespace Game.Gameplay
 
         public bool HasSelectedState { get => _hasSelectedState; }
 
+        protected Node2D currentInteractor;
         protected bool interacting = false;
         protected bool _hasSelectedState = false;
 
@@ -22,22 +25,34 @@ namespace Game.Gameplay
             if (interacting) return;
             var npc = GetParent<Npc>();
             interacting = true;
+            currentInteractor = interactor;
             
-            if (Interaction == 0 && npc.InteractionUI is DialogueUi ui
+            if (Interaction == 0 && npc.InteractionUI is NewDialogueUi ui
                 && interactor is Player player)
             {
                 player.AllowActions = false;
-                ui.Open(npc.Dialogues, async () => {
-                    player.AllowActions = true;
-                    await ToSignal(GetTree().CreateTimer(1), SceneTreeTimer.SignalName.Timeout);
-                    interacting = false;
-                }, npc);
+                var handler = GetNode<TransitionHandler>("/root/TransitionHandler");
+                handler.StartingPosition = npc.GlobalPosition;
+                DialogueSystem.Instance.StartDialogue(ui, npc.DialoguePath, npc.CharacterInfo);
+                DialogueSystem.Instance.DialogueFinished += OnDialogueFinished;
             }
         }
         public override void StopInteraction(Node2D interactor)
         {
             base.StopInteraction(interactor);
             _hasSelectedState = false;
+            interacting = false;
+            currentInteractor = null;
+        }
+
+        private void OnDialogueFinished()
+        {
+            if (currentInteractor is Player player)
+            {
+                player.AllowActions = true;
+            }
+            interacting = false;
+            DialogueSystem.Instance.DialogueFinished -= OnDialogueFinished;
         }
     }
 }

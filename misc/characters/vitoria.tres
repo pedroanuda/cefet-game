@@ -1,45 +1,33 @@
-[gd_resource type="Resource" script_class="Character" load_steps=12 format=3 uid="uid://0t7kidkdh5o3"]
+[gd_resource type="Resource" script_class="Character" load_steps=9 format=3 uid="uid://0t7kidkdh5o3"]
 
 [ext_resource type="Texture2D" uid="uid://cvucloe7rk6na" path="res://assets/images/entities/characters/vitorinha.png" id="1_ef0my"]
 [ext_resource type="Script" path="res://misc/characters/Character.cs" id="1_g6utg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iavjs"]
-atlas = ExtResource("1_ef0my")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2c4dx"]
-atlas = ExtResource("1_ef0my")
-region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6puxp"]
 atlas = ExtResource("1_ef0my")
 region = Rect2(256, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c4dx"]
+atlas = ExtResource("1_ef0my")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uav2l"]
 atlas = ExtResource("1_ef0my")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ewxqi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gphw1"]
 atlas = ExtResource("1_ef0my")
-region = Rect2(1152, 0, 64, 64)
+region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdibk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8xd2"]
 atlas = ExtResource("1_ef0my")
-region = Rect2(1088, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jj6y5"]
-atlas = ExtResource("1_ef0my")
-region = Rect2(1152, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0ya7"]
-atlas = ExtResource("1_ef0my")
-region = Rect2(1088, 0, 64, 64)
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kf5dk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iavjs")
+"texture": SubResource("AtlasTexture_6puxp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2c4dx")
@@ -56,16 +44,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ewxqi")
+"texture": SubResource("AtlasTexture_gphw1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qdibk")
+"texture": SubResource("AtlasTexture_g8xd2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jj6y5")
+"texture": SubResource("AtlasTexture_gphw1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k0ya7")
+"texture": SubResource("AtlasTexture_g8xd2")
 }],
 "loop": true,
 "name": &"idle_selected",
@@ -77,3 +65,4 @@ script = ExtResource("1_g6utg")
 SpriteAnimations = SubResource("SpriteFrames_kf5dk")
 SpritesOffset = Vector2(-1, 0)
 Name = "Vitória"
+ImagesPath = "res://assets/misc/characters/Vitoria"

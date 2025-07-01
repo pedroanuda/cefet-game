@@ -68,7 +68,7 @@ namespace Game.Gameplay
                 return;
             }
             if (SelectedInteractable is NpcInteractableArea npcArea)
-                npcArea.GetParent<Entities.Npc>().PlayAnimation("idle");
+                npcArea.GetParent<Entities.Npc>().ToggleHighlight(false);
             SelectedInteractable = null;
         }
 
@@ -85,7 +85,7 @@ namespace Game.Gameplay
             {
                 var npc = npcArea.GetParent<Entities.Npc>();
                 if (npcArea.GetParent<Entities.Npc>().HasSelectState)
-                    npc.PlayAnimation("idle_selected");
+                    npc.ToggleHighlight(true);
                 return;
             }
 

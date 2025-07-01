@@ -1,0 +1,21 @@
+{
+    "$schema": "../../dialogue.schema.json",
+    "start": [
+        {
+            "title": "Guia",
+            "body": "Meus parabéns! Você coletou o seu primeiro pergaminho!"
+        },
+        {
+            "title": "Guia",
+            "body": "Os pergaminhos se dividem em três cores para cada nível de dificuldade: Verde (Fácil), Amarelo (Médio) e Vermelho (Dificil)."
+        },
+        {
+            "title": "Guia",
+            "body": "Com outro pergaminho, você pode juntar-los e fazer feitiços."
+        },
+        {
+            "title": "Guia",
+            "body": "Veja só!"
+        }
+    ]
+}

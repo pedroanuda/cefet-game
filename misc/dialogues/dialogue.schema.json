@@ -1,0 +1,84 @@
+{
+  "$id": "dialogue.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dialogue",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema used"
+    },
+    "start": {
+      "type": "array",
+      "description": "The dialogue start course.",
+      "items":  { "$ref": "#/$defs/dialogue-part" }
+    }
+  },
+  "additionalProperties": {
+    "type": "array",
+    "description": "A dialogue course.",
+    "items": { "$ref": "#/$defs/dialogue-part" }
+  },
+  "$defs": {
+    "dialogue-part": {
+      "type": "object",
+      "description": "A part of the dialogue as a whole.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the dialogue."
+        },
+        "body": {
+          "type": "string",
+          "description": "The body of the dialogue; the dialogue itself."
+        },
+        "goTo": {
+          "type": "string",
+          "description": "Which dialogue course to go after."
+        },
+        "rewardId": {
+          "type": "integer",
+          "description": "The reward's id if applicable. (So a reward is given after the dialogue finishes)"
+        },
+        "choices": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dialogue-choice" }
+        },
+        "goToScene": {
+          "type": "string",
+          "description": "The scene path (res), which the game will be transitioned into."
+        },
+        "mood": {
+          "enum": ["neutral", "nervous", "happy", "confused", "reflexive", "angry"],
+          "description": "The way the speaker is speaking.",
+          "default": "neutral"
+        }
+      },
+      "required": [ "body" ]
+    },
+    "dialogue-choice": {
+      "type": "object",
+      "description": "An object that represents a possible choise on a dialogue.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text content that represents the choise itself."
+        },
+        "rewardId": {
+          "type": "integer",
+          "description": "The reward's id if applicable. (So a reward is given after the option is chosen)"
+        },
+        "goTo": {
+          "type": "string",
+          "description": "Which dialogue course to go after."
+        },
+        "goToScene": {
+          "type": "string",
+          "description": "The scene path (res), which the game will be transitioned into."
+        }
+      },
+      "required": ["text"]
+    }
+  },
+  "required": ["start"]
+}
