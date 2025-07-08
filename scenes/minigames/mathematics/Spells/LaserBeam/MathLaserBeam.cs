@@ -113,10 +113,9 @@ namespace Game.Minigames
             {
                 _currentEnemy = enemies.Last();
                 _currentEnemy.Died += OnEnemyDied;
+                return;
             }
-            else
-            {
-                QueueFree(); 
+            QueueFree();
         }
 
         private void OnEnemyDied()
