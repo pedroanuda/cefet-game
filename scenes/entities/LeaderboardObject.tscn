@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn6y8x4fv3soc"][gd_scene load_steps=3 format=3 uid="uid://cn6y8x4fv3soc"][gd_scene load_steps=3 format=3 uid="uid://cn6y8x4fv3soc"][gd_scene load_steps=4 format=3 uid="uid://cn6y8x4fv3soc"]
+
+
+
+[ext_resource type="Script" path="res://scenes/entities/LeaderboardInteractableArea.cs" id="1_5k3d2"]
+
+
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2x4vd"][ext_resource type="Script" path="res://scenes/entities/LeaderboardInteractableArea.cs" id="1_5k3d2"]
+
+radius = 32.0
+
+
+
+[node name="LeaderboardObject" type="Node2D"]
+
+metadata/_edit_group_ = true[sub_resource type="CircleShape2D" id="CircleShape2D_2x4vd"][ext_resource type="Script" path="res://scenes/entities/LeaderboardInteractableArea.cs" id="1_5k3d2"][ext_resource type="Script" path="res://scenes/entities/LeaderboardObject.cs" id="1_5k3d2"]
+
+
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]radius = 32.0
+
+# Adicione a textura do seu objeto aqui. Ex:
+
+# texture = ExtResource("2_xxxxx") [ext_resource type="PackedScene" uid="uid://c5a6ovknl7mjq" path="res://scenes/entities/InteractableArea.tscn" id="2_g7sju"]
+
+
+
+[node name="InteractableArea" type="Area2D" parent="."][node name="LeaderboardObject" type="Node2D"]
+
+collision_layer = 4
+
+script = ExtResource("1_5k3d2")[node name="LeaderboardObject" type="Node2D"]
+
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"][node name="Sprite2D3" type="Sprite2D" parent="."]
+
+shape = SubResource("CircleShape2D_2x4vd")
+
+[node name="LeaderboardObject" type="Node2D"]
+
+[node name="InteractableArea" type="Area2D" parent="."]
+
+collision_layer = 4[node name="Sprite2D3" type="Sprite2D" parent="."]script = ExtResource("1_5k3d2")
+
+script = ExtResource("1_5k3d2")
+
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+
+shape = SubResource("CircleShape2D_2x4vd")[node name="InteractableArea" type="Area2D" parent="."][node name="Sprite2D3" type="Sprite2D" parent="."]
+
+script = ExtResource("1_5k3d2")
+[node name="InteractableArea" parent="." instance=ExtResource("2_g7sju")]

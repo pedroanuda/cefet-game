@@ -1,3 +1,5 @@
+using Game.UI;
+using Game.Gameplay;
 using Godot;
 using System;
 
@@ -48,6 +50,11 @@ namespace Game.UI
 
             switch (_finishedAnimation)
             {
+                case "total_score_label":
+                    LeaderboardPanel.AddScore(TotalScore);
+                    var global = GetNode<Global>("/root/Global");
+                    global.GoToScene("res://scenes/Scenarios/ClassroomScenario.tscn");
+                    break;
                 case "panel_appearing":
                     _animPlayer.Play("win_label");
                     break;
@@ -64,17 +71,13 @@ namespace Game.UI
                 case "time_label":
                     _animPlayer.Play("total_score_label");
                     break;
-                case "total_score_label":
-                    var schoolButton = GetNode<Button>("%SchoolButton");
-                    schoolButton.Show();
-                    _animPlayer.Play("show_button");
-                    schoolButton.GrabFocus();
-                    break;
             }
         }
 
         private void GoToSchool()
         {
+            LeaderboardPanel.AddScore(TotalScore);
+            
             GetNode<Global>("/root/Global").TransitionToScene(
                 "res://scenes/Scenarios/ClassroomScenario.tscn",
                 "Parabens pela vitoria!",

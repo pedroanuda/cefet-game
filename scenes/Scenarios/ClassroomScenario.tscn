@@ -1,21 +1,23 @@
-[gd_scene load_steps=25 format=4 uid="uid://c8su53kxl3s01"]
+[gd_scene load_steps=28 format=4 uid="uid://c8su53kxl3s01"]
 
 [ext_resource type="Texture2D" uid="uid://480y7cpgur3s" path="res://assets/images/tiles/Floor.tres" id="1_tdcws"]
 [ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
-[ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
+[ext_resource type="Texture2D" uid="uid://pwk1nsdvqwv1" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
 [ext_resource type="PackedScene" uid="uid://b7etykk20vn6n" path="res://scenes/Scenarios/ClassroomScenario/StudentDesk.tscn" id="3_r5yv7"]
-[ext_resource type="Texture2D" uid="uid://dn1wsnce5vjgj" path="res://assets/misc/World/door.png" id="4_mv4wr"]
+[ext_resource type="Texture2D" uid="uid://gsohlhf0jqdv" path="res://assets/misc/World/door.png" id="4_mv4wr"]
 [ext_resource type="PackedScene" uid="uid://bwnqaaalxpvb" path="res://scenes/Scenarios/ClassroomScenario/TeacherDesk.tscn" id="6_5c1lh"]
-[ext_resource type="Shader" path="res://scenes/Scenarios/ClassroomScenario/new_shader.gdshader" id="7_mn6n8"]
-[ext_resource type="Texture2D" uid="uid://ebu0l4dg44s0" path="res://assets/misc/World/generic_board.png" id="8_rn6hk"]
-[ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
+[ext_resource type="Shader" uid="uid://caovy635n3trp" path="res://scenes/Scenarios/ClassroomScenario/new_shader.gdshader" id="7_mn6n8"]
+[ext_resource type="Texture2D" uid="uid://dxubd1libf2ur" path="res://assets/misc/World/generic_board.png" id="8_rn6hk"]
+[ext_resource type="Texture2D" uid="uid://567dko4mpbfu" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
 [ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
+[ext_resource type="Script" uid="uid://b5q6nwfkav6xj" path="res://scenes/entities/LeaderboardInteractableArea.cs" id="10_dcn8n"]
 [ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://misc/characters/vitoria.tres" id="11_yq3et"]
-[ext_resource type="Texture2D" uid="uid://bbjbs61hk7756" path="res://assets/misc/light-point.png" id="12_02wyn"]
-[ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
+[ext_resource type="Texture2D" uid="uid://babglbj2ns0m4" path="res://assets/misc/light-point.png" id="12_02wyn"]
+[ext_resource type="Script" uid="uid://c33ake2w70axl" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
 [ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
-[ext_resource type="PackedScene" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
+[ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="16_trkn7"]
+[ext_resource type="PackedScene" uid="uid://br0m4t7oeixxj" path="res://scenes/ui/Leaderboard/LeaderboardPanel.tscn" id="18_ahx4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rctbj"]
 texture = ExtResource("1_tdcws")
@@ -81,9 +83,9 @@ shader_parameter/up_left = Vector2(-0.285, 0)
 shader_parameter/up_right = Vector2(1.265, 0)
 shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = null
-shader_parameter/region = null
-shader_parameter/size = null
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/region = Vector2(0, 0)
+shader_parameter/size = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddjv1"]
 shader = ExtResource("7_mn6n8")
@@ -91,9 +93,9 @@ shader_parameter/up_left = Vector2(0, 0)
 shader_parameter/up_right = Vector2(1.125, 0)
 shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = null
-shader_parameter/region = null
-shader_parameter/size = null
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/region = Vector2(0, 0)
+shader_parameter/size = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xmtr5"]
 shader = ExtResource("7_mn6n8")
@@ -101,9 +103,12 @@ shader_parameter/up_left = Vector2(-0.125, 0)
 shader_parameter/up_right = Vector2(1, 0)
 shader_parameter/down_right = Vector2(1, 1)
 shader_parameter/down_left = Vector2(0, 1)
-shader_parameter/plane_size = null
-shader_parameter/region = null
-shader_parameter/size = null
+shader_parameter/plane_size = Vector2(0, 0)
+shader_parameter/region = Vector2(0, 0)
+shader_parameter/size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahx4l"]
+size = Vector2(188.33331, 129.16666)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vwgv1"]
 
@@ -271,12 +276,20 @@ position = Vector2(719.505, 59)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_rn6hk")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Leaderboard" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xmtr5")
 position = Vector2(545, 59)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("9_7cvk2")
+
+[node name="LeaderboardInteractableArea" type="Area2D" parent="Leaderboard" node_paths=PackedStringArray("InteractionUI")]
+script = ExtResource("10_dcn8n")
+InteractionUI = NodePath("../../UI/LeaderboardPanel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaderboard/LeaderboardInteractableArea"]
+position = Vector2(3.3333435, 22.083328)
+shape = SubResource("RectangleShape2D_ahx4l")
 
 [node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
 position = Vector2(808, 191)
@@ -346,3 +359,17 @@ visible = false
 
 [node name="PauseScreen" parent="UI" instance=ExtResource("16_trkn7")]
 visible = false
+
+[node name="LeaderboardPanel" parent="UI" instance=ExtResource("18_ahx4l")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
