@@ -26,6 +26,8 @@ namespace Game.Gameplay
             var npc = GetParent<Npc>();
             interacting = true;
             currentInteractor = interactor;
+
+            npc.IsInteracting = true;
             
             if (Interaction == 0 && npc.InteractionUI is NewDialogueUi ui
                 && interactor is Player player)
@@ -39,10 +41,13 @@ namespace Game.Gameplay
         }
         public override void StopInteraction(Node2D interactor)
         {
+            var npc = GetParent<Npc>();
             base.StopInteraction(interactor);
             _hasSelectedState = false;
             interacting = false;
             currentInteractor = null;
+
+            npc.IsInteracting = false;
         }
 
         private void OnDialogueFinished()
