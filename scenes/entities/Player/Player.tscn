@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5ac2gsumi5jo"]
+[gd_scene load_steps=32 format=3 uid="uid://c5ac2gsumi5jo"]
 
-[ext_resource type="Script" path="res://scenes/entities/Player/Player.cs" id="1_w6u6y"]
-[ext_resource type="Script" path="res://scenes/entities/InteractionArea.cs" id="2_ceny5"]
-[ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="3_emeso"]
+[ext_resource type="Script" uid="uid://rf8hww6sr24q" path="res://scenes/entities/Player/Player.cs" id="1_w6u6y"]
+[ext_resource type="Script" uid="uid://7jyfukcrtcyy" path="res://scenes/entities/InteractionArea.cs" id="2_ceny5"]
+[ext_resource type="Texture2D" uid="uid://by186vm02hop" path="res://assets/images/entities/shadow.png" id="3_emeso"]
 [ext_resource type="Texture2D" uid="uid://b18bmm0tmg7uo" path="res://assets/images/entities/Player.tres" id="4_4d36c"]
 [ext_resource type="Texture2D" uid="uid://ddbfg41c3up4s" path="res://assets/images/equipments/backpack_1.png" id="4_gd2qs"]
+[ext_resource type="AudioStream" uid="uid://gjruwq3nwphw" path="res://assets/sounds/walking_1.wav" id="6_wvcwg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lww17"]
 
@@ -893,15 +894,15 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gcwd6"]
 _data = {
-"RESET": SubResource("Animation_6u2nr"),
-"idle_back": SubResource("Animation_1famo"),
-"idle_front": SubResource("Animation_srw4f"),
-"idle_left": SubResource("Animation_24d8e"),
-"idle_right": SubResource("Animation_c2ot8"),
-"walk_back": SubResource("Animation_csvm5"),
-"walk_front": SubResource("Animation_bbsdm"),
-"walk_left": SubResource("Animation_08sg5"),
-"walk_right": SubResource("Animation_x8tu6")
+&"RESET": SubResource("Animation_6u2nr"),
+&"idle_back": SubResource("Animation_1famo"),
+&"idle_front": SubResource("Animation_srw4f"),
+&"idle_left": SubResource("Animation_24d8e"),
+&"idle_right": SubResource("Animation_c2ot8"),
+&"walk_back": SubResource("Animation_csvm5"),
+&"walk_front": SubResource("Animation_bbsdm"),
+&"walk_left": SubResource("Animation_08sg5"),
+&"walk_right": SubResource("Animation_x8tu6")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t2in8"]
@@ -1033,7 +1034,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gcwd6")
+&"": SubResource("AnimationLibrary_gcwd6")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -1043,6 +1044,13 @@ parameters/conditions/IsIdle = false
 parameters/conditions/IsMoving = false
 parameters/Idle/blend_position = Vector2(-0.00236964, 0.291176)
 parameters/Walk/blend_position = Vector2(-0.99818, 0.0234042)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wvcwg")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Direction/InteractionArea" to="Direction/InteractionArea" method="OnAreaEntered"]
 [connection signal="area_exited" from="Direction/InteractionArea" to="Direction/InteractionArea" method="OnAreaExited"]

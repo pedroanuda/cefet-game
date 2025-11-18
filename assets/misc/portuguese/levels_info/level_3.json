@@ -1,0 +1,72 @@
+{
+	"name": "O arco-íris cinzento",
+	"possibleSentences": [
+		{
+			"sentence": "O arco-íris está cinza",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "Um", "Os", "Na"]
+				},
+				{
+					"word": "arco-íris",
+					"wrongChoices": ["céu", "sol", "nuvem", "chuva", "flor"]
+				},
+				{
+					"word": "está",
+					"wrongChoices": ["foi", "era", "vai", "fica", "tem"]
+				},
+				{
+					"word": "cinza",
+					"wrongChoices": ["colorido", "branco", "preto", "azul", "amarelo"]
+				}
+			]
+		},
+		{
+			"sentence": "A menina olha o céu",
+			"challengeWords": [
+				{
+					"word": "A",
+					"wrongChoices": ["O", "Uma", "As", "Ele"]
+				},
+				{
+					"word": "menina",
+					"wrongChoices": ["garota", "menino", "criança", "flor", "mulher"]
+				},
+				{
+					"word": "olha",
+					"wrongChoices": ["corre", "fecha", "pula", "brinca", "sente"]
+				},
+				{
+					"word": "o",
+					"wrongChoices": ["a", "um", "os", "uma"]
+				},
+				{
+					"word": "céu",
+					"wrongChoices": ["sol", "mar", "vento", "nuvem", "arco-íris"]
+				}
+			]
+		},
+		{
+			"sentence": "As nuvens estão cinzentas",
+			"challengeWords": [
+				{
+					"word": "As",
+					"wrongChoices": ["Os", "Uma", "O", "Na"]
+				},
+				{
+					"word": "nuvens",
+					"wrongChoices": ["flores", "gotas", "arco-íris", "sol", "estrelas"]
+				},
+				{
+					"word": "estão",
+					"wrongChoices": ["foi", "era", "vai", "fica", "tem"]
+				},
+				{
+					"word": "cinzentas",
+					"wrongChoices": ["coloridas", "brancas", "pretas", "azuis", "amarelas"]
+				}
+			]
+		}
+	]
+}

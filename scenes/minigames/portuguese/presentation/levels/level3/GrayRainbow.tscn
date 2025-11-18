@@ -1,0 +1,223 @@
+[gd_scene load_steps=15 format=3 uid="uid://bl2evfytscksg"]
+
+[ext_resource type="Texture2D" uid="uid://bet7q0y1ql2b" path="res://assets/images/entities/characters/portuguese/rainbow_girl.png" id="1_80l1k"]
+[ext_resource type="Script" uid="uid://rwb7ideo1qg3" path="res://scenes/minigames/portuguese/presentation/PortugueseLevelNode.cs" id="1_l8new"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8new"]
+size = Vector2(180, 118)
+
+[sub_resource type="Curve2D" id="Curve2D_j88ho"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqvlx"]
+blend_mode = 2
+
+[sub_resource type="Animation" id="Animation_l8new"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPath/PathFollow/CutsceneCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.5, 3.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car/Tires:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_cqvlx")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Car/Tires:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.57254905)]
+}
+
+[sub_resource type="Animation" id="Animation_80l1k"]
+resource_name = "camera_zoom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPath/PathFollow/CutsceneCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.75, 2.75), Vector2(3.5, 3.5)]
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u6lxy"]
+
+[sub_resource type="Animation" id="Animation_f7l2j"]
+resource_name = "solve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car/Tires:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_cqvlx"), SubResource("CanvasItemMaterial_u6lxy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car/Tires:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.57254905), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80l1k"]
+_data = {
+&"RESET": SubResource("Animation_l8new"),
+&"camera_zoom": SubResource("Animation_80l1k"),
+&"solve": SubResource("Animation_f7l2j")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8new"]
+atlas = ExtResource("1_80l1k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j88ho"]
+atlas = ExtResource("1_80l1k")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2ve8"]
+atlas = ExtResource("1_80l1k")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76jld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8new")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_j88ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2ve8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="GrayRainbow" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_l8new")
+LevelInfo = "res://assets/misc/portuguese/levels_info/level_3.json"
+DialoguePath = "res://assets/misc/portuguese/dialogues/level_3.json"
+CompletedDialoguePath = "res://assets/misc/portuguese/dialogues/level_3.json"
+metadata/_custom_type_script = "uid://rwb7ideo1qg3"
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(-2, -1.0000019)
+shape = SubResource("RectangleShape2D_l8new")
+debug_color = Color(0.6926796, 0.4912898, 0.21056154, 0.41960785)
+
+[node name="CameraPath" type="Path2D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_j88ho")
+
+[node name="PathFollow" type="PathFollow2D" parent="CameraPath"]
+loop = false
+
+[node name="CutsceneCamera" type="Camera2D" parent="CameraPath/PathFollow"]
+unique_name_in_owner = true
+enabled = false
+zoom = Vector2(3.5, 3.5)
+limit_left = 0
+limit_top = 0
+limit_bottom = 272
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_80l1k")
+}
+
+[node name="RainbowGirl" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.13, 0)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_76jld")
+autoplay = "default"
+frame = 2
+frame_progress = 0.9114116

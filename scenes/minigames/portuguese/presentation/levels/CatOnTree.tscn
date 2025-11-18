@@ -1,0 +1,282 @@
+[gd_scene load_steps=23 format=3 uid="uid://bhy07p0e2mevd"]
+
+[ext_resource type="Script" uid="uid://rwb7ideo1qg3" path="res://scenes/minigames/portuguese/presentation/PortugueseLevelNode.cs" id="1_ro1eh"]
+[ext_resource type="Texture2D" uid="uid://hhfu67gevfml" path="res://assets/images/tiles/portuguese/obstacle_1.png" id="1_swc70"]
+[ext_resource type="Texture2D" uid="uid://caveekqhkg13w" path="res://assets/images/entities/characters/portuguese/cat_boy.png" id="3_wptc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swc70"]
+size = Vector2(302, 87)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ro1eh"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swc70"]
+atlas = ExtResource("1_swc70")
+region = Rect2(100, 0, 100, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq61w"]
+atlas = ExtResource("1_swc70")
+region = Rect2(200, 0, 100, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loeux"]
+atlas = ExtResource("1_swc70")
+region = Rect2(300, 0, 100, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hq61w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swc70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq61w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loeux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq61w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y0hm"]
+atlas = ExtResource("3_wptc2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tstag"]
+atlas = ExtResource("3_wptc2")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g43cy"]
+atlas = ExtResource("3_wptc2")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5npth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y0hm")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_tstag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g43cy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="Curve" id="Curve_3y0hm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47081715), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wptc2"]
+curve = SubResource("Curve_3y0hm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g43cy"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.18, 42, 1)
+angle_min = 1.0728835e-05
+angle_max = 7.500011
+gravity = Vector3(2, -35, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_wptc2")
+
+[sub_resource type="Curve2D" id="Curve2D_ro1eh"]
+
+[sub_resource type="Animation" id="Animation_wptc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPath/PathFollow/CutsceneCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.75, 2.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ladder:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ladder:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_ro1eh")]
+}
+
+[sub_resource type="Animation" id="Animation_ro1eh"]
+resource_name = "camera_zoom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPath/PathFollow/CutsceneCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.75, 2.75), Vector2(3.5, 3.5)]
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wptc2"]
+
+[sub_resource type="Animation" id="Animation_3y0hm"]
+resource_name = "solve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ladder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ladder:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("CanvasItemMaterial_ro1eh"), SubResource("CanvasItemMaterial_wptc2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y0hm"]
+_data = {
+&"RESET": SubResource("Animation_wptc2"),
+&"camera_zoom": SubResource("Animation_ro1eh"),
+&"solve": SubResource("Animation_3y0hm")
+}
+
+[node name="CatOnTree" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ro1eh")
+LevelInfo = "res://assets/misc/portuguese/levels_info/level_1.json"
+DialoguePath = "res://assets/misc/portuguese/dialogues/level_1.json"
+CompletedDialoguePath = "res://assets/misc/portuguese/dialogues/level_1_cleared.json"
+metadata/_custom_type_script = "uid://rwb7ideo1qg3"
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(-4, 27)
+shape = SubResource("RectangleShape2D_swc70")
+debug_color = Color(0.6926796, 0.4912898, 0.21056154, 0.41960785)
+
+[node name="Tree" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_swc70")
+hframes = 4
+vframes = 2
+
+[node name="Ladder" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ro1eh")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_swc70")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="Cat" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_hq61w")
+autoplay = "default"
+frame_progress = 0.2686968
+speed_scale = 0.5
+
+[node name="Boy" type="AnimatedSprite2D" parent="."]
+position = Vector2(-51.72, 56.925)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_5npth")
+autoplay = "default"
+frame_progress = 0.56874603
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(30.26, 41.005)
+rotation = -0.14835298
+emitting = false
+amount = 80
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_g43cy")
+
+[node name="CameraPath" type="Path2D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_ro1eh")
+
+[node name="PathFollow" type="PathFollow2D" parent="CameraPath"]
+loop = false
+
+[node name="CutsceneCamera" type="Camera2D" parent="CameraPath/PathFollow"]
+unique_name_in_owner = true
+enabled = false
+zoom = Vector2(2.75, 2.75)
+limit_left = 0
+limit_top = 0
+limit_bottom = 272
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3y0hm")
+}

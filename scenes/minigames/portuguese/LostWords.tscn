@@ -1,0 +1,442 @@
+[gd_scene load_steps=49 format=3 uid="uid://dduuqwesx0p4b"]
+
+[ext_resource type="Script" uid="uid://dkuyb5c2mk5qv" path="res://scenes/minigames/portuguese/LostWords.cs" id="1_fu7j3"]
+[ext_resource type="Texture2D" uid="uid://buvldet1d57p3" path="res://assets/images/tiles/portuguese/background_layers.png" id="1_r22yi"]
+[ext_resource type="PackedScene" uid="uid://bhy07p0e2mevd" path="res://scenes/minigames/portuguese/presentation/levels/CatOnTree.tscn" id="2_lhhge"]
+[ext_resource type="PackedScene" uid="uid://dgfo8p4lef6pu" path="res://scenes/minigames/portuguese/presentation/entities/Player/PortuguesePlayer.tscn" id="2_vd8uh"]
+[ext_resource type="Texture2D" uid="uid://j4ec1tpdqj2d" path="res://assets/images/tiles/portuguese/bushes.png" id="3_a522x"]
+[ext_resource type="Texture2D" uid="uid://b13mlbmh68i1n" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_0.png" id="3_bmjcb"]
+[ext_resource type="Texture2D" uid="uid://c8vjugibnyekl" path="res://assets/images/tiles/portuguese/forward_sign.png" id="3_fhxip"]
+[ext_resource type="Texture2D" uid="uid://dq06bheqm2qr2" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_1.png" id="3_grghf"]
+[ext_resource type="PackedScene" uid="uid://duyh3ftk2w4ad" path="res://scenes/minigames/portuguese/presentation/levels/level2/FlowersProblem.tscn" id="4_2s6d3"]
+[ext_resource type="Texture2D" uid="uid://7key7mh63k7a" path="res://assets/images/tiles/portuguese/level_2/level_2_flowers.png" id="4_lphyv"]
+[ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="5_4b6ab"]
+[ext_resource type="Texture2D" uid="uid://dbyt7yea6ionx" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_2.png" id="5_845gx"]
+[ext_resource type="Texture2D" uid="uid://dnuntkinexo7k" path="res://assets/images/tiles/portuguese/grass_2.png" id="5_fhxip"]
+[ext_resource type="Texture2D" uid="uid://chd80ihv816ie" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_3.png" id="6_81yki"]
+[ext_resource type="Script" uid="uid://doyc1vdlmkaq7" path="res://scenes/minigames/portuguese/presentation/CardManager.cs" id="6_amuux"]
+[ext_resource type="Texture2D" uid="uid://b8hbs6wkvhybk" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_4.png" id="7_1c7uf"]
+[ext_resource type="Texture2D" uid="uid://si1vb54fslh8" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_5.png" id="8_k4l6t"]
+[ext_resource type="Texture2D" uid="uid://bk5mjga3xbm" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_6.png" id="9_bbj8a"]
+[ext_resource type="PackedScene" uid="uid://cwn3dae262u5s" path="res://scenes/minigames/portuguese/presentation/ui/LostWordsUi.tscn" id="9_fhxip"]
+[ext_resource type="Texture2D" uid="uid://y02sh0otibrv" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_7.png" id="10_uv1wu"]
+[ext_resource type="Texture2D" uid="uid://5wdyqjao0odr" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_8.png" id="11_5yg3o"]
+[ext_resource type="Texture2D" uid="uid://detr64jxvgf4v" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_9.png" id="12_ju5uv"]
+[ext_resource type="Texture2D" uid="uid://b27kcy7is8uar" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_10.png" id="13_18ta2"]
+[ext_resource type="Texture2D" uid="uid://cb1rxohls7e80" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_11.png" id="14_4t418"]
+[ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="14_xpydd"]
+[ext_resource type="Texture2D" uid="uid://b2x2tyyxtxsya" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_12.png" id="15_h2wjv"]
+[ext_resource type="AudioStream" uid="uid://cncd1fqyw281v" path="res://assets/soundtracks/portuguese/portuguese_theme.MP3" id="15_y4fp2"]
+[ext_resource type="Texture2D" uid="uid://btmfe3nacswya" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_13.png" id="16_iuuuf"]
+[ext_resource type="Texture2D" uid="uid://dtdcu80ukxicj" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_14.png" id="17_v4vph"]
+[ext_resource type="Texture2D" uid="uid://dd611gxyp8ul7" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_15.png" id="18_033xe"]
+[ext_resource type="Texture2D" uid="uid://dvpibwbh5ibh" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_16.png" id="19_1nnly"]
+[ext_resource type="Texture2D" uid="uid://c6slot3dysvni" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_17.png" id="20_7hn3q"]
+[ext_resource type="Texture2D" uid="uid://bbjuws8j6vreu" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_18.png" id="21_rje76"]
+[ext_resource type="Texture2D" uid="uid://cf7xgk2ungy48" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_19.png" id="22_dp8gi"]
+[ext_resource type="Texture2D" uid="uid://cwb8d7jyyhpny" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_20.png" id="23_ri1yt"]
+[ext_resource type="Texture2D" uid="uid://vl8rtk0defu1" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_21.png" id="24_b42lq"]
+[ext_resource type="Texture2D" uid="uid://ixihqq2oaq3v" path="res://assets/images/tiles/portuguese/level_3/rainbow_stages/rainbow_complete.png" id="25_aixh2"]
+[ext_resource type="PackedScene" uid="uid://bl2evfytscksg" path="res://scenes/minigames/portuguese/presentation/levels/level3/GrayRainbow.tscn" id="31_845gx"]
+[ext_resource type="Texture2D" uid="uid://b20uumnkaptwv" path="res://assets/images/tiles/portuguese/grass_to_road_transition.png" id="34_1c7uf"]
+[ext_resource type="PackedScene" uid="uid://cegcfcdir74" path="res://scenes/minigames/portuguese/presentation/levels/level4/BrokenTiresCar.tscn" id="34_k4l6t"]
+[ext_resource type="Texture2D" uid="uid://ctfkqk8cajry4" path="res://assets/images/tiles/portuguese/road.png" id="35_k4l6t"]
+[ext_resource type="FontFile" uid="uid://1y80y4otajg3" path="res://assets/fonts/Pixellari.ttf" id="42_bbj8a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dcos4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bmjcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_grghf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_845gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_81yki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1c7uf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k4l6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bbj8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uv1wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5yg3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ju5uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_18ta2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4t418")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h2wjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_iuuuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v4vph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_033xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1nnly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7hn3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_rje76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_dp8gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ri1yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_b42lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_aixh2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4l6t"]
+size = Vector2(64.5, 123)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_csiw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4y7"]
+size = Vector2(2476, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhhge"]
+size = Vector2(20, 135)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uv1wu"]
+font = ExtResource("42_bbj8a")
+font_size = 25
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.6431373)
+
+[node name="LostWords" type="Node2D"]
+script = ExtResource("1_fu7j3")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sky" type="Parallax2D" parent="Background"]
+texture_filter = 1
+scroll_scale = Vector2(0.05, 1)
+repeat_size = Vector2(200, 0)
+autoscroll = Vector2(-2, 0)
+
+[node name="Sky 1" type="Sprite2D" parent="Background/Sky"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+
+[node name="Sky 2" type="Sprite2D" parent="Background/Sky"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 3
+
+[node name="Sky 3" type="Sprite2D" parent="Background/Sky"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 2
+
+[node name="Sky 4" type="Sprite2D" parent="Background/Sky"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 1
+
+[node name="Hill" type="Parallax2D" parent="Background"]
+texture_filter = 1
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(360, 0)
+
+[node name="Rainbow" type="AnimatedSprite2D" parent="Background/Hill"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.56078434)
+position = Vector2(417.99997, 159)
+scale = Vector2(1.2800001, 1.2800001)
+sprite_frames = SubResource("SpriteFrames_dcos4")
+
+[node name="Hill 1" type="Sprite2D" parent="Background/Hill"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 4
+
+[node name="AnotherHill" type="Parallax2D" parent="Background"]
+texture_filter = 1
+scroll_scale = Vector2(0.15, 1)
+scroll_offset = Vector2(345, 0)
+
+[node name="Hill 1" type="Sprite2D" parent="Background/AnotherHill"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 5
+
+[node name="Hill 2" type="Sprite2D" parent="Background/AnotherHill"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 8
+
+[node name="Hill 3" type="Sprite2D" parent="Background/AnotherHill"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 9
+
+[node name="Hill 4" type="Sprite2D" parent="Background/AnotherHill"]
+scale = Vector2(1.95, 1.95)
+texture = ExtResource("1_r22yi")
+centered = false
+vframes = 11
+frame = 10
+
+[node name="FlowersAndBushes" type="Node2D" parent="Background"]
+texture_filter = 1
+
+[node name="Bush" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(104.405, 236.3)
+scale = Vector2(2, 2)
+texture = ExtResource("3_a522x")
+vframes = 8
+frame = 1
+
+[node name="Bush2" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(500, 236.3)
+scale = Vector2(2, 2)
+texture = ExtResource("3_a522x")
+vframes = 8
+frame = 4
+
+[node name="Bush3" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(1180, 236.3)
+scale = Vector2(2, 2)
+texture = ExtResource("3_a522x")
+vframes = 8
+frame = 6
+
+[node name="Flower" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(90, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+hframes = 2
+vframes = 16
+
+[node name="Flower2" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(380, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+
+[node name="Flower3" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(339.91, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+frame = 2
+
+[node name="Flower4" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(600, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+frame = 1
+
+[node name="Flower5" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(600, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+frame = 1
+
+[node name="Flower6" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(1141.015, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+frame = 1
+
+[node name="Flower7" type="Sprite2D" parent="Background/FlowersAndBushes"]
+position = Vector2(1400, 244.02)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_lphyv")
+flip_h = true
+hframes = 2
+vframes = 16
+frame = 16
+
+[node name="ForwardSign" type="Sprite2D" parent="Background"]
+texture_filter = 1
+position = Vector2(149.155, 232.635)
+texture = ExtResource("3_fhxip")
+
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="CatOnTree" parent="Levels" node_paths=PackedStringArray("DialogueUi") instance=ExtResource("2_lhhge")]
+position = Vector2(524, 173)
+DialogueUi = NodePath("../../Ui/NewDialogueUi")
+
+[node name="FlowersProblem" parent="Levels" node_paths=PackedStringArray("DialogueUi") instance=ExtResource("4_2s6d3")]
+position = Vector2(950, 212.35)
+scale = Vector2(0.8, 0.8)
+DialogueUi = NodePath("../../Ui/NewDialogueUi")
+
+[node name="GrayRainbow" parent="Levels" node_paths=PackedStringArray("DialogueUi") instance=ExtResource("31_845gx")]
+position = Vector2(1325, 227.05)
+DialogueUi = NodePath("../../Ui/NewDialogueUi")
+
+[node name="GrassToRoadTransition" type="Sprite2D" parent="Levels"]
+texture_filter = 1
+position = Vector2(1686.755, 240.005)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("34_1c7uf")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 12, 120, 24)
+
+[node name="RoadSide" type="Sprite2D" parent="Levels"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1956.74, 240.005)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("35_k4l6t")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 12, 191.18, 24)
+
+[node name="BrokenTiresCar" parent="Levels" node_paths=PackedStringArray("DialogueUi") instance=ExtResource("34_k4l6t")]
+position = Vector2(2004.865, 220.63)
+DialogueUi = NodePath("../../Ui/NewDialogueUi")
+
+[node name="EndArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+position = Vector2(2439.25, 187.5)
+shape = SubResource("RectangleShape2D_k4l6t")
+debug_color = Color(0.3083333, 0.74, 0, 0.41960785)
+
+[node name="PortuguesePlayer" parent="." instance=ExtResource("2_vd8uh")]
+unique_name_in_owner = true
+position = Vector2(31, 224)
+Speed = 150.0
+
+[node name="Camera2D" type="Camera2D" parent="PortuguesePlayer"]
+position = Vector2(65, 0)
+zoom = Vector2(2.75, 2.75)
+limit_left = 0
+limit_top = 0
+limit_right = 2383
+limit_bottom = 272
+drag_vertical_enabled = true
+drag_vertical_offset = 0.21
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 259.54)
+physics_material_override = SubResource("PhysicsMaterial_csiw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1238, 15)
+shape = SubResource("RectangleShape2D_0b4y7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2482.2, -76.04)
+shape = SubResource("RectangleShape2D_lhhge")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-9.375, -76.04)
+shape = SubResource("RectangleShape2D_lhhge")
+
+[node name="GrassSide" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(843, 7.46)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("5_fhxip")
+region_enabled = true
+region_rect = Rect2(0, 12, 750, 24)
+
+[node name="CardsLayer" type="CanvasLayer" parent="."]
+
+[node name="CardManager" type="Node" parent="CardsLayer"]
+script = ExtResource("6_amuux")
+
+[node name="Cards" type="Node2D" parent="CardsLayer"]
+unique_name_in_owner = true
+position = Vector2(640, 600)
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="LostWordsUi" parent="Ui" instance=ExtResource("9_fhxip")]
+unique_name_in_owner = true
+visible = false
+mouse_filter = 2
+
+[node name="NewDialogueUi" parent="Ui" instance=ExtResource("5_4b6ab")]
+visible = false
+
+[node name="PauseScreen" parent="Ui" instance=ExtResource("14_xpydd")]
+visible = false
+MinigameLocation = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_y4fp2")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 2232.0
+offset_top = 140.0
+offset_right = 2343.0
+offset_bottom = 166.0
+text = "Continua..."
+label_settings = SubResource("LabelSettings_uv1wu")
+
+[connection signal="body_entered" from="EndArea" to="." method="OnBodyEntered"]

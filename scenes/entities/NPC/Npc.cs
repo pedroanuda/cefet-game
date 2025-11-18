@@ -1,6 +1,7 @@
 using Game.Gameplay;
 using Godot;
 using Godot.Collections;
+using Newtonsoft.Json.Linq;
 using System;
 
 namespace Game.Entities
@@ -23,32 +24,14 @@ namespace Game.Entities
 			get => _characterInfo;
 			set
 			{
-				_animatedSprite ??= GetNodeOrNull<AnimatedSprite2D>("Sprites");
+				if (value == null)
+					return;
 
-				if (_animatedSprite != null)
-				{
-					if (value is Character character)
-					{
-						_characterInfo = character;
-						_animatedSprite.SpriteFrames = character.SpriteAnimations;
-						_animatedSprite.Offset = character.SpritesOffset;
-						_animatedSprite.Play();
-						if (_animatedSprite.SpriteFrames is not null)
-							_hasSelect = _animatedSprite.SpriteFrames.HasAnimation("idle_selected");
-						else _hasSelect = false;
-					}
-					else
-					{
-						_characterInfo = null;
-						if (_animatedSprite is null) return;
-						_animatedSprite.SpriteFrames = null;
-						_animatedSprite.Offset = Vector2.Zero;
-						_hasSelect = false;
-					}
-				}else
-				{
-					_hasSelect = _characterInfo?.SpriteAnimations?.HasAnimation("idle_selected") ?? false;
-				}
+				_animatedSprite ??= GetNodeOrNull<AnimatedSprite2D>("Sprites");
+				if (Engine.IsEditorHint())
+					UpdateSprites(value);
+				else
+					_characterInfo = value;
 			}
 		}
 
@@ -72,7 +55,16 @@ namespace Game.Entities
 
 		public bool IsInteracting { get; set; } = false;
 
-		public void ToggleHighlight(bool state)
+        public override void _Ready()
+        {
+            _animatedSprite = GetNode<AnimatedSprite2D>("Sprites");
+            _startPosition = GlobalPosition;
+            _targetPosition = _startPosition + new Vector2(PatrolDistanceX, PatrolDistanceY);
+
+			UpdateSprites(_characterInfo);
+        }
+
+        public void ToggleHighlight(bool state)
 		{
 			var animationName = _animatedSprite.Animation.ToString();
 			var isCurrentAnimationHighlighted = animationName.EndsWith("selected");
@@ -169,12 +161,25 @@ namespace Game.Entities
 			}
 		}
 
-		public override void _Ready()
+		private void UpdateSprites(Character newCharacter)
 		{
-			_animatedSprite = GetNode<AnimatedSprite2D>("Sprites");
-			_startPosition = GlobalPosition;
-			_targetPosition = _startPosition + new Vector2(PatrolDistanceX, PatrolDistanceY);
-		}
+            if (_animatedSprite != null)
+            {
+                GD.Print($"{Name} - Eh diferente de null");
+                _characterInfo = newCharacter;
+                _animatedSprite.SpriteFrames = newCharacter.SpriteAnimations;
+                _animatedSprite.Offset = newCharacter.SpritesOffset;
+                _animatedSprite.Play();
+                if (_animatedSprite.SpriteFrames is not null)
+                    _hasSelect = _animatedSprite.SpriteFrames.HasAnimation("idle_selected");
+                else _hasSelect = false;
+            }
+            else
+            {
+                GD.Print($"{Name} - Nao eh diferente de null :(");
+                _hasSelect = _characterInfo?.SpriteAnimations?.HasAnimation("idle_selected") ?? false;
+            }
+        }
 
 		// public override void _Process(double delta)
 		// {

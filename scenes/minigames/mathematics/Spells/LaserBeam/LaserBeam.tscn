@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bbknn65fnh5rr"]
 
-[ext_resource type="Script" path="res://scenes/minigames/mathematics/Spells/LaserBeam/MathLaserBeam.cs" id="1_fb148"]
+[ext_resource type="Script" uid="uid://bxxxtb3br1hnw" path="res://scenes/minigames/mathematics/Spells/LaserBeam/MathLaserBeam.cs" id="1_fb148"]
 [ext_resource type="Texture2D" uid="uid://dgt750nboynxr" path="res://assets/images/tiles/mathematics/laserbeam.png" id="2_ngv20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wb4f7"]
@@ -111,31 +111,28 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sk5d"]
 _data = {
-"RESET": SubResource("Animation_c3yh5"),
-"default": SubResource("Animation_3l5i8"),
-"ely": SubResource("Animation_rb6k3")
+&"RESET": SubResource("Animation_c3yh5"),
+&"default": SubResource("Animation_3l5i8"),
+&"ely": SubResource("Animation_rb6k3")
 }
 
 [node name="LaserBeam" type="Node2D"]
 script = ExtResource("1_fb148")
 LaserColor = Color(0.742806, 0.556453, 0.982784, 1)
 
-[node name="Beams" type="Node2D" parent="."]
-texture_filter = 1
-
-[node name="Beam" type="Node2D" parent="Beams"]
+[node name="Beam" type="Node2D" parent="."]
 visible = false
 z_index = 1
 y_sort_enabled = true
 
-[node name="Fragment" type="Sprite2D" parent="Beams/Beam"]
+[node name="Fragment" type="Sprite2D" parent="Beam"]
 texture_filter = 1
 scale = Vector2(2, 0.74)
 texture = ExtResource("2_ngv20")
 offset = Vector2(2, -32)
 hframes = 12
 
-[node name="HitFragment" type="AnimatedSprite2D" parent="Beams/Beam"]
+[node name="HitFragment" type="AnimatedSprite2D" parent="Beam"]
 visible = false
 y_sort_enabled = true
 position = Vector2(0, -108)
@@ -163,7 +160,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_7sk5d")
+&"": SubResource("AnimationLibrary_7sk5d")
 }
 autoplay = "default"
 

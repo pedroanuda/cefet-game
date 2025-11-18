@@ -1,0 +1,36 @@
+{
+    "$schema": "../dialogue.schema.json",
+    "start": [
+        {
+            "title": "{character}",
+            "body": "Oi, tudo bem? Novo por aqui?"
+        },
+        {
+            "title": "{character}",
+            "body": "Gostaria de jogar um minijogo de português?",
+            "choices": [
+                {
+                    "text": "Sim",
+                    "goTo": "yes_answer"
+                },
+                {
+                    "text": "Não",
+                    "goTo": "no_answer"
+                }
+            ]
+        }
+    ],
+    "yes_answer": [
+        {
+            "title": "{character}",
+            "body": "Boa sorte!",
+            "goToScene": "res://scenes/minigames/portuguese/LostWords.tscn"
+        }
+    ],
+    "no_answer": [
+        {
+            "title": "{character}",
+            "body": "Ok, estarei por aqui!"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://dgnvrprtfvxos"]
+
+[ext_resource type="Texture2D" uid="uid://de56c2t3ywt3p" path="res://assets/images/entities/characters/brenda.png" id="1_888p3"]
+[ext_resource type="Texture2D" uid="uid://cvygk1rc1fbco" path="res://assets/images/entities/characters/brenda_n.png" id="2_x2fp7"]
+
+[resource]
+diffuse_texture = ExtResource("1_888p3")
+normal_texture = ExtResource("2_x2fp7")
+texture_filter = 1

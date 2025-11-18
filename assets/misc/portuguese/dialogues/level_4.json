@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/pedroanuda/cefet-game/refs/heads/main/misc/dialogues/dialogue.schema.json",
+    "start": [
+        {
+            "title": "Felipe",
+            "body": "Olha! Esse carro está com os pneus faltando...",
+            "mood": "confused"
+        },
+        {
+            "title": "Você",
+            "body": "Um veículo a 0 rodas."
+        }
+    ]
+}

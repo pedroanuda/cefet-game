@@ -1,0 +1,43 @@
+{
+	"name": "O gato na árvore",
+	"possibleSentences": [
+		{
+			"sentence": "Um gato na árvore",
+			"challengeWords": [
+				{
+					"word": "Um",
+					"wrongChoices": ["No", "Na", "Po", "Pá", "Un"]
+				},
+				{
+					"word": "gato",
+					"wrongChoices": ["pato", "vaca", "bato", "sapo", "alto"]
+				},
+				{
+					"word": "na",
+					"wrongChoices": ["pi", "po", "em", "um", "no"]
+				},
+				{
+					"word": "árvore",
+					"wrongChoices": ["galho", "madeira", "planta", "arvore", "alface"]
+				}
+			]
+		},
+		{
+			"sentence": "O glitch maligno",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "E", "U"]
+				},
+				{
+					"word": "glitch",
+					"wrongChoices": ["sextou", "galhou", "buggy", "assado", "problema"]
+				},
+				{
+					"word": "maligno",
+					"wrongChoices": ["maneiro", "chatão", "ignorante",  "divino", "assombrado"]
+				}
+			]
+		}
+	]
+}

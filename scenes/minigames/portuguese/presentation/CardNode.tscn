@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfo05b1qxa547"]
+
+[ext_resource type="Script" uid="uid://q3at2c5tvwfc" path="res://scenes/minigames/portuguese/presentation/CardNode.cs" id="1_yq84d"]
+[ext_resource type="Texture2D" uid="uid://cpc6l7rnodltw" path="res://assets/misc/portuguese/tree_card.png" id="2_4rhfm"]
+[ext_resource type="FontFile" uid="uid://1y80y4otajg3" path="res://assets/fonts/Pixellari.ttf" id="3_4rhfm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ix72t"]
+font = ExtResource("3_4rhfm")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardNode" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_yq84d")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(6.16, 6.16)
+texture = ExtResource("2_4rhfm")
+region_enabled = true
+region_rect = Rect2(2, 2, 28, 39)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -100.0
+offset_right = 65.0
+offset_bottom = 93.0
+text = "TestingBigWord"
+label_settings = SubResource("LabelSettings_ix72t")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,558 @@
+[gd_scene load_steps=23 format=3 uid="uid://duyh3ftk2w4ad"]
+
+[ext_resource type="Script" uid="uid://rwb7ideo1qg3" path="res://scenes/minigames/portuguese/presentation/PortugueseLevelNode.cs" id="1_kg7w8"]
+[ext_resource type="Texture2D" uid="uid://dkvw8fwujoyio" path="res://assets/images/tiles/portuguese/level_2/level_2_flowerstand.png" id="2_umnca"]
+[ext_resource type="Texture2D" uid="uid://dt6cyt0uqxvld" path="res://assets/images/tiles/portuguese/level_2/level_2_wooden_bench.png" id="3_c028x"]
+[ext_resource type="PackedScene" uid="uid://dcoym4b507iib" path="res://scenes/minigames/portuguese/presentation/levels/level2/Flower.tscn" id="4_remth"]
+[ext_resource type="Texture2D" uid="uid://7key7mh63k7a" path="res://assets/images/tiles/portuguese/level_2/level_2_flowers.png" id="6_remth"]
+[ext_resource type="Texture2D" uid="uid://dlwwkjhs57noq" path="res://assets/images/tiles/portuguese/level_2/level_2_wheelbarrow.png" id="7_6fadl"]
+[ext_resource type="Texture2D" uid="uid://kp62x57kx0ji" path="res://assets/images/entities/characters/portuguese/gardener.png" id="7_remth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_remth"]
+size = Vector2(320, 118)
+
+[sub_resource type="Curve" id="Curve_c62cn"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sd0d4"]
+curve = SubResource("Curve_c62cn")
+
+[sub_resource type="Curve" id="Curve_c028x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8657025, 0.14396894), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_remth"]
+curve = SubResource("Curve_c028x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_68ymn"]
+emission_shape = 3
+emission_box_extents = Vector3(38, 5, 1)
+angle_min = -99.99999
+angle_max = 100.000015
+angle_curve = SubResource("CurveTexture_sd0d4")
+spread = 68.774
+angular_velocity_min = -20.000015
+angular_velocity_max = 19.999983
+gravity = Vector3(0, -10, 0)
+scale_min = 5.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_remth")
+
+[sub_resource type="Curve2D" id="Curve2D_remth"]
+
+[sub_resource type="Animation" id="Animation_remth"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flowers/Flower/Flower:frame_coords:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flowers/Flower2/Flower:frame_coords:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flowers/Flower3/Flower:frame_coords:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flowers/Flower4/Flower:frame_coords:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flowers/Flower5/Flower:frame_coords:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Flowers/Flower6/Flower:frame_coords:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flowers/Flower7/Flower:frame_coords:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Flowers/Flower8/Flower:frame_coords:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_6fadl"]
+resource_name = "camera_zoom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPath/PathFollow/CutsceneCamera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.75, 2.75), Vector2(4.5, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_c028x"]
+resource_name = "solve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flowers/Flower/Flower:frame_coords:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flowers/Flower2/Flower:frame_coords:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flowers/Flower3/Flower:frame_coords:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flowers/Flower4/Flower:frame_coords:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flowers/Flower5/Flower:frame_coords:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Flowers/Flower6/Flower:frame_coords:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flowers/Flower7/Flower:frame_coords:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Flowers/Flower8/Flower:frame_coords:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fadl"]
+_data = {
+&"RESET": SubResource("Animation_remth"),
+&"camera_zoom": SubResource("Animation_6fadl"),
+&"solve": SubResource("Animation_c028x")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fadl"]
+atlas = ExtResource("7_remth")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c62cn"]
+atlas = ExtResource("7_remth")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd0d4"]
+atlas = ExtResource("7_remth")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68ymn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fadl")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_c62cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd0d4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="FlowersProblem" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_kg7w8")
+LevelInfo = "res://assets/misc/portuguese/levels_info/level_2.json"
+DialoguePath = "res://assets/misc/portuguese/dialogues/level_2.json"
+CompletedDialoguePath = "res://assets/misc/portuguese/dialogues/level_2_cleared.json"
+metadata/_custom_type_script = "uid://rwb7ideo1qg3"
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(-2, -1.0000019)
+shape = SubResource("RectangleShape2D_remth")
+debug_color = Color(0.6926796, 0.4912898, 0.21056154, 0.41960785)
+
+[node name="Flower Stand" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_umnca")
+metadata/_edit_lock_ = true
+
+[node name="Wooden Bench" type="Sprite2D" parent="."]
+position = Vector2(-96, 25)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_c028x")
+metadata/_edit_lock_ = true
+
+[node name="Flowers" type="Node2D" parent="."]
+
+[node name="Flower" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(-26.5, -2)
+
+[node name="Flower" parent="Flowers/Flower" index="0"]
+position = Vector2(1.34, -8.845)
+frame = 11
+
+[node name="Flower2" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(-10, 0.41)
+
+[node name="Flower" parent="Flowers/Flower2" index="0"]
+position = Vector2(-0.1, -9.815)
+scale = Vector2(1.15, 1.15)
+frame = 13
+
+[node name="Pot" parent="Flowers/Flower2" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+frame = 0
+
+[node name="Flower3" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(8.32, 0.57)
+
+[node name="Flower" parent="Flowers/Flower3" index="0"]
+position = Vector2(-0.1, -9.415)
+scale = Vector2(1.15, 1.15)
+frame = 15
+
+[node name="Pot" parent="Flowers/Flower3" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+frame = 2
+
+[node name="Flower4" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(24.32, 0.57)
+
+[node name="Flower" parent="Flowers/Flower4" index="0"]
+position = Vector2(1.48, -9.155)
+scale = Vector2(1.1, 1.1)
+frame = 21
+
+[node name="Pot" parent="Flowers/Flower4" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+frame = 0
+
+[node name="Flower5" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(-27.535, 5.685)
+
+[node name="Flower" parent="Flowers/Flower5" index="0"]
+position = Vector2(-0.1, -11.9)
+scale = Vector2(1.15, 1.15)
+frame = 17
+
+[node name="Pot" parent="Flowers/Flower5" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+frame = 2
+
+[node name="Flower6" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(-11.17, 4.75)
+
+[node name="Flower" parent="Flowers/Flower6" index="0"]
+position = Vector2(0.51, -9.065)
+scale = Vector2(1.15, 1.15)
+frame = 19
+
+[node name="Pot" parent="Flowers/Flower6" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+
+[node name="Flower7" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(6.895, 4.75)
+
+[node name="Flower" parent="Flowers/Flower7" index="0"]
+position = Vector2(0.51, -10.045)
+scale = Vector2(1.15, 1.15)
+frame = 23
+
+[node name="Pot" parent="Flowers/Flower7" index="1"]
+position = Vector2(0, -4.25)
+scale = Vector2(1.15, 1.15)
+frame = 0
+
+[node name="Flower8" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(26.585, 4.75)
+
+[node name="Flower" parent="Flowers/Flower8" index="0"]
+position = Vector2(-1.35, -10.045)
+scale = Vector2(1.15, 1.15)
+frame = 27
+
+[node name="Pot" parent="Flowers/Flower8" index="1"]
+position = Vector2(0, -4.25)
+scale = Vector2(1.15, 1.15)
+frame = 2
+
+[node name="Flower9" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(32.47, 46.255)
+scale = Vector2(1.375, 1.375)
+
+[node name="Flower" parent="Flowers/Flower9" index="0"]
+position = Vector2(-0.1, -11.9)
+scale = Vector2(1.15, 1.15)
+frame = 16
+
+[node name="Pot" parent="Flowers/Flower9" index="1"]
+position = Vector2(0, -6)
+scale = Vector2(1.15, 1.15)
+frame = 2
+
+[node name="Flower10" parent="Flowers" instance=ExtResource("4_remth")]
+position = Vector2(-31.31, 44.5)
+scale = Vector2(1.375, 1.375)
+
+[node name="Flower" parent="Flowers/Flower10" index="0"]
+position = Vector2(0.51, -10.045)
+scale = Vector2(1.15, 1.15)
+frame = 22
+
+[node name="Pot" parent="Flowers/Flower10" index="1"]
+position = Vector2(0, -4.25)
+scale = Vector2(1.15, 1.15)
+frame = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.13
+randomness = 0.16
+process_material = SubResource("ParticleProcessMaterial_68ymn")
+
+[node name="WheelBarrow" type="Node2D" parent="."]
+
+[node name="WheelBarrowFlowers" type="Node2D" parent="WheelBarrow"]
+
+[node name="WheelBarrowFlower" type="Sprite2D" parent="WheelBarrow/WheelBarrowFlowers"]
+position = Vector2(75.765, 11.895)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_remth")
+hframes = 2
+vframes = 16
+frame = 10
+
+[node name="WheelBarrowFlower3" type="Sprite2D" parent="WheelBarrow/WheelBarrowFlowers"]
+position = Vector2(92.075, 13.975)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_remth")
+hframes = 2
+vframes = 16
+frame = 18
+
+[node name="WheelBarrowFlower2" type="Sprite2D" parent="WheelBarrow/WheelBarrowFlowers"]
+position = Vector2(84.455, 11.895)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_remth")
+hframes = 2
+vframes = 16
+frame = 14
+
+[node name="WheelBarrowFlower4" type="Sprite2D" parent="WheelBarrow/WheelBarrowFlowers"]
+position = Vector2(102.835, 13.075)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_remth")
+hframes = 2
+vframes = 16
+frame = 24
+
+[node name="WheelBarrowSprite" type="Sprite2D" parent="WheelBarrow"]
+position = Vector2(92, 23.5)
+scale = Vector2(2.23, 2.23)
+texture = ExtResource("7_6fadl")
+
+[node name="CameraPath" type="Path2D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_remth")
+
+[node name="PathFollow" type="PathFollow2D" parent="CameraPath"]
+loop = false
+
+[node name="CutsceneCamera" type="Camera2D" parent="CameraPath/PathFollow"]
+unique_name_in_owner = true
+enabled = false
+zoom = Vector2(2.75, 2.75)
+limit_left = 0
+limit_top = 0
+limit_bottom = 272
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6fadl")
+}
+
+[node name="Gardener" type="AnimatedSprite2D" parent="."]
+position = Vector2(-65.37, 15.4)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_68ymn")
+autoplay = "default"
+frame_progress = 0.09967582
+
+[editable path="Flowers/Flower"]
+[editable path="Flowers/Flower2"]
+[editable path="Flowers/Flower3"]
+[editable path="Flowers/Flower4"]
+[editable path="Flowers/Flower5"]
+[editable path="Flowers/Flower6"]
+[editable path="Flowers/Flower7"]
+[editable path="Flowers/Flower8"]
+[editable path="Flowers/Flower9"]
+[editable path="Flowers/Flower10"]

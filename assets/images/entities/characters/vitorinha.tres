@@ -1,6 +1,6 @@
 [gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://b0mjha8y0k8dc"]
 
-[ext_resource type="Texture2D" uid="uid://cvucloe7rk6na" path="res://assets/images/entities/characters/vitorinha.png" id="1_wg2pj"]
+[ext_resource type="Texture2D" uid="uid://c7ujvmy8ea8xr" path="res://assets/images/entities/characters/vitorinha.png" id="1_wg2pj"]
 [ext_resource type="Texture2D" uid="uid://cscf1ncy7by1h" path="res://assets/images/entities/characters/vitorinha_n.png" id="2_78qbc"]
 
 [resource]

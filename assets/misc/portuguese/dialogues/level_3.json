@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/pedroanuda/cefet-game/refs/heads/main/misc/dialogues/dialogue.schema.json",
+    "start": [
+        {
+            "title": "Andressa",
+            "body": "Por que o arco-íris está cinza?",
+            "mood": "confused"
+        },
+        {
+            "title": "Você",
+            "body": "Vamos consertar isso!"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://br0m4t7oeixxj"]
 
 [ext_resource type="Script" path="res://scenes/ui/Leaderboard/LeaderboardPanel.cs" id="1_7r8ss"]
-[ext_resource type="FontFile" uid="uid://c2c3o8w8w8w8w" path="res://assets/fonts/Pixellari.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://1y80y4otajg3" path="res://assets/fonts/Pixellari.ttf" id="2_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main"]
 bg_color = Color(0.1, 0.1, 0.1, 0.8)

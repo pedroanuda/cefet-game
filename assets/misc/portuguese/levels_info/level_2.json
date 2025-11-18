@@ -1,0 +1,64 @@
+{
+	"name": "As flores murchas da jardineira",
+	"possibleSentences": [
+		{
+			"sentence": "As flores murcharam",
+			"challengeWords": [
+				{
+					"word": "As",
+					"wrongChoices": ["Os", "Um", "Na", "Um", "Az"]
+				},
+				{
+					"word": "flores",
+					"wrongChoices": ["folhas", "frutas", "cores", "flocos", "floresce"]
+				},
+				{
+					"word": "murcharam",
+					"wrongChoices": ["brotaram", "cresceram", "floriram", "voaram", "pararam"]
+				}
+			]
+		},
+		{
+			"sentence": "A jardineira está triste",
+			"challengeWords": [
+				{
+					"word": "A",
+					"wrongChoices": ["O", "Na", "Um", "Os"]
+				},
+				{
+					"word": "jardineira",
+					"wrongChoices": ["cozinheira", "padeira", "menina", "florista", "galinha"]
+				},
+				{
+					"word": "está",
+					"wrongChoices": ["tá", "era", "vai", "foi", "sou"]
+				},
+				{
+					"word": "triste",
+					"wrongChoices": ["feliz", "brava", "alegre", "doce", "cansada"]
+				}
+			]
+		},
+		{
+			"sentence": "As flores precisam de água",
+			"challengeWords": [
+				{
+					"word": "flores",
+					"wrongChoices": ["folhas", "árvores", "frutas", "ervas", "ramos"]
+				},
+				{
+					"word": "precisam",
+					"wrongChoices": ["bebem", "têm", "querem", "ficam", "tomam"]
+				},
+				{
+					"word": "de",
+					"wrongChoices": ["na", "em", "da", "do", "no"]
+				},
+				{
+					"word": "água",
+					"wrongChoices": ["terra", "sol", "vento", "chuva", "leite"]
+				}
+			]
+		}
+	]
+}

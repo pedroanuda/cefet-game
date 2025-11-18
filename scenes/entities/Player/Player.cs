@@ -13,6 +13,7 @@ namespace Game.Gameplay
 
 		public bool AllowActions { get; set; } = true;
 		[Export] public float Speed = 300.0f;
+		public Vector2 Direction { get => direction; }
 		public Inventory Inventory { get; } = new();
 		public Stats Stats { get; } = new();
 

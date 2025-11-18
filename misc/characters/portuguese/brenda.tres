@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://pe03puk5qyct"]
+
+[ext_resource type="Script" uid="uid://c13w8ham8k8fc" path="res://misc/characters/Character.cs" id="1_mhus7"]
+
+[resource]
+script = ExtResource("1_mhus7")
+Name = "Brenda"
+metadata/_custom_type_script = "uid://c13w8ham8k8fc"

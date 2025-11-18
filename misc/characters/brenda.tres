@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="Character" load_steps=11 format=3 uid="uid://dbru3nw7h8if7"]
+
+[ext_resource type="Texture2D" uid="uid://dgnvrprtfvxos" path="res://assets/images/entities/characters/brenda.tres" id="1_eegpn"]
+[ext_resource type="Texture2D" uid="uid://de56c2t3ywt3p" path="res://assets/images/entities/characters/brenda.png" id="2_6ffpl"]
+[ext_resource type="Script" uid="uid://c13w8ham8k8fc" path="res://misc/characters/Character.cs" id="2_eegpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ffpl"]
+atlas = ExtResource("1_eegpn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5olj"]
+atlas = ExtResource("1_eegpn")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf5pv"]
+atlas = ExtResource("1_eegpn")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gov1p"]
+atlas = ExtResource("2_6ffpl")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkcgo"]
+atlas = ExtResource("2_6ffpl")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuldv"]
+atlas = ExtResource("2_6ffpl")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf5dk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ffpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5olj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5olj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gov1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gov1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkcgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuldv")
+}],
+"loop": true,
+"name": &"idle_selected",
+"speed": 1.0
+}]
+
+[resource]
+script = ExtResource("2_eegpn")
+SpriteAnimations = SubResource("SpriteFrames_kf5dk")
+SpritesOffset = Vector2(7, 0)
+Name = "Brenda"
+ImagesPath = "res://assets/misc/characters/Vitoria"

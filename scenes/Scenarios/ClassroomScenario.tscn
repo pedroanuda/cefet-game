@@ -1,21 +1,22 @@
-[gd_scene load_steps=28 format=4 uid="uid://c8su53kxl3s01"]
+[gd_scene load_steps=29 format=4 uid="uid://c8su53kxl3s01"]
 
 [ext_resource type="Texture2D" uid="uid://480y7cpgur3s" path="res://assets/images/tiles/Floor.tres" id="1_tdcws"]
 [ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
-[ext_resource type="Texture2D" uid="uid://pwk1nsdvqwv1" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
+[ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
 [ext_resource type="PackedScene" uid="uid://b7etykk20vn6n" path="res://scenes/Scenarios/ClassroomScenario/StudentDesk.tscn" id="3_r5yv7"]
-[ext_resource type="Texture2D" uid="uid://gsohlhf0jqdv" path="res://assets/misc/World/door.png" id="4_mv4wr"]
+[ext_resource type="Texture2D" uid="uid://dn1wsnce5vjgj" path="res://assets/misc/World/door.png" id="4_mv4wr"]
 [ext_resource type="PackedScene" uid="uid://bwnqaaalxpvb" path="res://scenes/Scenarios/ClassroomScenario/TeacherDesk.tscn" id="6_5c1lh"]
 [ext_resource type="Shader" uid="uid://caovy635n3trp" path="res://scenes/Scenarios/ClassroomScenario/new_shader.gdshader" id="7_mn6n8"]
-[ext_resource type="Texture2D" uid="uid://dxubd1libf2ur" path="res://assets/misc/World/generic_board.png" id="8_rn6hk"]
-[ext_resource type="Texture2D" uid="uid://567dko4mpbfu" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
+[ext_resource type="Texture2D" uid="uid://ebu0l4dg44s0" path="res://assets/misc/World/generic_board.png" id="8_rn6hk"]
+[ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
 [ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
 [ext_resource type="Script" uid="uid://b5q6nwfkav6xj" path="res://scenes/entities/LeaderboardInteractableArea.cs" id="10_dcn8n"]
-[ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://misc/characters/vitoria.tres" id="11_yq3et"]
-[ext_resource type="Texture2D" uid="uid://babglbj2ns0m4" path="res://assets/misc/light-point.png" id="12_02wyn"]
+[ext_resource type="Texture2D" uid="uid://bbjbs61hk7756" path="res://assets/misc/light-point.png" id="12_02wyn"]
+[ext_resource type="Resource" uid="uid://dbru3nw7h8if7" path="res://misc/characters/brenda.tres" id="12_mqhot"]
 [ext_resource type="Script" uid="uid://c33ake2w70axl" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
 [ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
 [ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
+[ext_resource type="PackedScene" uid="uid://dmwmdspyx7fp5" path="res://scenes/ui/InventoryUI/InventoryUI.tscn" id="16_6tw22"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="16_trkn7"]
 [ext_resource type="PackedScene" uid="uid://br0m4t7oeixxj" path="res://scenes/ui/Leaderboard/LeaderboardPanel.tscn" id="18_ahx4l"]
 
@@ -283,24 +284,32 @@ position = Vector2(545, 59)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("9_7cvk2")
 
-[node name="LeaderboardInteractableArea" type="Area2D" parent="Leaderboard" node_paths=PackedStringArray("InteractionUI")]
+[node name="LeaderboardInteractableArea" type="Area2D" parent="Leaderboard"]
 script = ExtResource("10_dcn8n")
-InteractionUI = NodePath("../../UI/LeaderboardPanel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leaderboard/LeaderboardInteractableArea"]
 position = Vector2(3.3333435, 22.083328)
 shape = SubResource("RectangleShape2D_ahx4l")
 
-[node name="Npc" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
-position = Vector2(808, 191)
-CharacterInfo = ExtResource("11_yq3et")
+[node name="Npc1" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
+position = Vector2(800, 200)
 DialoguePath = "res://misc/dialogues/Vitoria/dialogo_demo_teste.json"
 InteractionUI = NodePath("../UI/NewDialogueUi")
+PatrolDistanceX = 0.0
+
+[node name="Npc2" parent="." node_paths=PackedStringArray("InteractionUI") instance=ExtResource("10_6hku2")]
+position = Vector2(516.18, 192.51)
+velocity = Vector2(40, 0)
+CharacterInfo = ExtResource("12_mqhot")
+DialoguePath = "res://misc/dialogues/Brenda/dialogo_demo.json"
+InteractionUI = NodePath("../UI/NewDialogueUi")
+PatrolDistanceX = 0.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.791999, 0.791999, 0.791999, 1)
 
 [node name="Light" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Light"]
 position = Vector2(840, 187)
@@ -338,7 +347,7 @@ texture = ExtResource("12_02wyn")
 height = 200.0
 
 [node name="PointLight2D6" type="PointLight2D" parent="Light"]
-position = Vector2(607, 187)
+position = Vector2(607.00006, 197)
 scale = Vector2(0.412037, 0.574962)
 energy = 0.5
 texture = ExtResource("12_02wyn")
@@ -357,19 +366,11 @@ metadata/_edit_lock_ = true
 [node name="NewDialogueUi" parent="UI" instance=ExtResource("14_hixty")]
 visible = false
 
+[node name="InventoryUi" parent="UI" instance=ExtResource("16_6tw22")]
+visible = false
+
 [node name="PauseScreen" parent="UI" instance=ExtResource("16_trkn7")]
 visible = false
 
 [node name="LeaderboardPanel" parent="UI" instance=ExtResource("18_ahx4l")]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -300.0
-offset_right = 250.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2

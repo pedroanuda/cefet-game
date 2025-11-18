@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/pedroanuda/cefet-game/refs/heads/main/misc/dialogues/dialogue.schema.json",
+    "start": [
+        {
+            "title": "{character}",
+            "body": "Muito obrigada por me ajudar com as minhas flores!",
+            "mood": "happy"
+        }
+    ]
+}

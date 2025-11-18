@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=3 uid="uid://dgfo8p4lef6pu"]
+
+[ext_resource type="Script" uid="uid://utkg3nnnmi4b" path="res://scenes/minigames/portuguese/presentation/entities/Player/PortuguesePlayer.cs" id="1_vaxpq"]
+[ext_resource type="Texture2D" uid="uid://nrxfu2vwrpj5" path="res://assets/images/entities/characters/portuguese/evelyn.png" id="2_mehl7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_furr1"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(6, 576, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ureoy"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(0, 192, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxvys"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(6, 512, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmwm1"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(6, 576, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gwyh"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(6, 640, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcvg3"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(6, 704, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djme1"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(0, 256, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw76j"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(0, 320, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4h2l"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(0, 384, 58, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msril"]
+atlas = ExtResource("2_mehl7")
+region = Rect2(0, 448, 58, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxnlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_furr1")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ureoy")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxvys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmwm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gwyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcvg3")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djme1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw76j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4h2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msril")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0ysr"]
+height = 46.0
+
+[node name="PortuguesePlayer" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_vaxpq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -0.525)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_rxnlk")
+animation = &"walk_right"
+autoplay = "idle_right"
+frame_progress = 0.46031004
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_c0ysr")
+debug_color = Color(0.727265, 0.473169, 0.11263, 0.42)

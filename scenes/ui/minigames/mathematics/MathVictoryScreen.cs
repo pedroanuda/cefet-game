@@ -77,8 +77,8 @@ namespace Game.UI
 
         private void GoToSchool()
         {
-            LeaderboardPanel.AddScore(TotalScore);
-            
+            LeaderboardPanel.AddScore(TotalScore, "Matemática");
+
             GetNode<Global>("/root/Global").TransitionToScene(
                 "res://scenes/Scenarios/ClassroomScenario.tscn",
                 "Parabens pela vitoria!",

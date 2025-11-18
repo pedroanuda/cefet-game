@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=2 format=3 uid="uid://82swidmn5ssn"]
+
+[ext_resource type="Script" path="res://scenes/minigames/MinigameInfo.cs" id="1_rr4g7"]
+
+[resource]
+script = ExtResource("1_rr4g7")
+MinigameName = "Palavras Perdidas"
+Difficulty = 1
+ScenePath = ""
+GradeSPoints = 1250
+GradeAPoints = 1000
+GradeBPoints = 750
+GradeCPoints = 500

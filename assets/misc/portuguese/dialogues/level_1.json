@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/pedroanuda/cefet-game/refs/heads/main/misc/dialogues/dialogue.schema.json",
+    "start": [
+        {
+            "title": "Lucas",
+            "body": "Por favor! Me ajuda com o meu gato!",
+            "mood": "nervous"
+        },
+        {
+            "title": "Você",
+            "body": "Não se preocupe, eu vou te ajudar!"
+        }
+    ]
+}

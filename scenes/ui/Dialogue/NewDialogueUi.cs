@@ -28,9 +28,10 @@ namespace CefetGame.Ui
         protected bool IsChoiceDialogue { get; set; } = false;
         protected bool IsDialogueFullyVisible { get; set; } = false;
 
-        protected int CurrentVisibleCharacters { 
+        protected int CurrentVisibleCharacters
+        {
             get => _currentVisibleCharacters;
-            set 
+            set
             {
                 _currentVisibleCharacters = value;
                 BodyNode.VisibleCharacters = value;
@@ -122,7 +123,8 @@ namespace CefetGame.Ui
             {
                 EnableOptions();
                 DelayTimer.Timeout -= onDelayTimeout;
-            };
+            }
+            ;
 
             DelayTimer.OneShot = true;
             if (!DelayTimer.IsConnected(Godot.Timer.SignalName.Timeout, Callable.From(onDelayTimeout)))
@@ -161,7 +163,7 @@ namespace CefetGame.Ui
         {
             if (!Visible)
                 return;
-                
+
             if (@event is InputEventKey key && key.IsReleased())
             {
                 if (key.Keycode == Key.Enter || key.Keycode == Key.Space)
@@ -174,7 +176,10 @@ namespace CefetGame.Ui
                 return;
             }
 
-            if (@event is InputEventMouseButton mb && mb.IsReleased())
+            if (
+                (@event is InputEventMouseButton mb && mb.IsReleased()) ||
+                (@event is InputEventJoypadButton jb && jb.IsActionReleased("ui_accept"))
+            )
             {
                 TryAdvance();
             }

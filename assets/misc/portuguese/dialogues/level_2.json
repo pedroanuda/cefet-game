@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/pedroanuda/cefet-game/refs/heads/main/misc/dialogues/dialogue.schema.json",
+    "start": [
+        {
+            "title": "Andressa",
+            "body": "O que aconteceu com as minhas flores?",
+            "mood": "confused"
+        },
+        {
+            "title": "Você",
+            "body": "Vou te ajudar!"
+        }
+    ]
+}

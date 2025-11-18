@@ -1,0 +1,114 @@
+{
+	"name": "O carro sem pneus",
+	"possibleSentences": [
+		{
+			"sentence": "O carro está parado",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "Um", "Na", "Os"]
+				},
+				{
+					"word": "carro",
+					"wrongChoices": ["bicicleta", "moto", "ônibus", "caminhão", "avião"]
+				},
+				{
+					"word": "está",
+					"wrongChoices": ["foi", "era", "vai", "fica", "anda"]
+				},
+				{
+					"word": "parado",
+					"wrongChoices": ["andando", "correndo", "caindo", "sumindo", "girando"]
+				}
+			]
+		},
+		{
+			"sentence": "Os pneus sumiram",
+			"challengeWords": [
+				{
+					"word": "Os",
+					"wrongChoices": ["As", "Um", "O", "Nos"]
+				},
+				{
+					"word": "pneus",
+					"wrongChoices": ["rodas", "portas", "vidros", "faróis", "bancos"]
+				},
+				{
+					"word": "sumiram",
+					"wrongChoices": ["voltaram", "apareceram", "ficaram", "brilharam", "giram"]
+				}
+			]
+		},
+		{
+			"sentence": "O menino olha o carro",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "Uma", "As", "Ela"]
+				},
+				{
+					"word": "menino",
+					"wrongChoices": ["garota", "menina", "criança", "mãe", "amiga"]
+				},
+				{
+					"word": "olha",
+					"wrongChoices": ["corre", "fecha", "grita", "brinca", "pula"]
+				},
+				{
+					"word": "o",
+					"wrongChoices": ["a", "um", "os", "uma"]
+				},
+				{
+					"word": "carro",
+					"wrongChoices": ["bicicleta", "ônibus", "caminhão", "moto", "avião"]
+				}
+			]
+		},
+		{
+			"sentence": "O chão está brilhando",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "Um", "Os", "Na"]
+				},
+				{
+					"word": "chão",
+					"wrongChoices": ["carro", "céu", "pneu", "vidro", "ar"]
+				},
+				{
+					"word": "está",
+					"wrongChoices": ["foi", "era", "vai", "fica", "tem"]
+				},
+				{
+					"word": "brilhando",
+					"wrongChoices": ["sumindo", "girando", "caindo", "voando", "mudando"]
+				}
+			]
+		},
+		{
+			"sentence": "O glitch levou os pneus",
+			"challengeWords": [
+				{
+					"word": "O",
+					"wrongChoices": ["A", "Um", "Na", "Os"]
+				},
+				{
+					"word": "glitch",
+					"wrongChoices": ["vento", "menino", "carro", "nuvem", "robô"]
+				},
+				{
+					"word": "levou",
+					"wrongChoices": ["achou", "fez", "chamou", "trouxe", "mudou"]
+				},
+				{
+					"word": "os",
+					"wrongChoices": ["as", "uns", "um", "nos"]
+				},
+				{
+					"word": "pneus",
+					"wrongChoices": ["vidros", "portas", "bancos", "faróis", "rodas"]
+				}
+			]
+		}
+	]
+}

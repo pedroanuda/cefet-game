@@ -1,0 +1,395 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwn3dae262u5s"]
+
+[ext_resource type="Script" uid="uid://2g38wtwc3gal" path="res://scenes/minigames/portuguese/presentation/ui/LostWordsUi.cs" id="1_5i2n5"]
+[ext_resource type="FontFile" uid="uid://1y80y4otajg3" path="res://assets/fonts/Pixellari.ttf" id="2_5iqpf"]
+[ext_resource type="FontFile" uid="uid://3047d28fpe1n" path="res://assets/fonts/RetroSans.ttf" id="3_n241j"]
+[ext_resource type="PackedScene" uid="uid://bfbt6mpp82rgs" path="res://scenes/ui/Menu/menu_button.tscn" id="4_jn257"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1dj0"]
+font_size = 45
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.56078434)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n241j"]
+font = ExtResource("2_5iqpf")
+font_size = 55
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jn257"]
+font = ExtResource("3_n241j")
+font_size = 30
+font_color = Color(0.61960787, 0.61960787, 0.61960787, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxk3y"]
+font = ExtResource("3_n241j")
+font_size = 30
+
+[sub_resource type="Animation" id="Animation_n241j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/FlowContainer/MinigameNameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VictoryScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VictoryScreen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/EndLabel:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/EndLabel2:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer/BackToSchoolButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/ErrorsLabel:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5iqpf"]
+resource_name = "enter_level"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/FlowContainer/MinigameNameLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jn257"]
+resource_name = "show_end_screen"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VictoryScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VictoryScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/EndLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/EndLabel2:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer/BackToSchoolButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/ErrorsLabel:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/HintsLabel:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VictoryScreen/MarginContainer/VBoxContainer/TotalScoreLabel:visible_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jn257"]
+_data = {
+&"RESET": SubResource("Animation_n241j"),
+&"enter_level": SubResource("Animation_5iqpf"),
+&"show_end_screen": SubResource("Animation_jn257")
+}
+
+[node name="LostWordsUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5i2n5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="FlowContainer" type="FlowContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MinigameNameLabel" type="Label" parent="MarginContainer/FlowContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "O gato na árvore"
+label_settings = SubResource("LabelSettings_l1dj0")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="WordsLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+text = "T _ s _ e i   d e m a i s"
+label_settings = SubResource("LabelSettings_n241j")
+horizontal_alignment = 1
+
+[node name="SpaceFiller" type="Control" parent="MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="VersionNoteLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Jogo ainda em desenvolvimento"
+
+[node name="VictoryScreen" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="EndLabel" type="RichTextLabel" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_n241j")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Você [color=\"green\"]finalizou[/color] o minijogo!"
+
+[node name="EndLabel2" type="RichTextLabel" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_n241j")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Nós agradecemos por terem jogado a nossa prévia!"
+
+[node name="ErrorsLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Erros cometidos: 0"
+label_settings = SubResource("LabelSettings_jn257")
+
+[node name="HintsLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dicas utilizadas: 0"
+label_settings = SubResource("LabelSettings_jn257")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TotalScoreLabel" type="Label" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pontuação total: 0"
+label_settings = SubResource("LabelSettings_pxk3y")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="SpaceFiller" type="Control" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VictoryScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackToSchoolButton" parent="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_jn257")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Voltar à escola"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jn257")
+}
+
+[connection signal="pressed" from="VictoryScreen/MarginContainer/VBoxContainer/HBoxContainer/BackToSchoolButton" to="." method="OnBackToSchoolPressed"]
